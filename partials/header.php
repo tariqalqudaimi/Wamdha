@@ -22,7 +22,7 @@
 
               
                 <li class="dropdown">
-                    <a href="#Language"><span><i class="bi bi-globe"></i> Language</span> <i class="bi bi-chevron-down"></i></a>
+                    <a href="#Language"><span><i class="bi bi-globe"></i> <?= $lang['lang'] ?? 'lang' ?></span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="?lang=en">English</a></li>
                         <li><a href="?lang=ar">العربية</a></li>

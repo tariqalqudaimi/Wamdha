@@ -51,13 +51,13 @@ $about_main_description = null;
 $about_nodes = [];
 $about_query = $dbcon->query("SELECT * FROM about_sections ORDER BY id ASC");
 if ($about_query) {
-    while ($row = $about_query->fetch_assoc()) {
-        if ($row['section_key'] === 'main_description') {
-            $about_main_description = $row;
-        } else {
-            $about_nodes[] = $row;
-        }
+  while ($row = $about_query->fetch_assoc()) {
+    if ($row['section_key'] === 'main_description') {
+      $about_main_description = $row;
+    } else {
+      $about_nodes[] = $row;
     }
+  }
 }
 
 
@@ -81,7 +81,6 @@ if ($about_query) {
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -169,7 +168,7 @@ if ($about_query) {
                     <i class="<?= htmlspecialchars($node['icon_class']) ?>"></i>
                     <h4><?= htmlspecialchars(($current_lang == 'ar' && !empty($node['title_ar'])) ? $node['title_ar'] : $node['title']) ?></h4>
                     <div class="node-details">
-                        <?= ($current_lang == 'ar' && !empty($node['details_ar'])) ? $node['details_ar'] : $node['details'] ?>
+                      <?= ($current_lang == 'ar' && !empty($node['details_ar'])) ? $node['details_ar'] : $node['details'] ?>
                     </div>
                   </div>
                 </div>
@@ -236,9 +235,9 @@ if ($about_query) {
     </section>
 
 
-    <section id="portal-showcase" class="section-bg" 
-    data-projects='<?= htmlspecialchars(json_encode($products_array, JSON_UNESCAPED_UNICODE)); ?>' 
-    data-lang="<?= $current_lang; ?>">
+    <section id="portal-showcase" class="section-bg"
+      data-projects='<?= htmlspecialchars(json_encode($products_array, JSON_UNESCAPED_UNICODE)); ?>'
+      data-lang="<?= $current_lang; ?>">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2><?= $lang['project_title'] ?? 'Our Projects' ?></h2>
@@ -415,59 +414,59 @@ if ($about_query) {
         </div>
       </div>
     </section>
-<?php
-// ======== Footer Section ========
-?>
-<footer class="site-footer text-white pt-5 pb-4">
-  <div class="container">
-    <div class="row">
+    <?php
+    // ======== Footer Section ========
+    ?>
+    <footer class="site-footer text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row">
 
-      <!-- Footer About / Description -->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="footer-title"><?= $lang['company_name'] ?? 'Company Name' ?></h5>
-        <p><?= $lang['footer_description'] ?? 'Your company description goes here.' ?></p>
-      </div>
+          <!-- Footer About / Description -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <h5 class="footer-title"><?= $lang['company_name'] ?? 'Company Name' ?></h5>
+            <p><?= $lang['footer_description'] ?? 'Your company description goes here.' ?></p>
+          </div>
 
-      <!-- Footer Links -->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <h5 class="footer-title"><?= $lang['footer_links'] ?? 'Quick Links' ?></h5>
-        <ul class="list-unstyled">
-          <li><a href="index.php?lang=<?= $current_lang ?>" class="text-white"><?= $lang['home_link'] ?? 'Home' ?></a></li>
-          <li><a href="#about" class="text-white"><?= $lang['about_link'] ?? 'About' ?></a></li>
-          <li><a href="#services" class="text-white"><?= $lang['services_link'] ?? 'Services' ?></a></li>
-          <li><a href="#team" class="text-white"><?= $lang['team_link'] ?? 'Team' ?></a></li>
-          <li><a href="#contact" class="text-white"><?= $lang['contact_link'] ?? 'Contact' ?></a></li>
-        </ul>
-      </div>
+          <!-- Footer Links -->
+          <div class="col-lg-4 col-md-6 mb-4">
+            <h5 class="footer-title"><?= $lang['footer_links'] ?? 'Quick Links' ?></h5>
+            <ul class="list-unstyled">
+              <li><a href="index.php?lang=<?= $current_lang ?>" class="text-white"><?= $lang['home_link'] ?? 'Home' ?></a></li>
+              <li><a href="#about" class="text-white"><?= $lang['about_link'] ?? 'About' ?></a></li>
+              <li><a href="#services" class="text-white"><?= $lang['services_link'] ?? 'Services' ?></a></li>
+              <li><a href="#team" class="text-white"><?= $lang['team_link'] ?? 'Team' ?></a></li>
+              <li><a href="#contact" class="text-white"><?= $lang['contact_link'] ?? 'Contact' ?></a></li>
+            </ul>
+          </div>
 
-      <!-- Footer Contact -->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <h5 class="footer-title"><?= $lang['contact_info_title'] ?? 'Contact Info' ?></h5>
-        <p><i class='bx bxs-map-pin'></i> <?= $lang['company_address'] ?? 'Address here' ?></p>
-        <p><i class='bx bxs-phone-call'></i> <?= $lang['company_phone'] ?? '+0000000000' ?></p>
-        <p><i class='bx bxs-envelope'></i> <?= $lang['company_email'] ?? 'info@example.com' ?></p>
-        <div class="footer-social-links mt-2">
-          <?php if(!empty($lang['fb_link'])): ?>
-            <a href="<?= $lang['fb_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-facebook'></i></a>
-          <?php endif; ?>
-          <?php if(!empty($lang['instagram_link'])): ?>
-            <a href="<?= $lang['instagram_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-instagram'></i></a>
-          <?php endif; ?>
-          <?php if(!empty($lang['linkedin_link'])): ?>
-            <a href="<?= $lang['linkedin_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-linkedin'></i></a>
-          <?php endif; ?>
-          <?php if(!empty($lang['whatsapp_number'])): ?>
-            <a href="https://wa.me/<?= preg_replace('/[^0-9]/','',$lang['whatsapp_number']) ?>" target="_blank" class="social-icon"><i class='bx bxl-whatsapp'></i></a>
-          <?php endif; ?>
+          <!-- Footer Contact -->
+          <div class="col-lg-4 col-md-12 mb-4">
+            <h5 class="footer-title"><?= $lang['contact_info_title'] ?? 'Contact Info' ?></h5>
+            <p><i class='bx bxs-map-pin'></i> <?= $lang['company_address'] ?? 'Address here' ?></p>
+            <p><i class='bx bxs-phone-call'></i> <?= $lang['company_phone'] ?? '+0000000000' ?></p>
+            <p><i class='bx bxs-envelope'></i> <?= $lang['company_email'] ?? 'info@example.com' ?></p>
+            <div class="footer-social-links mt-2">
+              <?php if (!empty($lang['fb_link'])): ?>
+                <a href="<?= $lang['fb_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-facebook'></i></a>
+              <?php endif; ?>
+              <?php if (!empty($lang['instagram_link'])): ?>
+                <a href="<?= $lang['instagram_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-instagram'></i></a>
+              <?php endif; ?>
+              <?php if (!empty($lang['linkedin_link'])): ?>
+                <a href="<?= $lang['linkedin_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-linkedin'></i></a>
+              <?php endif; ?>
+              <?php if (!empty($lang['whatsapp_number'])): ?>
+                <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $lang['whatsapp_number']) ?>" target="_blank" class="social-icon"><i class='bx bxl-whatsapp'></i></a>
+              <?php endif; ?>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom mt-4 text-center">
+          <p class="mb-0">&copy; <?= date('Y') ?> <?= $lang['company_name'] ?? 'Company Name' ?>. <?= $lang['footer_rights'] ?? 'All Rights Reserved.' ?></p>
         </div>
       </div>
-    </div>
-
-    <!-- Footer Bottom -->
-    <div class="footer-bottom mt-4 text-center">
-      <p class="mb-0">&copy; <?= date('Y') ?> <?= $lang['company_name'] ?? 'Company Name' ?>. <?= $lang['footer_rights'] ?? 'All Rights Reserved.' ?></p>
-    </div>
-  </div>
 
 
 
