@@ -25,35 +25,35 @@
 # 1.1. Custom Font Definitions
 --------------------------------------------------------------*/
 @font-face {
-  font-family: 'Inter';
+  font-family: 'English';
   font-style: normal;
   font-weight: 400; /* Regular */
-  src: url('../fonts/pafigo/Inter-Regular.ttf') format('truetype');
+  src: url('../fonts/English/Inter-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'English';
   font-style: normal;
   font-weight: 700; /* Bold */
-  src: url('../fonts/pafigo/Inter-Bold.ttf') format('truetype');
+  src: url('../fonts/English/Inter-Bold.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'English';
   font-style: normal;
   font-weight: 900; /* Black */
-  src: url('../fonts/pafigo/Inter-Black.ttf') format('truetype');
+  src: url('../fonts/English/Inter-Black.ttf') format('truetype');
 }
 @font-face {
     font-family: 'Arabic';
-    src: url('../fonts/ghalib/TheYearofHandicrafts-Regular.woff2') format('woff2'),
-         url('../fonts/ghalib/TheYearofHandicrafts-Regular.woff') format('woff');
+    src: url('../fonts/Arabic/TheYearofHandicrafts-Regular.woff2') format('woff2'),
+         url('../fonts/Arabic/TheYearofHandicrafts-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-  font-family: 'Pafigo';
-  src: url('../fonts/pafigo/pafigo-regular-webfont.woff2') format('woff2'),
-    url('../fonts/pafigo/pafigo-regular-webfont.woff') format('woff');
+  font-family: 'English1';
+  src: url('../fonts/English/pafigo-regular-webfont.woff2') format('woff2'),
+    url('../fonts/English/pafigo-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -76,7 +76,7 @@
 }
 
 body {
-  font-family: 'Pafigo', sans-serif;
+  font-family: 'English', sans-serif;
   color: var(--text-light);
   background-color: var(--primary-dark);
 }
@@ -97,7 +97,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Pafigo', sans-serif;
+  font-family: 'English1', sans-serif;
   color: var(--text-light);
 }
 
