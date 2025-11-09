@@ -1,10 +1,8 @@
 <?php
-// about_section_edit.php
 
 require_once "../UserSetting/user_auth.php";
 require_once '../Database/db.php';
 
-// --- (منطق المعالجة PHP يبقى كما هو تماماً) ---
 $section_id = $_GET['id'] ?? null;
 if (!$section_id) { header("Location: manage_about.php"); exit(); }
 
@@ -21,10 +19,7 @@ if (isset($_POST['update_section'])) {
     header("Location: manage_about.php?status=updated");
     exit();
 }
-// --- (نهاية منطق المعالجة) ---
 
-
-// --- جلب بيانات القسم للتعديل ---
 $stmt = $dbcon->prepare("SELECT * FROM about_sections WHERE id = ? AND section_key IS NULL");
 $stmt->bind_param("i", $section_id);
 $stmt->execute();
@@ -47,11 +42,9 @@ require_once "../Dashboard/header.php";
             </div>
             <div class="row">
                 <div class="col-md-6"><div class="form-group"><label>Details (English)</label>
-                    <!-- استخدام الكلاس الجديد وإزالة htmlspecialchars -->
                     <textarea class="form-control ckeditor-editor" name="details" rows="8"><?= $section['details'] ?></textarea>
                 </div></div>
                 <div class="col-md-6"><div class="form-group"><label>Details (Arabic)</label>
-                    <!-- استخدام الكلاس الجديد وإزالة htmlspecialchars -->
                     <textarea class="form-control ckeditor-editor" name="details_ar" rows="8"><?= $section['details_ar'] ?></textarea>
                 </div></div>
             </div>

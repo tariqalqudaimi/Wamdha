@@ -18,19 +18,7 @@ $row = $result->fetch_assoc();
 	</div>
 	<div class="card-body">
 
-
-
-		<?php if (isset($_SESSION['contact_information_change'])) { ?>
-
-			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				<strong><?= $_SESSION['contact_information_change'] ?></strong>
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-
-
-		<?php }
+		<?php
 		unset($_SESSION['contact_information_change']);
 		?>
 

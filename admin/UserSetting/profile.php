@@ -41,14 +41,6 @@ $id = $row['id'];
     </div>
 
     <div class="col-md-5">
-        <?php if(isset($_SESSION['profile_photo_emty'])): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong><?= $_SESSION['profile_photo_emty'] ?></strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <?php unset($_SESSION['profile_photo_emty']); ?>
-        <?php endif; ?>
-
         
         <?php if(isset($_SESSION['profile_photo_success'])): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">

@@ -72,8 +72,8 @@ if ($about_query) {
   <title><?= htmlspecialchars($settings['company_name'] ?? 'Company Name') ?> - Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  <link href="assets/img/Artboard 8-8.png" rel="icon">
-  <link href="assets/img/Artboard 8-8.png" rel="aArtboard 8-8">
+  <link href="assets/img/Artboard-8-8.png" rel="icon">
+  <link href="assets/img/Artboard-8-8.png" rel="aArtboard 8-8">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -105,34 +105,22 @@ if ($about_query) {
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
-    <div class="hero-logo-animation">
-      <svg width="140" height="97" viewBox="0 0 194 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="logo-path " d="M519.74,326.75l-88.51,166.5c-9.29,17.48-34.53,16.89-43-1l-78-164.81a24.07,24.07,0,0,0-21.75-13.77H275.23a24.07,24.07,0,0,0-21.87,34.12L387.48,639.57c8.48,18.44,34.57,18.75,43.49.52L555.28,385.78a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.6,18.44-34.79,18.54-43.54.17l-4.86-10.2c-9-18.8-35.93-18.13-43.94,1.09h0a24.07,24.07,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.37-35.19L541,314A24.07,24.07,0,0,0,519.74,326.75ZM694.82,344v0h0Zm0-13.43h0Z" />
-      </svg>
-    </div>
     <div class="container-fluid" data-aos="fade-up">
       <div class="row justify-content-center">
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-center">
           <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
           <a href="#">
-            <img src="<?= htmlspecialchars($settings['company_logo'] ?? 'assets\img\Artboard 8-8.png') ?>" alt="<?= htmlspecialchars($settings['company_name'] ?? 'Logo') ?>" class="logo">
+           <img src="assets/img/CompanyInfo/<?= htmlspecialchars($settings['company_logo'] ?? 'Artboard 8-8.png') ?>" alt="<?= htmlspecialchars($settings['company_name'] ?? 'Logo') ?>" class="logo">
           </a>
-          <!-- <h2><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></h2> -->
-
+          <h2><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></h2>
           <div><a href="#about" class="btn-get-started scrollto"><?= $lang['get_started_btn'] ?? 'Get Started' ?></a></div>
         </div>
       </div>
     </div>
-
-    <!-- <span class="hero-tag tag-developer hero-tag-pos-1"><?= $lang['hero_tag_developer'] ?? 'Developer' ?></span>
-    <span class="hero-tag tag-content-creator hero-tag-pos-2"><?= $lang['hero_tag_content_creator'] ?? 'Creator' ?></span>
-    <span class="hero-tag tag-designer hero-tag-pos-3"><?= $lang['hero_tag_designer'] ?? 'Designer' ?></span>
-    <span class="hero-tag tag-marketing hero-tag-pos-4"><?= $lang['hero_tag_marketing'] ?? 'Marketing' ?></span>
-    <span class="hero-tag tag-analyst hero-tag-pos-5"><?= $lang['hero_tag_analyst'] ?? 'Analyst' ?></span> -->
   </section><!-- End Hero -->
 
   <main id="main">
-    <!-- ======= About Us Section (NEURAL NEBULA VERSION) - UPDATED ======= -->
+    <!-- ======= About Us Section  ======= -->
     <section id="about" class="about section-bg">
       <div class="container" data-aos="fade-up">
 
@@ -371,20 +359,20 @@ if ($about_query) {
                   <p><?= htmlspecialchars($contact['email'] ?? 'Email not available') ?></p>
                 </div>
                 <div class="info-social-links">
-                  <?php if (!empty($settings['whatsapp_number'])): ?>
-                    <a href="https://wa.me/<?= htmlspecialchars(preg_replace('/[^0-9]/', '', $settings['whatsapp_number'])) ?>" target="_blank" class="social-icon"><i class="bx bxl-whatsapp"></i></a>
+                  <?php if (!empty($contact['whatsapp_number'])): ?>
+                    <a href="https://wa.me/<?= htmlspecialchars(preg_replace('/[^0-9]/', '', $contact['whatsapp_number'])) ?>" target="_blank" class="social-icon"><i class="bx bxl-whatsapp"></i></a>
                   <?php endif; ?>
 
-                  <?php if (!empty($settings['fb_link'])): ?>
-                    <a href="<?= htmlspecialchars($settings['fb_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-facebook"></i></a>
+                  <?php if (!empty($contact['fb_link'])): ?>
+                    <a href="<?= htmlspecialchars($contact['fb_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-facebook"></i></a>
                   <?php endif; ?>
 
-                  <?php if (!empty($settings['instagram_link'])): ?>
-                    <a href="<?= htmlspecialchars($settings['instagram_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-instagram"></i></a>
+                  <?php if (!empty($contact['instagram_link'])): ?>
+                    <a href="<?= htmlspecialchars($contact['instagram_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-instagram"></i></a>
                   <?php endif; ?>
 
-                  <?php if (!empty($settings['linkedin_link'])): ?>
-                    <a href="<?= htmlspecialchars($settings['linkedin_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-linkedin"></i></a>
+                  <?php if (!empty($contact['linkedin_link'])): ?>
+                    <a href="<?= htmlspecialchars($contact['linkedin_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-linkedin"></i></a>
                   <?php endif; ?>
                 </div>
               </div>
@@ -414,82 +402,11 @@ if ($about_query) {
         </div>
       </div>
     </section>
-    <?php
-    // ======== Footer Section ========
-    ?>
-    <footer class="site-footer text-white pt-5 pb-4">
-      <div class="container">
-        <div class="row">
 
-          <!-- Footer About / Description -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <h5 class="footer-title"><?= $lang['company_name'] ?? 'Company Name' ?></h5>
-            <p><?= $lang['footer_description'] ?? 'Your company description goes here.' ?></p>
-          </div>
-
-          <!-- Footer Links -->
-          <div class="col-lg-4 col-md-6 mb-4">
-            <h5 class="footer-title"><?= $lang['footer_links'] ?? 'Quick Links' ?></h5>
-            <ul class="list-unstyled">
-              <li><a href="index.php?lang=<?= $current_lang ?>" class="text-white"><?= $lang['home_link'] ?? 'Home' ?></a></li>
-              <li><a href="#about" class="text-white"><?= $lang['about_link'] ?? 'About' ?></a></li>
-              <li><a href="#services" class="text-white"><?= $lang['services_link'] ?? 'Services' ?></a></li>
-              <li><a href="#team" class="text-white"><?= $lang['team_link'] ?? 'Team' ?></a></li>
-              <li><a href="#contact" class="text-white"><?= $lang['contact_link'] ?? 'Contact' ?></a></li>
-            </ul>
-          </div>
-
-          <!-- Footer Contact -->
-          <div class="col-lg-4 col-md-12 mb-4">
-            <h5 class="footer-title"><?= $lang['contact_info_title'] ?? 'Contact Info' ?></h5>
-            <p><i class='bx bxs-map-pin'></i> <?= $lang['company_address'] ?? 'Address here' ?></p>
-            <p><i class='bx bxs-phone-call'></i> <?= $lang['company_phone'] ?? '+0000000000' ?></p>
-            <p><i class='bx bxs-envelope'></i> <?= $lang['company_email'] ?? 'info@example.com' ?></p>
-            <div class="footer-social-links mt-2">
-              <?php if (!empty($lang['fb_link'])): ?>
-                <a href="<?= $lang['fb_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-facebook'></i></a>
-              <?php endif; ?>
-              <?php if (!empty($lang['instagram_link'])): ?>
-                <a href="<?= $lang['instagram_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-instagram'></i></a>
-              <?php endif; ?>
-              <?php if (!empty($lang['linkedin_link'])): ?>
-                <a href="<?= $lang['linkedin_link'] ?>" target="_blank" class="social-icon"><i class='bx bxl-linkedin'></i></a>
-              <?php endif; ?>
-              <?php if (!empty($lang['whatsapp_number'])): ?>
-                <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $lang['whatsapp_number']) ?>" target="_blank" class="social-icon"><i class='bx bxl-whatsapp'></i></a>
-              <?php endif; ?>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom mt-4 text-center">
-          <p class="mb-0">&copy; <?= date('Y') ?> <?= $lang['company_name'] ?? 'Company Name' ?>. <?= $lang['footer_rights'] ?? 'All Rights Reserved.' ?></p>
-        </div>
-      </div>
-
-
-
+    <?php include 'partials/footer.php'; ?>
 
   </main>
 
-  <!-- ======================================================= -->
-  <!-- START: Floating Animated Logo (NEW POSITION)          -->
-  <!-- ======================================================= -->
-  <div class="floating-logo-animation">
-    <svg width="194" height="97" viewBox="0 0 194 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="light-flare" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="rgba(138, 79, 255, 0)" />
-          <stop offset="50%" stop-color="rgba(255, 255, 255, 0.8)" />
-          <stop offset="100%" stop-color="rgba(138, 79, 255, 0)" />
-        </linearGradient>
-      </defs>
-      <path class="logo-path " d="M519.74,326.75l-88.51,166.5c-9.29,17.48-34.53,16.89-43-1l-78-164.81a24.07,24.07,0,0,0-21.75-13.77H275.23a24.07,24.07,0,0,0-21.87,34.12L387.48,639.57c8.48,18.44,34.57,18.75,43.49.52L555.28,385.78a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.6,18.44-34.79,18.54-43.54.17l-4.86-10.2c-9-18.8-35.93-18.13-43.94,1.09h0a24.07,24.07,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.37-35.19L541,314A24.07,24.07,0,0,0,519.74,326.75ZM694.82,344v0h0Zm0-13.43h0Z" />
-    </svg>
-  </div>
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

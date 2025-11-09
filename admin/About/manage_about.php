@@ -4,7 +4,6 @@
 require_once "../UserSetting/user_auth.php"; 
 require_once '../Database/db.php';
 
-// --- (منطق المعالجة PHP يبقى كما هو تماماً) ---
 if (isset($_POST['update_main_description'])) {
     $details_en = $_POST['details_en'];
     $details_ar = $_POST['details_ar'];
@@ -35,10 +34,8 @@ if (isset($_GET['delete_id'])) {
     header("Location: manage_about.php?status=deleted");
     exit();
 }
-// --- (نهاية منطق المعالجة) ---
 
 
-// --- جلب البيانات للعرض ---
 $main_description_row = $dbcon->query("SELECT * FROM about_sections WHERE section_key = 'main_description' LIMIT 1")->fetch_assoc();
 if (!$main_description_row) {
     $dbcon->query("INSERT INTO about_sections (section_key, title, title_ar) VALUES ('main_description', 'Main Description', 'الوصف الرئيسي')");
@@ -50,7 +47,6 @@ $title = "Manage About Us Page";
 require_once "../Dashboard/header.php"; 
 ?>
 
-<!-- النموذج الأول: خاص بالوصف الرئيسي -->
 <div class="card mb-4">
     <div class="card-header"><h4 class="card-title">Main Description</h4></div>
     <div class="card-body">
@@ -58,12 +54,10 @@ require_once "../Dashboard/header.php";
             <input type="hidden" name="id" value="<?= $main_description_row['id'] ?>">
             <div class="form-group">
                 <label>Description (English)</label>
-                <!-- استخدام الكلاس الجديد ckeditor-editor -->
                 <textarea class="form-control ckeditor-editor" name="details_en" rows="5"><?= $main_description_row['details'] ?? '' ?></textarea>
             </div>
             <div class="form-group">
                 <label>Description (Arabic)</label>
-                <!-- استخدام الكلاس الجديد ckeditor-editor -->
                 <textarea class="form-control ckeditor-editor" name="details_ar" rows="5"><?= $main_description_row['details_ar'] ?? '' ?></textarea>
             </div>
             <button type="submit" name="update_main_description" class="btn btn-success">Update Description</button>
@@ -71,7 +65,6 @@ require_once "../Dashboard/header.php";
     </div>
 </div>
 
-<!-- النموذج الثاني: لإضافة الأقسام الأخرى -->
 <div class="card mb-4">
     <div class="card-header"><h4 class="card-title">Add New Section (Company, Goals, etc.)</h4></div>
     <div class="card-body">
@@ -94,7 +87,6 @@ require_once "../Dashboard/header.php";
     </div>
 </div>
 
-<!-- الجدول: لعرض الأقسام -->
 <div class="card">
     <div class="card-header"><h4 class="card-title">Existing Sections</h4></div>
     <div class="card-body">

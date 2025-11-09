@@ -5,22 +5,14 @@ $lang = [
     'services_link' => 'خدماتنا',
     'project_link' => 'أعمالنا',
     'team_link' => 'فريقنا',
-    'about_link' => 'عنا',
+    'about_link' => 'من نحن',
     'features_link' => 'المميزات',
     'contact_link' => 'اتصل بنا',
     'lang' => 'اللغة',
 
-    // Hero Section
-    'get_started_btn' => 'ابدأ الآن',
-    'hero_tag_developer' => 'مطور',
-    'hero_tag_content_creator' => 'صانع محتوى',
-    'hero_tag_designer' => 'مصمم',
-    'hero_tag_marketing' => 'تسويق',
-    'hero_tag_analyst' => 'محلل',
-
     //About Section
     'about_title' => 'من نحن',
-    'about_description' => 'نحن شركة رائدة في تقديم حلول تكنولوجية مبتكرة تهدف إلى تعزيز الأعمال وتحقيق النجاح لعملائنا. فريقنا من الخبراء ملتزم بتقديم أفضل الخدمات في مجالات تطوير البرمجيات، التصميم، التسويق الرقمي، وصناعة المحتوى.',  
+    'about_description' => 'نحن شركة رائدة في تقديم حلول تكنولوجية مبتكرة تهدف إلى تعزيز الأعمال وتحقيق النجاح لعملائنا. فريقنا من الخبراء ملتزم بتقديم أفضل الخدمات في مجالات تطوير البرمجيات، التصميم، التسويق الرقمي، وصناعة المحتوى.',
     'about_learn_more_btn' => 'اعرف المزيد',
 
     // Services Section
@@ -36,15 +28,12 @@ $lang = [
     'project_title' => 'مشاريعنا',
     'project_description' => 'ألق نظرة على مشاريعنا المميزة.',
     'project_more_details' => 'المزيد من التفاصيل',
-    'see_project' =>'رؤية جميع المشاريع',
+    'see_project' => 'رؤية جميع المشاريع',
 
     // Team Section
     'team_title' => 'فريقنا',
     'team_description' => 'فريقنا يتكون من خبراء في تطوير البرمجيات، التصميم، التسويق وصناعة المحتوى، يعملون معًا لتحقيق أفضل النتائج لعملائنا.',
 
-    // FAQ Section
-    'faq_title' => 'الأسئلة الشائعة',
-    'faq_description' => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى.',
 
     // Contact Section
     'contact_title' => 'اتصل بنا',
@@ -71,28 +60,12 @@ $lang = [
     // Footer
     'footer_useful_links' => 'روابط مفيدة',
     'footer_our_services' => 'خدماتنا',
-    'footer_join_newsletter' => 'انضم إلى نشرتنا الإخبارية',
-    'footer_newsletter_placeholder' => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص.',
-    'footer_subscribe_btn' => 'اشتراك',
     'footer_designed_by' => 'تصميم',
 
-     // Footer
+    // Footer
     'company_name' => 'ومضة',
-        'footer_description' => 'ومضة هي شركة رائدة في مجال التقنية وتقدم أفضل الحلول.',
-        'footer_links' => 'روابط سريعة',
-        'home_link' => 'الرئيسية',
-        'about_link' => 'عنا',
-        'services_link' => 'خدماتنا',
-        'team_link' => 'فريقنا',
-        'contact_link' => 'اتصل بنا',
-        'contact_info_title' => 'معلومات الاتصال',
-        'company_address' => 'صنعاء، اليمن',
-        'company_phone' => '+967 123 456 789',
-        'company_email' => 'info@wamdha.com',
-        'fb_link' => 'https://facebook.com',
-        'instagram_link' => 'https://instagram.com',
-        'linkedin_link' => 'https://linkedin.com',
-        'whatsapp_number' => '967123456789',
-        'footer_rights' => 'جميع الحقوق محفوظة.',
-    
+    'footer_description' => 'ومضة هي شركة رائدة في مجال التقنية وتقدم أفضل الحلول.',
+    'footer_links' => 'روابط سريعة',
+    'footer_rights' => 'جميع الحقوق محفوظة.',
+
 ];

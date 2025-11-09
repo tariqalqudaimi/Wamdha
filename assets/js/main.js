@@ -1,3 +1,4 @@
+
 (function () {
   "use strict";
 
@@ -85,7 +86,6 @@
    * Main DOMContentLoaded listener for all page-specific scripts
    */
   document.addEventListener('DOMContentLoaded', function () {
-    // Particle effect canvas initialization
     const canvas = document.getElementById('particle-canvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -114,9 +114,7 @@
     init3DTiltEffect();
     initFeaturesSpotlight();
 
-    // =======================================================
     // NEW: Interactive "About Us" Section Logic
-    // =======================================================
     const aboutContainer = document.querySelector('.about-us-container');
     if (aboutContainer) {
       const nodes = aboutContainer.querySelectorAll('.neural-node');
@@ -147,9 +145,7 @@
       });
     }
 
-    // =======================================================
-    // NEW: Project Showcase & Slideshow Logic
-    // =======================================================
+    // MERGED: Project Showcase & Slideshow Logic
     const portalShowcase = document.querySelector('#portal-showcase');
     if (portalShowcase && portalShowcase.dataset.projects) {
       const allProjectsData = JSON.parse(portalShowcase.dataset.projects);
@@ -244,7 +240,7 @@
       }
 
       function closeSlideshow() { htmlEl.classList.remove('slideshow-open'); }
-      
+
       nextBtn.addEventListener('click', () => updateSlideshow(currentIndex + 1, 'next'));
       prevBtn.addEventListener('click', () => updateSlideshow(currentIndex - 1, 'prev'));
       grid.querySelectorAll('.portal-card').forEach(card => card.addEventListener('click', () => openSlideshow(parseInt(card.dataset.index, 10))));
@@ -266,31 +262,67 @@
   });
 
   /**
-   * Mobile Navigation Logic
-   */
-  const mobileNavContainer = select('.navbar-mobile');
+  * NEW & CORRECTED Mobile Navigation Logic
+  */
+  const mobileNavContainer = document.createElement('div');
+  mobileNavContainer.classList.add('navbar-mobile');
+  select('#header').appendChild(mobileNavContainer);
+
   if (mobileNavContainer) {
-    const navContent = select('#navbar ul').outerHTML;
-    mobileNavContainer.innerHTML = `<div class="navbar-mobile-content">${navContent}</div>`;
-    const closeButton = select('#navbar .mobile-nav-toggle').cloneNode(true);
-    closeButton.classList.remove('bi-list');
-    closeButton.classList.add('bi-x');
-    mobileNavContainer.appendChild(closeButton);
+    const navClone = select('#navbar ul').cloneNode(true);
+
+    const langDropdownClone = navClone.querySelector('.language-dropdown-desktop');
+
+    if (langDropdownClone) {
+      langDropdownClone.remove();
+    }
+
+    const navContent = navClone.innerHTML;
+
+    mobileNavContainer.innerHTML = `<div class="navbar-mobile-content"><ul>${navContent}</ul></div>`;
   }
-  on('click', '.mobile-nav-toggle', function (e) {
-    select('body').classList.toggle('mobile-nav-active');
-    const originalToggle = select('#navbar .mobile-nav-toggle');
-    originalToggle.classList.toggle('bi-list');
-    originalToggle.classList.toggle('bi-x');
-  }, true);
-  on('click', '.navbar-mobile .dropdown > a', function (e) {
-    if (this.nextElementSibling) e.preventDefault();
-    this.nextElementSibling.classList.toggle('dropdown-active');
+
+  on('click', '#mobile-menu-toggle-logo', function (e) {
+    if (window.innerWidth <= 991) {
+      e.preventDefault();
+      select('body').classList.toggle('mobile-nav-active');
+    }
+  });
+
+  on('click', '.language-toggle-mobile', function (e) {
+    e.stopPropagation();
     this.classList.toggle('active');
+  });
+
+  on('click', 'body', function (e) {
+    const langToggle = select('.language-toggle-mobile');
+    if (langToggle && !langToggle.contains(e.target)) {
+      langToggle.classList.remove('active');
+    }
+  });
+
+  on('click', '.navbar-mobile a', function (e) {
+    if (this.hash && select(this.hash)) {
+      e.preventDefault();
+      select('body').classList.remove('mobile-nav-active');
+      scrollto(this.hash);
+    }
   }, true);
-  on('click', '.navbar-mobile a.scrollto', function (e) {
-    if (select(this.hash)) { e.preventDefault(); select('.mobile-nav-toggle').click(); scrollto(this.hash); }
-  }, true);
+
+
+  const closeMenuOnScroll = () => {
+    const body = select('body');
+    if (body.classList.contains('mobile-nav-active')) {
+      body.classList.remove('mobile-nav-active');
+
+      const langToggle = select('.language-toggle-mobile');
+      if (langToggle && langToggle.classList.contains('active')) {
+        langToggle.classList.remove('active');
+      }
+    }
+  };
+  
+  onscroll(document, closeMenuOnScroll);
 
   /**
    * Logic to run after page has fully loaded
@@ -355,26 +387,26 @@
         body: new FormData(form),
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
       })
-      .then(response => {
-        if (response.ok) return response.text();
-        else return response.text().then(text => { throw new Error(text || 'Server responded with an error.'); });
-      })
-      .then(data => {
-        loading.style.display = 'none';
-        sentMessage.style.display = 'block';
-        form.reset();
-      })
-      .catch(error => {
-        loading.style.display = 'none';
-        errorMessage.textContent = error.message;
-        errorMessage.style.display = 'block';
-      })
-      .finally(() => {
-        setTimeout(() => {
-          sentMessage.style.display = 'none';
-          errorMessage.style.display = 'none';
-        }, 3000);
-      });
+        .then(response => {
+          if (response.ok) return response.text();
+          else return response.text().then(text => { throw new Error(text || 'Server responded with an error.'); });
+        })
+        .then(data => {
+          loading.style.display = 'none';
+          sentMessage.style.display = 'block';
+          form.reset();
+        })
+        .catch(error => {
+          loading.style.display = 'none';
+          errorMessage.textContent = error.message;
+          errorMessage.style.display = 'block';
+        })
+        .finally(() => {
+          setTimeout(() => {
+            sentMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+          }, 3000);
+        });
     });
   }
 })();
