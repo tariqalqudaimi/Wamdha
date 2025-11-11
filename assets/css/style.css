@@ -505,96 +505,260 @@ html[dir="rtl"] .language-dropdown-mobile {
     transform: rotate(180deg);
   }
 }
+
 /*--------------------------------------------------------------
-# 5. Hero Section
+# Final & Corrected Logo Animation - V10
+--------------------------------------------------------------*/
+
+/* --- Basic Setup --- */
+.logo-container {
+  padding: 10px;
+  perspective: 300px;
+}
+
+.header-logo-svg {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.header-logo-svg .flipper {
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+.logo-wrapper,
+.menu-icon-wrapper {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.menu-icon-wrapper {
+  transform: rotateY(180deg);
+}
+
+.header-logo-svg .menu-line {
+  stroke: var(--accent-purple);
+  stroke-width: 35; /* زيادة سماكة الخط قليلاً لشكل أفضل */
+  stroke-linecap: round;
+  transform-origin: center center; /* الأهم: ضمان الدوران حول المنتصف */
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+}
+
+/* --- Class to Trigger Flip Animation --- */
+.logo-container.is-flipped .flipper {
+  transform: rotateY(180deg);
+}
+
+/* --- Desktop Hover Effect --- */
+@media (min-width: 992px) {
+  .logo-container:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+  }
+}
+
+/* --- Mobile 'X' Transformation (THE CORRECTED VERSION) --- */
+@media (max-width: 991px) {
+
+  /* عندما تكون القائمة مفتوحة */
+  body.mobile-nav-active .header-logo-svg .flipper {
+     transform: rotateY(180deg); /* تأكد من أنه يظهر جانب القائمة */
+  }
+
+  /* 1. إخفاء الخط الأوسط */
+  body.mobile-nav-active .header-logo-svg .line-2 {
+    opacity: 0;
+  }
+
+ 
+}
+/*--------------------------------------------------------------
+# Hero Section - V2 Polished Styling
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  height: 100vh;
-  background: var(--primary-dark);
-  padding-top: 150px;
+  padding-top: 80px;
+  /* Ensures the content is vertically centered within the screen height */
+  min-height: 100vh; 
   display: flex;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
 }
 
-#hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" opacity="0.03"><circle cx="10" cy="10" r="0.5" fill="%23FFFFFF"/><circle cx="30" cy="30" r="0.5" fill="%23FFFFFF"/><circle cx="50" cy="50" r="0.5" fill="%23FFFFFF"/><circle cx="70" cy="70" r="0.5" fill="%23FFFFFF"/><circle cx="90" cy="90" r="0.5" fill="%23FFFFFF"/></svg>') repeat;
-  background-size: 30px 30px;
-  z-index: 0;
+.hero-content {
+  padding: 0 15px;
 }
 
-#hero::after {
-  content: "";
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  z-index: 0;
-  background-repeat: no-repeat;
-  background-size: 100px 100px, 120px 120px, 80px 40px, 150px 150px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%238A4FFF' opacity='0.15'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpolygon points='60,0 120,120 0,120' fill='%238A4FFF' opacity='0.15'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 40'%3E%3Crect x='0' y='0' width='80' height='40' rx='20' ry='20' fill='%238A4FFF' opacity='0.15'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Cline x1='10' y1='140' x2='140' y2='10' stroke='%238A4FFF' stroke-width='10' stroke-linecap='round' opacity='0.2'/%3E%3C/svg%3E");
-  background-position: 10% 80%, 90% 10%, 40% 50%, 70% 30%;
-  animation: floatGeometricShapes 80s ease-in-out infinite alternate;
-}
-
-@keyframes floatGeometricShapes {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-
-  25% {
-    transform: translate(5%, -5%) rotate(10deg);
-  }
-
-  50% {
-    transform: translate(-5%, 5%) rotate(-10deg);
-  }
-
-  75% {
-    transform: translate(3%, -3%) rotate(5deg);
-  }
-
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-}
-
-@media (max-width: 768px) {
-  #hero::after {
-    opacity: 0.5;
-    animation-duration: 40s;
-  }
-}
-
-#hero .container-fluid {
-  position: relative;
-  z-index: 1;
-}
-
-#hero h1 {
-  margin: 0 auto;
-  font-size: 50px;
-  font-weight: 700;
+/* --- Main Title Styling --- */
+.hero-content h1 {
+  font-size: 56px;
+  font-weight: 900;
   line-height: 1.2;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  max-width: 800px;
+  margin-bottom: 20px;
+  
+  /* Cool Gradient Text Effect */
+  background: linear-gradient(45deg, #ffffff 60%, var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
-#hero h2 {
-  color: var(--text-muted);
-  margin: 0 auto 30px auto;
+/* --- Subtitle Styling --- */
+.hero-content h2 {
   font-size: 24px;
-  max-width: 700px;
+  color: var(--text-muted);
+  line-height: 1.7; /* Improved line spacing */
+  margin-bottom: 40px;
+  max-width: 500px; /* Prevents lines from being too long */
+}
+
+/* --- Button Styling --- */
+.hero-content .btn-get-started {
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 20px rgba(var(--primary-dark-rgb), 0.4);
+}
+
+.hero-content .btn-get-started:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(138, 79, 255, 0.4); /* Purple glow on hover */
+}
+
+/*--------------------------------------------------------------
+# Hero Section - V2 Linked SVG Drawing Animation
+--------------------------------------------------------------*/
+
+.hero-logo-container {
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+}
+
+.hero-animated-svg {
+  width: 100%;
+}
+
+/* --- The Logo Path Setup --- */
+.hero-logo-path {
+  fill: transparent;
+  stroke: var(--accent-purple);
+  stroke-width: 5;
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  
+  /* The animation will now be controlled by a class from JS */
+  animation: none; 
+}
+
+/* Class to trigger the repeating animation */
+.hero-logo-container.animate .hero-logo-path {
+  /* Animation will run for 6s and repeat forever */
+  animation: draw-and-fade 6s ease-in-out infinite;
+}
+
+
+/* --- The Light Projectile --- */
+#light-projectile {
+  position: fixed; /* Fixed, so it can travel across the screen */
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(138, 79, 255, 0.5) 70%);
+  border-radius: 50%;
+  filter: blur(8px);
+  z-index: 9998; /* Above everything except the preloader */
+  opacity: 0; /* Hidden by default */
+  pointer-events: none; /* Can't be clicked */
+  transition: top 1.2s cubic-bezier(0.6, -0.28, 0.73, 0.04), 
+              left 1.2s cubic-bezier(0.3, 0.5, 0.8, 1), 
+              opacity 0.5s;
+}
+
+
+/* --- Keyframes for the repeating drawing animation --- */
+@keyframes draw-and-fade {
+  /* Phase 1: Drawing (0% to 50%) */
+  0% {
+    stroke-dashoffset: 2500; /* Start hidden */
+    fill: transparent;
+  }
+  40% {
+    stroke-dashoffset: 0; /* Finish drawing */
+    fill: transparent;
+  }
+  
+  /* Phase 2: Filling (50% to 80%) */
+  50% {
+    stroke-dashoffset: 0;
+    fill: var(--accent-purple); /* Fill with color */
+  }
+  80% {
+    stroke-dashoffset: 0;
+    fill: var(--accent-purple); /* Hold the filled state */
+  }
+
+  /* Phase 3: Fading (80% to 100%) */
+  90% {
+    fill: transparent; /* Start fading fill */
+  }
+  100% {
+    stroke-dashoffset: 2500; /* Hide the stroke again for the next loop */
+    fill: transparent;
+  }
+}
+
+
+/*--------------------------------------------------------------
+# RTL (Arabic) Specific Adjustments
+--------------------------------------------------------------*/
+html[dir="rtl"] .hero-content h2 {
+  line-height: 1.8; /* Slightly more line height for better Arabic script readability */
+}
+
+/* Fix for AOS animation direction in RTL */
+html[dir="rtl"] [data-aos="fade-left"] {
+  transform: translate3d(100px, 0, 0);
+}
+html[dir="rtl"] [data-aos="fade-right"] {
+  transform: translate3d(-100px, 0, 0);
+}
+
+
+/*--------------------------------------------------------------
+# Responsive Design for Mobile
+--------------------------------------------------------------*/
+@media (max-width: 991px) {
+  #hero {
+    text-align: center;
+  }
+  
+ 
+
+  .animated-hero-logo {
+    max-width: 60%;
+    min-width: 280px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px; /* Adjusted font size for mobile */
+  }
+
+  .hero-content h2 {
+    font-size: 18px;
+    max-width: 100%; /* Allow subtitle to take full width on mobile */
+    margin-left: auto;
+    margin-right: auto;
+  }
+ 
+  /* Reset desktop text alignment on mobile */
+  .text-lg-start {
+    text-align: center !important;
+  }
+  html[dir="rtl"] .text-lg-start {
+    text-align: center !important;
+  }
 }
 
 #hero .btn-get-started {
@@ -610,11 +774,7 @@ html[dir="rtl"] .language-dropdown-mobile {
   border: 2px solid var(--accent-purple);
 }
 
-#hero img {
-  padding: 0;
-  /* width: 400px; */
-  height: 320px;
-}
+
 
 #hero .btn-get-started:hover {
   background: transparent;
@@ -673,6 +833,7 @@ html[dir="rtl"] .language-dropdown-mobile {
 }
 
 @media (max-width: 991px) {
+  
   #hero {
     padding-top: 68px;
   }
@@ -689,7 +850,38 @@ html[dir="rtl"] .language-dropdown-mobile {
     display: none;
   }
 }
+/*--------------------------------------------------------------
+# Hero Section - V3 Final Text Alignment
+--------------------------------------------------------------*/
+@media (min-width: 992px) {
+  /* للغة الإنجليزية (LTR) - إضافة مساحة على اليسار */
+  html[dir="ltr"] .hero-content {
+    padding-left: 40px; /* يضيف مساحة واضحة من الحافة اليسرى */
+    
+  }
 
+
+  
+  /* للغة العربية (RTL) - إضافة مساحة على اليمين وضمان المحاذاة */
+  html[dir="rtl"] .hero-content {
+    padding-right: 40px; /* يضيف مساحة واضحة من الحافة اليمنى */
+    text-align: right !important; /* يجبر كل السطور على البدء من نفس النقطة يميناً */
+    margin-right: 2px;
+  }
+
+  /* التأكد من أن العنوان الفرعي في العربية يبدأ من اليمين أيضاً */
+  html[dir="rtl"] .hero-content h2 {
+      margin-left: auto;
+      /* يضمن وجود مسافة من الحافة اليمنى */
+  }
+   
+}
+@media (max-width: 991px) {
+  /* على الشاشات الصغيرة، نجعل كل شيء في الوسط */
+.hero-animated-svg {
+ 
+  margin-left: 40px;
+}}
 /*--------------------------------------------------------------
 # 6. Sections General
 --------------------------------------------------------------*/
@@ -1445,154 +1637,215 @@ html[dir="rtl"] .node-details {
 }
 
 /*--------------------------------------------------------------
-# 8. Services Section (BEYOND IMAGINATION)
+# Services Section - Luminous Touch v3 (Constant Stardust)
 --------------------------------------------------------------*/
-.services .icon-box {
-  background-color: var(--secondary-dark);
-  padding: 40px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  height: 100%;
+.services-v-luminous {
+  padding: 80px 0;
   position: relative;
+  background-color: var(--primary-dark);
   overflow: hidden;
+}
+
+/* --- Animated Grid Background --- */
+.animated-grid {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(138, 79, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(138, 79, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: pan-grid-slow 120s linear infinite;
+  z-index: 1;
+}
+@keyframes pan-grid-slow {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+.services-v-luminous .container { position: relative; z-index: 2; }
+
+/* --- The Luminous Card --- */
+.luminous-card {
+  position: relative;
+  padding: 40px 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--secondary-dark);
+  height: 320px; /* Increased height to fit description */
+  overflow: hidden;
+  cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  transform-style: preserve-3d;
+}
+.luminous-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
-.services .icon-box>* {
-  transform: translateZ(20px);
+/* --- Spotlight Effect --- */
+.luminous-card .spotlight {
+  position: absolute; width: 300px; height: 300px;
+  background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 65%);
+  border-radius: 50%; filter: blur(60px);
+  z-index: 2; top: var(--y); left: var(--x);
+  opacity: 0; transform: translate(-50%, -50%) scale(0.5);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.luminous-card:hover .spotlight {
+  opacity: 0.3; transform: translate(-50%, -50%) scale(1);
 }
 
-.services .icon-box::before {
-  content: "";
-  position: absolute;
-  left: var(--mouse-x);
-  top: var(--mouse-y);
+/* --- CONSTANT Stardust Particles --- */
+.stardust-burst {
+  position: absolute; inset: 0;
+  overflow: hidden; border-radius: 15px;
+  z-index: 1; /* Below content */
+}
+.stardust-burst::after {
+  content: ''; position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  background-image: radial-gradient(circle, #fff 1px, transparent 1px);
+  background-size: 25px 25px; /* Denser particles */
+  opacity: 0.15; /* Always visible but subtle */
+  /* Constant animation */
+  animation: drift-particles 90s linear infinite;
+}
+@keyframes drift-particles {
+  0% { transform: rotate(0deg) translate(0, 0); }
+  100% { transform: rotate(360deg) translate(-100px, 100px); }
+}
+
+
+/* --- Content Layers & Parallax Effect --- */
+.luminous-content {
+  position: absolute; inset: 0;
+  padding: 40px 30px; display: flex;
+  flex-direction: column; align-items: center;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.luminous-content .icon { margin-bottom: 20px; width: 60px; height: 60px; transition: transform 0.4s ease; }
+.luminous-content .icon img { max-width: 40px; }
+.luminous-content h4 { font-size: 22px; margin-bottom: 15px; }
+.luminous-content p {
+  font-size: 14px; /* Slightly smaller for better fit */
+  line-height: 1.6; 
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+/* --- Default Layer Styling --- */
+.luminous-content.default {
+  z-index: 5;
+}
+.luminous-content.default h4 { color: #fff; }
+
+/* --- Glowing Layer Styling --- */
+.luminous-content.glowing {
+  z-index: 6;
+  clip-path: circle(0px at var(--x-rel) var(--y-rel));
+  transition: clip-path 0.3s ease;
+}
+.luminous-card:hover .luminous-content.glowing {
+  clip-path: circle(125px at var(--x-rel) var(--y-rel));
+}
+
+.luminous-content.glowing h4 {
+  color: #fff; text-shadow: 0 0 10px #fff;
+}
+.luminous-content.glowing .icon {
+  filter: drop-shadow(0 0 10px var(--accent-purple));
+}
+.luminous-content.glowing p {
+  color: #fff; /* Bright text in the spotlight */
+}
+/*--------------------------------------------------------------
+# Features Section - Interactive Holograms
+--------------------------------------------------------------*/
+.features-v-hologram {
+  background-color: var(--secondary-dark);
+  padding: 80px 0;
+}
+.hologram-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: rgba(var(--primary-dark-rgb), 0.4);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(138, 79, 255, 0.2);
+  transition: all 0.4s ease;
+  height: 100%;
+}
+.hologram-card:hover {
+  border-color: var(--accent-purple);
+  background: rgba(var(--primary-dark-rgb), 0.7);
+}
+.hologram-emitter {
+  flex-shrink: 0;
   width: 100px;
   height: 100px;
-  background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 70%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.services .icon-box:hover::before {
-  opacity: 0.5;
-}
-
-.services .icon-box .icon {
-  margin: 0 auto 25px auto;
-  width: 70px;
-  height: 70px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--primary-dark);
-  border: 2px solid var(--accent-purple);
-  transition: all 0.3s ease;
-  z-index: 1;
-  position: relative;
-  transform: translateZ(50px);
+  perspective: 1000px;
 }
-
-.services .icon-box:hover .icon {
-  box-shadow: 0 0 25px var(--accent-purple);
-}
-
-.services .icon-box .icon img {
-  max-height: 35px;
-}
-
-.services .icon-box h4 a {
-  color: var(--text-light);
-  font-weight: 600;
-  font-size: 22px;
-  transition: color 0.3s ease;
-}
-
-.services .icon-box:hover h4 a {
-  color: var(--accent-purple);
-}
-
-.services .icon-box p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text-muted);
-  transition: color 0.3s ease;
-}
-
-/*--------------------------------------------------------------
-# 9. Features Section (BEYOND IMAGINATION)
---------------------------------------------------------------*/
-#features {
-  position: relative;
-  background-color: var(--primary-dark);
-  overflow: visible;
-}
-
-#features::before {
+.hologram-emitter::before { /* The base of the emitter */
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
-  background: radial-gradient(circle 350px at var(--mouse-x) var(--mouse-y),
-      rgba(138, 79, 255, 0.15),
-      transparent 80%);
-  opacity: 0;
-  transition: opacity 0.5s;
-  pointer-events: none;
+  height: 10px;
+  background: #111;
+  border-radius: 5px;
+  box-shadow: 0 0 15px #000;
 }
-
-#features:hover::before {
-  opacity: 1;
+.hologram-light {
+  position: absolute;
+  bottom: 10px;
+  width: 10px;
+  height: 60px;
+  background: linear-gradient(to top, var(--accent-purple), transparent);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+  opacity: 0.5;
+  transition: opacity 0.4s;
 }
-
-.features .features-grid {
+.hologram-card:hover .hologram-light { opacity: 1; }
+.hologram-icon {
   position: relative;
-  z-index: 2;
-}
-
-.features .feature-box {
-  padding: 30px;
-  background: rgba(33, 24, 60, 0.5);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease-in-out;
-  height: 100%;
-}
-
-.features .feature-box:hover {
-  transform: translateY(-8px);
-  background: rgba(33, 24, 60, 0.8);
-  border-color: rgba(138, 79, 255, 0.5);
-}
-
-.features .feature-box i {
   font-size: 48px;
   color: var(--accent-purple);
-  margin-bottom: 20px;
-  display: block;
-  text-shadow: 0 0 15px rgba(138, 79, 255, 0.5);
+  text-shadow: 0 0 15px var(--accent-purple), 0 0 25px var(--accent-purple);
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+  animation: hologram-float 4s infinite ease-in-out;
 }
-
-.features .feature-box h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 15px;
+.hologram-card:hover .hologram-icon {
+  transform: rotateY(180deg) translateZ(20px) scale(1.1);
+  color: #fff;
 }
-
-.features .feature-box p {
-  font-size: 15px;
-  line-height: 1.7;
+@keyframes hologram-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.hologram-content h3 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.hologram-content p {
   color: var(--text-muted);
+  line-height: 1.7;
 }
-
+html[dir="rtl"] .hologram-card {
+    flex-direction: row-reverse;
+}
+html[dir="rtl"] .hologram-emitter {
+    gap: 0;
+}
+html[dir="rtl"] .hologram-content {
+    text-align: right;
+}
 /*--------------------------------------------------------------
 # 10. Project Section (THE KINETIC WALL v20.0 - MODAL VIEW)
 --------------------------------------------------------------*/
@@ -2913,88 +3166,306 @@ html[dir="rtl"] .slideshow-nav.next {
   }
 }
 
+/*--------------------------------------------------------------
+# Cosmic Data Stream Footer - Astonishing Level
+--------------------------------------------------------------*/
+.cosmic-footer {
+  position: relative;
+  background-color: #0d0915; /* A deep space color */
+  overflow: hidden;
+  padding: 100px 0 60px;
+}
+
+/* --- The Layers --- */
+#cosmic-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.footer-content-layer {
+  position: relative;
+  z-index: 3;
+  /* Add a subtle animation for the content appearing */
+  animation: fade-in-content 2s ease-out 1s forwards;
+  opacity: 0;
+}
+@keyframes fade-in-content {
+  to { opacity: 1; }
+}
+
+/* --- The Energy Core --- */
+.energy-core {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 60%);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  filter: blur(30px);
+  z-index: 2;
+  animation: pulse-core 5s infinite ease-in-out;
+}
+@keyframes pulse-core {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+}
+
+/* --- Floating Content Styling --- */
+.cosmic-footer .footer-col {
+  margin-bottom: 40px;
+}
+.cosmic-footer .footer-title {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(138, 79, 255, 0.5); /* Glowing text */
+}
+.cosmic-footer p, .cosmic-footer span {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+.cosmic-footer .footer-links-list a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s;
+}
+.cosmic-footer .footer-links-list a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+  transform: translateX(5px);
+}
+html[dir="rtl"] .cosmic-footer .footer-links-list a:hover {
+  transform: translateX(-5px);
+}
+.cosmic-footer .footer-contact-info i {
+  color: var(--accent-purple);
+  margin-right: 10px;
+  font-size: 20px;
+}
+html[dir="rtl"] .cosmic-footer .footer-contact-info i {
+  margin-right: 0; margin-left: 10px;
+}
+
+/* --- Bottom Bar --- */
+.cosmic-footer .footer-bottom {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.cosmic-footer .neon-social-links {
+  margin-bottom: 20px;
+}
+.neon-social-links a {
+  font-size: 24px; margin: 0 10px; color: #fff; transition: all 0.3s ease;
+}
+.neon-social-links a.facebook:hover { color: #1877F2; text-shadow: 0 0 15px #1877F2; }
+.neon-social-links a.instagram:hover { color: #E4405F; text-shadow: 0 0 15px #E4405F; }
+.neon-social-links a.linkedin:hover { color: #0A66C2; text-shadow: 0 0 15px #0A66C2; }
+.neon-social-links a.whatsapp:hover { color: #25D366; text-shadow: 0 0 15px #25D366; }
+
+.cosmic-footer .copyright { color: rgba(255, 255, 255, 0.6); }
+.cosmic-footer .copyright strong { color: #fff; }
+/*--------------------------------------------------------------
+# Cosmic Footer - Mobile Optimization
+--------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .cosmic-footer {
+    padding: 60px 0 30px;
+    /* 
+      New background for mobile: a static starry sky.
+      This is a lightweight and beautiful alternative.
+      The image is a tiny, seamless base64 SVG pattern.
+    */
+    background-color: #0d0915;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwZDA5MTUiLz48Y2lyY2xlIGN4PSIyMCIgY3k9IjMwIiByPSIxLjUiIGZpbGw9IiM4YTRmZmYiIG9wYWNpdHk9IjAuNSIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iNzUiIHI9IjEiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNiIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMTAiIHI9IjAuNSIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjkzIiBjeT0iMjUiIHI9IjEiIGZpbGw9IiM4YTRmZmYiIG9wYWNpdHk9IjAuMyIvPjwvc3ZnPg==');
+  }
+
+  /* Hide the canvas on mobile to save resources */
+
+
+  /* Make the Energy Core smaller and less intense on mobile */
+  .energy-core {
+    width: 150px;
+    height: 150px;
+    bottom: -75px; /* Adjust position */
+    filter: blur(20px);
+  }
+
+  /* Center all content and improve readability */
+  .cosmic-footer .footer-col {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .cosmic-footer .footer-contact-info p {
+    justify-content: center; /* Center contact items */
+  }
+  
+  html[dir="ltr"] .cosmic-footer .footer-links-list a:hover {
+    transform: translateX(0); /* Disable hover move effect */
+  }
+  html[dir="rtl"] .cosmic-footer .footer-links-list a:hover {
+    transform: translateX(0);
+  }
+
+  .cosmic-footer .footer-bottom {
+    margin-top: 30px;
+  }
+}
+
+
+
 
 /*--------------------------------------------------------------
-# Footer Section (Purple Theme)
+# Quantum Interactive Services & Features - Astonishing Level
 --------------------------------------------------------------*/
-.site-footer {
-  width: 100%;
-  background: var(--accent-purple);
-  color: var(--text-light);
-  padding: 60px 0 30px 0;
-  font-family: "Poppins", sans-serif;
+.quantum-section {
+  padding: 80px 0;
   position: relative;
+  background-color: var(--secondary-dark);
   overflow: hidden;
 }
 
-.site-footer h5.footer-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
+/* --- Dynamic Background Grid & Spotlight --- */
+.quantum-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(138, 79, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to right, rgba(138, 79, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+.quantum-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle 500px at var(--mouse-x) var(--mouse-y), rgba(138, 79, 255, 0.1), transparent 80%);
+  pointer-events: none;
+}
+
+/* --- The Quantum Card --- */
+.quantum-card {
+  perspective: 1000px;
+}
+
+.quantum-card-inner {
+  position: relative;
+  padding: 30px;
+  background: rgba(var(--primary-dark-rgb), 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(138, 79, 255, 0.2);
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden; /* Important for revealing content */
+  height: 280px; /* Default height */
+}
+
+/* --- Hover Effects: Glow, 3D Tilt, and Expand --- */
+.quantum-card:hover .quantum-card-inner {
+  border-color: rgba(138, 79, 255, 0.8);
+  box-shadow: 0 10px 40px rgba(138, 79, 255, 0.3);
+  height: 450px; /* Expanded height on hover */
+}
+
+/* --- Animated Icon --- */
+.icon-wrapper {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: linear-gradient(145deg, var(--accent-purple), var(--accent-purple-darker));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(138, 79, 255, 0.5);
+  animation: pulse-icon 4s infinite ease-in-out;
+}
+.service-icon {
+  max-width: 40px;
+  max-height: 40px;
+}
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* --- Card Content --- */
+.card-front {
+  text-align: center;
+}
+.card-front h4 {
+  font-size: 22px;
   color: #fff;
+  margin-bottom: 15px;
+  transition: color 0.3s;
+}
+.card-front p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.quantum-card:hover .card-front h4 {
+  color: var(--accent-purple);
 }
 
-.site-footer p,
-.site-footer li,
-.site-footer a {
-  font-size: 15px;
-  color: var(--text-light);
-  /* نص فاتح فوق البنفسجي */
-  line-height: 1.8;
-  text-decoration: none;
-  transition: 0.3s;
+/* --- Hidden Features Section --- */
+.card-hidden-features {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.2s; /* Delayed transition */
 }
-
-.site-footer a:hover {
-  color: var(--accent-purple-darker);
-  /* تدرج أغمق عند hover */
+.quantum-card:hover .card-hidden-features {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-.site-footer ul {
+.card-hidden-features h5 {
+  font-size: 16px;
+  color: var(--accent-purple);
+  margin-bottom: 15px;
+  text-align: center;
+}
+.features-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-.footer-social-links {
-  margin-top: 20px;
+.features-list li {
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-size: 15px;
 }
-
-.footer-social-links .social-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  text-decoration: none;
-  color: #ffffff;
-  background: var(--accent-purple-darker);
-  /* تدرج أغمق للأيقونات */
-  margin: 0 5px;
-  transition: 0.3s;
-}
-
-.footer-social-links .social-icon:hover {
+.features-list i {
+  margin-right: 10px;
   color: #fff;
-  background: var(--accent-purple);
-  /* عند hover نص أبيض وخلفية البنفسجي الأساسي */
-}
-
-.footer-bottom {
+  width: 20px; /* Align icons */
   text-align: center;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 14px;
-  color: var(--text-light);
 }
 
-@media (max-width: 768px) {
-  .site-footer .row {
-    text-align: center;
-  }
-
-  .footer-social-links {
-    justify-content: center;
-  }
+/* --- See All Button --- */
+.btn-see-all {
+  display: inline-block;
+  padding: 12px 35px;
+  border: 2px solid var(--accent-purple);
+  color: var(--accent-purple);
+  border-radius: 50px;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.btn-see-all:hover {
+  background: var(--accent-purple);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(138, 79, 255, 0.5);
 }

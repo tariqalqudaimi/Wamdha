@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
     $new_logo_name = handleUpload('company_logo', $current_logo_name, $upload_dir, 'logo');
 
     $company_name = $_POST['company_name'];
+    $company_name_ar = $_POST['company_name_ar'];
     $hero_title = $_POST['hero_title'];
     $hero_title_ar = $_POST['hero_title_ar'];
     $hero_subtitle = $_POST['hero_subtitle'];
@@ -38,14 +39,14 @@ if (isset($_POST['submit'])) {
     
     $stmt = $dbcon->prepare(
         "UPDATE company_settings SET 
-            company_name = ?, company_logo = ?,
+            company_name = ?,company_name_ar = ?, company_logo = ?,
             hero_title = ?, hero_title_ar = ?, hero_subtitle = ?, hero_subtitle_ar = ?
         WHERE id=1"
     );
 
     $stmt->bind_param(
-        "ssssss", 
-        $company_name, $new_logo_name,
+        "sssssss", 
+        $company_name,$company_name_ar, $new_logo_name,
         $hero_title, $hero_title_ar, $hero_subtitle, $hero_subtitle_ar
     );
 

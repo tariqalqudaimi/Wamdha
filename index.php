@@ -38,7 +38,7 @@ $products_query = $dbcon->query("
         p.id
     ORDER BY 
         p.id DESC
-    LIMIT 4
+    LIMIT 3
 ");
 
 $products_array = [];
@@ -69,7 +69,7 @@ if ($about_query) {
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title><?= htmlspecialchars($settings['company_name'] ?? 'Company Name') ?> - Home</title>
+  <title><?= htmlspecialchars($current_lang == 'en' ? ($settings['company_name'] ?? '') : ($settings['company_name_ar'] ?? '')) ?> - Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link href="assets/img/Artboard-8-8.png" rel="icon">
@@ -80,7 +80,7 @@ if ($about_query) {
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=<?php echo filemtime('assets/css/style.css'); ?>">
 </head>
 
 <body>
@@ -103,21 +103,36 @@ if ($about_query) {
   <canvas id="particle-canvas"></canvas>
   <?php include 'partials/header.php'; ?>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container-fluid" data-aos="fade-up">
-      <div class="row justify-content-center">
-        <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center text-center">
-          <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
-          <a href="#">
-           <img src="assets/img/CompanyInfo/<?= htmlspecialchars($settings['company_logo'] ?? 'Artboard 8-8.png') ?>" alt="<?= htmlspecialchars($settings['company_name'] ?? 'Logo') ?>" class="logo">
-          </a>
-          <h2><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></h2>
-          <div><a href="#about" class="btn-get-started scrollto"><?= $lang['get_started_btn'] ?? 'Get Started' ?></a></div>
+ <!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container-fluid" data-aos="fade-up">
+    <div class="row align-items-center justify-content-center">
+
+      <!-- Text Content Column -->
+      <div class="col-lg-5 col-md-12 hero-content text-center text-lg-start order-2 order-lg-1" data-aos="fade-right">
+        <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
+        <h2><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></h2>
+        <div>
+          <a href="#about" class="btn-get-started scrollto"><?= $lang['get_started_btn'] ?? 'Get Started' ?></a>
         </div>
       </div>
+
+    <!-- Image Column with SVG Animation -->
+<div class="col-lg-6 col-md-8 hero-img text-center order-1 order-lg-2" data-aos="fade-left">
+    <div class="hero-logo-container">
+        <!-- The light beam that will travel and trigger the drawing -->
+        <div class="light-beam"></div>
+        
+        <!-- The SVG Logo that will be drawn -->
+        <svg class="hero-animated-svg" viewBox="150 300 850 370" xmlns="http://www.w3.org/2000/svg">
+            <path class="hero-logo-path" d="M516.74,326.75l-88.5,166.51c-9.3,17.47-34.54,16.89-43-1l-78-164.81a24.06,24.06,0,0,0-21.75-13.77H272.23a24.07,24.07,0,0,0-21.87,34.12L384.48,639.57c8.48,18.44,34.58,18.75,43.49.51l124.31-254.3a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.61,18.44-34.79,18.54-43.54.17l-4.85-10.2c-9-18.8-35.94-18.13-43.95,1.09h0a24.06,24.06,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.38-35.2L538,314A24.07,24.07,0,0,0,516.74,326.75ZM691.82,344v0h0Zm0-13.43h0Z"/>
+        </svg>
     </div>
-  </section><!-- End Hero -->
+</div>
+
+    </div>
+  </div>
+</section><!-- End Hero -->
 
   <main id="main">
     <!-- ======= About Us Section  ======= -->
@@ -167,60 +182,75 @@ if ($about_query) {
 
       </div>
     </section>
+<!-- ======= Services Section (The Luminous Touch v2) ======= -->
+<section id="services" class="services-v-luminous">
+  <div class="animated-grid"></div>
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2><?= $lang['services_title'] ?? 'Services' ?></h2>
-          <p><?= $lang['services_description'] ?? 'Our Services' ?></p>
-        </div>
-        <div class="row gy-4">
-          <?php if ($services_homepage): foreach ($services_homepage as $service): ?>
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                <div class="icon-box <?= htmlspecialchars($service['box_color_class']) ?>">
-                  <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt="<?= htmlspecialchars($service['title']) ?>" class="img-fluid" style="max-height: 40px;" loading="lazy"></div>
-                  <h4><a href=""><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></a></h4>
-                  <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
-                </div>
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2><?= $lang['services_title'] ?? 'Services' ?></h2>
+      <p><?= $lang['services_description'] ?? 'Our Services' ?></p>
+    </div>
+    <div class="row gy-4">
+      <?php if ($services_homepage): foreach ($services_homepage as $index => $service): ?>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($index + 1) * 100 ?>">
+            <div class="luminous-card">
+              <div class="spotlight"></div>
+              
+              <!-- Stardust particles container -->
+              <div class="stardust-burst"></div>
+
+              <div class="luminous-content glowing">
+                <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt=""></div>
+                <h4><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></h4>
+                <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
               </div>
-          <?php endforeach;
-          endif; ?>
-        </div>
-        <?php if ($total_services_count > 6): ?>
-          <div class="text-center mt-5">
-            <a href="services.php?lang=<?= $current_lang ?>" class="btn btn-primary"><?= $lang['see_all_services_btn'] ?? 'See All Services' ?></a>
+
+              <div class="luminous-content default">
+                <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt=""></div>
+                <h4><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></h4>
+                <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
+              </div>
+            </div>
           </div>
-        <?php endif; ?>
+      <?php endforeach; endif; ?>
+    </div>
+    <?php if ($total_services_count > 6): ?>
+      <div class="text-center mt-5">
+        <a href="services.php?lang=<?= $current_lang ?>" class="btn-see-all"><?= $lang['see_all_services_btn'] ?? 'See All Services' ?></a>
       </div>
-    </section>
-
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title">
-          <h2><?= $lang['features_title'] ?? 'Our Core Features' ?></h2>
-          <!-- <p><?= $lang['features_description'] ?? 'Why partners choose to work with us' ?></p> -->
-        </div>
-        <div class="row">
-          <?php if ($features_query && $features_query->num_rows > 0): ?>
-            <?php
-            $delay = 0;
-            foreach ($features_query as $feature):
-              $delay += 100;
-            ?>
-              <div class="col-lg-6 mt-4">
-                <div class="feature-box" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
-                  <i class="<?= htmlspecialchars($feature['icon_class']) ?>"></i>
-                  <h3><?= htmlspecialchars($current_lang == 'en' ? $feature['title_en'] : $feature['title_ar']) ?></h3>
-                  <p><?= htmlspecialchars($current_lang == 'en' ? $feature['description_en'] : $feature['description_ar']) ?></p>
-                </div>
+    <?php endif; ?>
+  </div>
+</section>
+<!-- End Services Section -->
+   <!-- ======= Features Section (Interactive Holograms) ======= -->
+<section id="features" class="features-v-hologram section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2><?= $lang['features_title'] ?? 'Our Core Features' ?></h2>
+    </div>
+    <div class="row gy-5">
+      <?php if ($features_query && $features_query->num_rows > 0): 
+        foreach ($features_query as $feature): ?>
+        <div class="col-lg-6">
+          <div class="hologram-card">
+            <div class="hologram-emitter">
+              <div class="hologram-light"></div>
+              <div class="hologram-icon">
+                <i class="<?= htmlspecialchars($feature['icon_class']) ?>"></i>
               </div>
-            <?php endforeach; ?>
-          <?php endif; ?>
+            </div>
+            <div class="hologram-content">
+              <h3><?= htmlspecialchars($current_lang == 'en' ? $feature['title_en'] : $feature['title_ar']) ?></h3>
+              <p><?= htmlspecialchars($current_lang == 'en' ? $feature['description_en'] : $feature['description_ar']) ?></p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      <?php endforeach; endif; ?>
+    </div>
+  </div>
+</section>
+<!-- End Features Section -->
 
 
     <section id="portal-showcase" class="section-bg"
@@ -415,6 +445,10 @@ if ($about_query) {
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    
+  </script>
 </body>
+
 
 </html>

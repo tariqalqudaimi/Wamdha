@@ -36,6 +36,8 @@ $settings = $data_from_db->fetch_assoc();
             <div class="form-group">
                 <label>Company Name</label>
                 <input type="text" class="form-control" name="company_name" value="<?= htmlspecialchars($settings['company_name'] ?? '') ?>">
+                  <label>Company Name Arabic</label>
+                <input type="text" class="form-control" name="company_name_ar" value="<?= htmlspecialchars($settings['company_name_ar'] ?? '') ?>">
             </div>
             <div class="form-group">
                 <label>Company Logo</label>

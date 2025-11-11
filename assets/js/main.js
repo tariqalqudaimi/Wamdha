@@ -1,7 +1,67 @@
 
 (function () {
   "use strict";
+/**
+   * FINAL & CORRECTED: Auto-Animation for Desktop, Click for Mobile - V9
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    const logoContainer = document.getElementById('logo-menu-toggler');
+    const body = document.body;
+    if (!logoContainer) return;
 
+    let animationInterval = null;
+
+    const controlAnimation = () => {
+      // --- Desktop Logic ---
+      if (window.innerWidth < 991) {
+        // Ensure menu-related classes are removed on desktop
+        logoContainer.classList.remove('is-flipped');
+
+        // Start animation only if it's not already running
+        if (!animationInterval) {
+          animationInterval = setInterval(() => {
+            // Do not flip if the user is hovering over it
+            if (!logoContainer.matches(':hover')) {
+              logoContainer.classList.toggle('is-flipped');
+            }
+          }, 4000); // Flip every 4 seconds
+        }
+      } 
+      // --- Mobile Logic ---
+      else {
+        // Stop any running animation if screen is resized to mobile
+        if (animationInterval) {
+          clearInterval(animationInterval);
+          animationInterval = null;
+        }
+        // Sync the icon with the menu state on resize
+        if (body.classList.contains('mobile-nav-active')) {
+          logoContainer.classList.add('is-flipped');
+        } else {
+          logoContainer.classList.remove('is-flipped');
+        }
+      }
+    };
+
+    // Click handler ONLY for mobile
+    logoContainer.addEventListener('click', (e) => {
+      if (window.innerWidth <= 991) {
+        e.preventDefault();
+        body.classList.toggle('mobile-nav-active');
+
+        // THIS IS THE FIX: The flip should now correctly follow the menu state
+        if (body.classList.contains('mobile-nav-active')) {
+          logoContainer.classList.add('is-flipped'); // Show 'X' when menu is active
+        } else {
+          logoContainer.classList.remove('is-flipped'); // Show Logo when menu is closed
+        }
+      }
+    });
+
+    // Run the logic when the page loads and when the window is resized
+    window.addEventListener('resize', controlAnimation);
+    controlAnimation(); // Initial run
+  });
   /**
    * Helper Functions
    */
@@ -282,12 +342,10 @@
     mobileNavContainer.innerHTML = `<div class="navbar-mobile-content"><ul>${navContent}</ul></div>`;
   }
 
-  on('click', '#mobile-menu-toggle-logo', function (e) {
-    if (window.innerWidth <= 991) {
-      e.preventDefault();
-      select('body').classList.toggle('mobile-nav-active');
-    }
-  });
+ /**
+   * CORRECTED: Mobile Navigation Logic
+   */
+  
 
   on('click', '.language-toggle-mobile', function (e) {
     e.stopPropagation();
@@ -409,4 +467,240 @@
         });
     });
   }
+  /**
+   * FINAL & PRECISE: Looping Projectile to the SVG Starting Point
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Get all necessary elements
+    const headerLogo = document.querySelector('#logo-menu-toggler .header-logo-svg');
+    const heroLogoContainer = document.querySelector('.hero-logo-container');
+    const heroAnimatedSvg = document.querySelector('.hero-animated-svg');
+    const heroLogoPath = document.querySelector('.hero-logo-path'); // The path itself
+    
+    // Check if all elements exist to prevent errors
+    if (!headerLogo || !heroLogoContainer || !heroAnimatedSvg || !heroLogoPath) {
+      console.error('Required elements for projectile animation not found.');
+      if (heroLogoContainer) heroLogoContainer.classList.add('animate');
+      return;
+    }
+
+    // 2. Create the projectile element
+    const projectile = document.createElement('div');
+    projectile.id = 'light-projectile';
+    document.body.appendChild(projectile);
+
+    // 3. The function to launch the projectile
+    function launchProjectile() {
+      // --- Calculate Start Point (Header Logo) ---
+      const startRect = headerLogo.getBoundingClientRect();
+      const startX = startRect.left + (startRect.width / 2);
+      const startY = startRect.top + (startRect.height / 2);
+
+      // --- Calculate End Point (SVG Path Start) ---
+      // This is the core of the new logic
+      const svgRect = heroAnimatedSvg.getBoundingClientRect(); // SVG position on screen
+      const viewBox = heroAnimatedSvg.viewBox.baseVal;         // SVG internal coordinate system
+      const pathStartPoint = heroLogoPath.getPointAtLength(0); // The very first point of the path {x, y}
+
+      // Convert the path's internal coordinates to a screen position
+      // a. Find the ratio of the start point within the viewBox
+      const xRatio = (pathStartPoint.x - viewBox.x) / viewBox.width;
+      const yRatio = (pathStartPoint.y - viewBox.y) / viewBox.height;
+      // b. Apply that ratio to the SVG's actual size and position on the screen
+      let targetX = svgRect.left + (xRatio * svgRect.width);
+      let targetY = svgRect.top + (yRatio * svgRect.height);
+
+      // c. Center the projectile on the target point
+      const projectileSize = 25; // from CSS
+      targetX -= (projectileSize / 2);
+      targetY -= (projectileSize / 2);
+      
+      // --- The Animation Sequence ---
+      
+      // Instantly position the projectile at the start point (hidden)
+      projectile.style.transition = 'none';
+      projectile.style.opacity = '0';
+      projectile.style.left = `${startX}px`;
+      projectile.style.top = `${startY}px`;
+      
+      setTimeout(() => {
+        // Now, add back the transition and launch towards the precise target
+        projectile.style.transition = 'top 1.2s cubic-bezier(0.6, -0.28, 0.73, 0.04), left 1.2s cubic-bezier(0.3, 0.5, 0.8, 1), opacity 0.5s';
+        projectile.style.opacity = '1';
+        projectile.style.left = `${targetX}px`;
+        projectile.style.top = `${targetY}px`;
+      }, 50);
+
+      setTimeout(() => {
+        projectile.style.opacity = '0';
+        if (!heroLogoContainer.classList.contains('animate')) {
+          heroLogoContainer.classList.add('animate');
+        }
+      }, 1250);
+    }
+
+    // 4. Create the main loop
+    function startAnimationLoop() {
+        launchProjectile();
+        setInterval(launchProjectile, 6000); // Re-launch every 6 seconds
+    }
+
+    // 5. Start after preloader
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      setTimeout(startAnimationLoop, 2000);
+    } else {
+      setTimeout(startAnimationLoop, 500);
+    }
+  });
+
+
+  /**
+   * Cosmic Data Stream Footer - Astonishing Level
+   */
+  (function() {
+    const canvas = document.getElementById('cosmic-canvas');
+    if (!canvas) return;
+    
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 200;
+    let mouse = { x: null, y: null, radius: 150 };
+
+    function setCanvasSize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 100; // Start below the canvas
+        this.baseY = this.y;
+        this.radius = Math.random() * 1.5 + 1;
+        this.speed = Math.random() * -1.5 - 0.5; // Move upwards
+        this.density = (Math.random() * 30) + 1;
+        this.color = `rgba(138, 79, 255, ${Math.random() * 0.5 + 0.2})`;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      update() {
+        // Repel from mouse
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius) {
+          let forceDirectionX = dx / distance;
+          let forceDirectionY = dy / distance;
+          let maxDistance = mouse.radius;
+          let force = (maxDistance - distance) / maxDistance;
+          let directionX = forceDirectionX * force * this.density;
+          let directionY = forceDirectionY * force * this.density;
+          
+          this.x -= directionX;
+          this.y -= directionY;
+        }
+
+        // Move upwards
+        this.y += this.speed;
+
+        // Reset particle if it goes above the screen
+        if (this.y < -10) {
+          this.y = canvas.height + 10;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // Event Listeners
+    window.addEventListener('resize', () => {
+      setCanvasSize();
+      init();
+    });
+
+    const footer = document.querySelector('.cosmic-footer');
+    footer.addEventListener('mousemove', (event) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = event.clientX - rect.left;
+        mouse.y = event.clientY - rect.top;
+    });
+
+    footer.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    // Initial setup
+    setCanvasSize();
+    init();
+    animate();
+  })();
+
+
+  /**
+   * The Luminous Touch v3 - Constant Stardust & Parallax
+   */
+  (function() {
+    const luminousCards = document.querySelectorAll('.luminous-card');
+    if (!luminousCards.length) return;
+
+    luminousCards.forEach(card => {
+      const defaultContent = card.querySelector('.luminous-content.default');
+      const glowingContent = card.querySelector('.luminous-content.glowing');
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        
+        // Mouse position relative to the card for clip-path and spotlight
+        const x_rel = e.clientX - rect.left;
+        const y_rel = e.clientY - rect.top;
+
+        card.style.setProperty('--x-rel', `${x_rel}px`);
+        card.style.setProperty('--y-rel', `${y_rel}px`);
+
+        // Parallax effect calculation
+        const x_from_center = x_rel - rect.width / 2;
+        const y_from_center = y_rel - rect.height / 2;
+
+        // Apply parallax to both content layers
+        const moveFactor = 25; // Adjust for more/less intensity
+        defaultContent.style.transform = `translateX(${x_from_center / moveFactor}px) translateY(${y_from_center / moveFactor}px)`;
+        glowingContent.style.transform = `translateX(${x_from_center / moveFactor}px) translateY(${y_from_center / moveFactor}px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        // Reset parallax effect
+        defaultContent.style.transform = 'translateX(0px) translateY(0px)';
+        glowingContent.style.transform = 'translateX(0px) translateY(0px)';
+      });
+    });
+  })();
 })();
+
+
+
