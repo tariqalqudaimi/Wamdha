@@ -60,6 +60,15 @@ if ($about_query) {
   }
 }
 
+$query_news = "SELECT * FROM news ORDER BY publication_date DESC LIMIT 5"; // جلب آخر 5 أخبار
+$result_news = $dbcon->query($query_news);
+$latest_news = [];
+if ($result_news->num_rows > 0) {
+    while($row = $result_news->fetch_assoc()) {
+        $latest_news[] = $row;
+    }
+}
+
 
 ?>
 
@@ -346,6 +355,9 @@ if ($about_query) {
       </div>
     </section>
 
+    
+
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
@@ -386,46 +398,42 @@ if ($about_query) {
                 <input type="submit" value="<?= $lang['contact_form_send_btn'] ?? 'Send' ?>" class="btns solid">
               </form>
 
-              <div class="contact-info-panel">
-                <h2 class="title"><?= $lang['contact_info_title'] ?? 'Our Information' ?></h2>
-                <div class="info-item">
-                  <i class='bx bxs-map-pin'></i>
-                  <p>
-                    <?php
-                    if ($current_lang == 'ar' && !empty($contact['address_ar'])) {
-                      echo htmlspecialchars($contact['address_ar']);
-                    } else {
-                      echo htmlspecialchars($contact['address'] ?? 'Address not available');
-                    }
-                    ?>
-                  </p>
-                </div>
-                <div class="info-item">
-                  <i class='bx bxs-phone-call'></i>
-                  <p><?= htmlspecialchars($contact['phone'] ?? 'Phone not available') ?></p>
-                </div>
-                <div class="info-item">
-                  <i class='bx bxs-paper-plane'></i>
-                  <p><?= htmlspecialchars($contact['email'] ?? 'Email not available') ?></p>
-                </div>
-                <div class="info-social-links">
-                  <?php if (!empty($contact['whatsapp_number'])): ?>
-                    <a href="https://wa.me/<?= htmlspecialchars(preg_replace('/[^0-9]/', '', $contact['whatsapp_number'])) ?>" target="_blank" class="social-icon"><i class="bx bxl-whatsapp"></i></a>
-                  <?php endif; ?>
 
-                  <?php if (!empty($contact['fb_link'])): ?>
-                    <a href="<?= htmlspecialchars($contact['fb_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-facebook"></i></a>
-                  <?php endif; ?>
+ <div class="contact-info-panel">
+                        <h2 class="title"><?= $lang['latest_news_title'] ?? 'Latest News' ?></h2>
+                        <div class="news-panel-container">
+                            <?php if (!empty($latest_news)) : ?>
+                                <?php foreach ($latest_news as $index => $news_item) : ?>
+                                    <?php if ($index == 0) : // الخبر الأول (المميز) ?>
+                                        <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-featured">
+                                            <div class="news-image-bg">
+                                                <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="<?= htmlspecialchars($news_item['title_ar']) ?>">
+                                            </div>
+                                            <div class="news-content-overlay">
+                                                <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar']) ?></h4>
+                                                <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
+                                            </div>
+                                        </a>
+                                    <?php else : // الأخبار الثانوية ?>
+                                        <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-secondary">
+                                            <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="News Thumbnail" class="news-thumb-secondary">
+                                            <div class="news-content">
+                                                <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar'] ) ?></h4>
+                                                
+                                                <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
+                                            </div>
+                                        </a>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <p class="no-news-message">No news available.</p>
+                            <?php endif; ?>
+                        </div>
+  <hr class="news-separator">
 
-                  <?php if (!empty($contact['instagram_link'])): ?>
-                    <a href="<?= htmlspecialchars($contact['instagram_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-instagram"></i></a>
-                  <?php endif; ?>
+  
+</div>
 
-                  <?php if (!empty($contact['linkedin_link'])): ?>
-                    <a href="<?= htmlspecialchars($contact['linkedin_link']) ?>" target="_blank" class="social-icon"><i class="bx bxl-linkedin"></i></a>
-                  <?php endif; ?>
-                </div>
-              </div>
 
             </div>
           </div>

@@ -79,6 +79,7 @@ require_once '../Database/db.php';
                        <li><a href="../Team/manage_team.php"><i class="bi bi-person"></i> <span> Team </span></a></li>
                        <li><a href="../Featurs/manage_features.php"><i class="bi bi-star"></i> <span> Features </span></a></li>
                         <li><a href="../Contact/contact_information.php"><i class="bi bi-envelope-fill"></i> <span> Contact Info </span></a></li>
+                        <li><a href="../news/manage_news.php"><i class="bi bi-envelope-fill"></i> <span> NEWS </span></a></li>
                         <li><a href="../Messages/manage_messages.php"><i class="bi bi-envelope-fill"></i><span> Messages </span><?php if($unread_messages > 0): ?><span class="badge badge-danger badge-pill float-right"><?= $unread_messages ?></span><?php endif; ?></a></li>
 
                         <li class="menu-title">Admin</li>
