@@ -405,24 +405,28 @@ if ($result_news->num_rows > 0) {
                             <?php if (!empty($latest_news)) : ?>
                                 <?php foreach ($latest_news as $index => $news_item) : ?>
                                     <?php if ($index == 0) : // الخبر الأول (المميز) ?>
-                                        <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-featured">
-                                            <div class="news-image-bg">
+                                        <!-- <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-featured"> -->
+                                          <div class="news-item news-item-featured">
+                                            <div class=" news-image-bg">
                                                 <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="<?= htmlspecialchars($news_item['title_ar']) ?>">
                                             </div>
                                             <div class="news-content-overlay">
                                                 <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar']) ?></h4>
                                                 <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
                                             </div>
-                                        </a>
+                                            </div>
+                                        <!-- </a> -->
                                     <?php else : // الأخبار الثانوية ?>
-                                        <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-secondary">
+                                        <!-- <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-secondary"> -->
+                                          <div class="news-item news-item-secondary">
                                             <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="News Thumbnail" class="news-thumb-secondary">
                                             <div class="news-content">
                                                 <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar'] ) ?></h4>
                                                 
                                                 <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
                                             </div>
-                                        </a>
+                                            </div>
+                                        <!-- </a> -->
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php else : ?>
