@@ -130,7 +130,7 @@ if ($about_query) {
       <!-- Text Content Column -->
       <div class="col-lg-5 col-md-12 hero-content text-center text-lg-start order-2 order-lg-1" data-aos="fade-right">
         <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
-        <h2><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></h2>
+        <div class="hero-content-disc"><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></div>
         <div>
           <a href="#about" class="btn-get-started scrollto"><?= $lang['get_started_btn'] ?? 'Get Started' ?></a>
         </div>
@@ -154,53 +154,54 @@ if ($about_query) {
 </section><!-- End Hero -->
 
   <main id="main">
-    <!-- ======= About Us Section  ======= -->
-    <section id="about" class="about section-bg">
-      <div class="container" data-aos="fade-up">
+   <!-- ======= About Us Section (Company Infographic - Responsive & Interactive) ======= -->
+<section id="about" class="about section-bg">
+  <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2><?= $lang['about_title'] ?? 'About Us' ?></h2>
-          <?php if ($about_main_description): ?>
-            <div><?= ($current_lang == 'ar' && !empty($about_main_description['details_ar'])) ? $about_main_description['details_ar'] : $about_main_description['details']; ?></div>
-          <?php endif; ?>
+    <div class="section-title">
+      <h2><?= $lang['about_title'] ?? 'About Us' ?></h2>
+      <?php if ($about_main_description): ?>
+        <div><?= ($current_lang == 'ar' && !empty($about_main_description['details_ar'])) ? $about_main_description['details_ar'] : $about_main_description['details']; ?></div>
+      <?php endif; ?>
+    </div>
+
+    <?php if (!empty($about_nodes)): ?>
+      <div class="about-us-container company-infographic-container">
+        
+        <div class="background-particles">
+          <?php for ($i = 0; $i < 15; $i++) { echo "<span></span>"; } ?>
         </div>
-
-        <?php if (!empty($about_nodes)): ?>
-          <div class="about-us-container">
-            <canvas id="particle-canvas-about"></canvas>
-
-            <div class="neural-core">
-              <div class="core-glow"></div>
-              <i class='bx bxs-brain'></i>
-            </div>
-
-            <div class="synapse-origin">
-              <?php foreach (array_keys($about_nodes) as $index): ?>
-                <div class="synapse-path synapse-path-<?= $index + 1 ?>">
-                  <div class="synapse-pulse"></div>
-                </div>
-              <?php endforeach; ?>
-            </div>
-
-            <div class="neural-nodes-wrapper">
-              <?php foreach ($about_nodes as $index => $node): ?>
-                <div class="neural-node pos-<?= $index + 1 ?>">
-                  <div class="node-content">
-                    <button class="close-node-btn"><i class='bx bx-x'></i></button>
-                    <i class="<?= htmlspecialchars($node['icon_class']) ?>"></i>
-                    <h4><?= htmlspecialchars(($current_lang == 'ar' && !empty($node['title_ar'])) ? $node['title_ar'] : $node['title']) ?></h4>
-                    <div class="node-details">
+        
+        <div class="infographic-grid">
+           <div class="central-hub-animation">
+            <div class="hub-sparkle"></div>
+          </div>
+          <?php foreach ($about_nodes as $index => $node): ?>
+            <div class="infographic-node pos-<?= $index + 1 ?>" style="--animation-delay: <?= $index * 0.15 ?>s;">
+              
+              <div class="node-arrow-background"></div>
+              
+              <div class="node-main-plate">
+                <span class="node-number-label"><?= ($index < 9 ? '0' : '') . ($index + 1) ?></span>
+                <h4 class="node-title"><?= htmlspecialchars(($current_lang == 'ar' && !empty($node['title_ar'])) ? $node['title_ar'] : $node['title']) ?></h4>
+                
+                <div class="node-content-body">
+                    <div class="node-brief-description"> 
                       <?= ($current_lang == 'ar' && !empty($node['details_ar'])) ? $node['details_ar'] : $node['details'] ?>
                     </div>
-                  </div>
+                    <button class="read-more-btn"><?= $lang['read_more'] ?? 'Read More' ?></button>
+                    <button class="read-more-btn show-less-btn" style="display: none;"><?= $lang['show_less'] ?? 'Show Less' ?></button>
                 </div>
-              <?php endforeach; ?>
+              </div>
             </div>
-          </div>
-        <?php endif; ?>
-
+          <?php endforeach; ?>
+        </div>
+        
       </div>
-    </section>
+    <?php endif; ?>
+
+  </div>
+</section>
 <!-- ======= Services Section (The Luminous Touch v2) ======= -->
 <section id="services" class="services-v-luminous">
   <div class="animated-grid"></div>

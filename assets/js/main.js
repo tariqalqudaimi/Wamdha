@@ -700,6 +700,79 @@
       });
     });
   })();
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    const infographicContainer = document.querySelector('.company-infographic-container');
+
+    // --- جديد: مراقب لتشغيل الأنيميشن عند ظهور القسم على الشاشة ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // عندما يصبح العنصر مرئيًا
+            if (entry.isIntersecting) {
+                // نضيف كلاس 'visible' الذي يقوم بتشغيل الأنيميشن في CSS
+                infographicContainer.classList.add('visible');
+                // نوقف المراقبة بعد تشغيل الأنيميشن مرة واحدة لتوفير الموارد
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15 // تشغيل الأنيميشن عندما يكون 15% من العنصر ظاهرًا
+    });
+
+
+    // بدء مراقبة الحاوية الرئيسية
+    if (infographicContainer) {
+        observer.observe(infographicContainer);
+    }
+// --- جديد: شيفرة تتبع الفأرة لتأثير الضوء ---
+    const grid = document.querySelector('.infographic-grid');
+    if (grid) {
+        grid.addEventListener('mousemove', function(e) {
+            // الحصول على أبعاد وموقع الشبكة بالنسبة للصفحة
+            const rect = grid.getBoundingClientRect();
+            // حساب موقع الفأرة داخل الشبكة نفسها
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // تحديث متغيرات CSS بقيم موقع الفأرة
+            grid.style.setProperty('--mouse-x', `${x}px`);
+            grid.style.setProperty('--mouse-y', `${y}px`);
+        });
+    }
+
+    
+
+    // --- (كود "عرض المزيد" يبقى كما هو دون تغيير) ---
+    const allNodes = document.querySelectorAll('.infographic-node');
+    allNodes.forEach(node => {
+        const description = node.querySelector('.node-brief-description');
+        const readMoreBtn = node.querySelector('.read-more-btn:not(.show-less-btn)');
+        const showLessBtn = node.querySelector('.show-less-btn');
+
+        // التحقق من طول النص لإظهار أو إخفاء زر "عرض المزيد"
+        if (description.scrollHeight > description.clientHeight) {
+            readMoreBtn.style.display = 'block';
+        } else {
+            readMoreBtn.style.display = 'none';
+        }
+
+        readMoreBtn.addEventListener('click', function() {
+            description.classList.add('expanded');
+            readMoreBtn.style.display = 'none';
+            showLessBtn.style.display = 'block';
+        });
+
+        showLessBtn.addEventListener('click', function() {
+            description.classList.remove('expanded');
+            readMoreBtn.style.display = 'block';
+            showLessBtn.style.display = 'none';
+        });
+    });
+});
+
+
 })();
 
 

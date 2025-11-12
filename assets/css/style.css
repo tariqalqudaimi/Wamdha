@@ -580,17 +580,19 @@ html[dir="rtl"] .language-dropdown-mobile {
   padding-top: 80px;
   /* Ensures the content is vertically centered within the screen height */
   min-height: 100vh; 
+  
   display: flex;
   align-items: center;
 }
 
 .hero-content {
+  min-width: 100vh;
   padding: 0 15px;
 }
 
 /* --- Main Title Styling --- */
 .hero-content h1 {
-  font-size: 56px;
+  font-size: 64px;
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 20px;
@@ -600,16 +602,16 @@ html[dir="rtl"] .language-dropdown-mobile {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+ 
 }
 
 /* --- Subtitle Styling --- */
-.hero-content h2 {
-  font-size: 24px;
-  color: var(--text-muted);
+.hero-content-disc {
+  font-size: 18px;
+  color: var(--text-light);
   line-height: 1.7; /* Improved line spacing */
   margin-bottom: 40px;
-  max-width: 500px; /* Prevents lines from being too long */
+  max-width: 700px; /* Prevents lines from being too long */
 }
 
 /* --- Button Styling --- */
@@ -713,7 +715,7 @@ html[dir="rtl"] .language-dropdown-mobile {
 /*--------------------------------------------------------------
 # RTL (Arabic) Specific Adjustments
 --------------------------------------------------------------*/
-html[dir="rtl"] .hero-content h2 {
+html[dir="rtl"] .hero-content-disc {
   line-height: 1.8; /* Slightly more line height for better Arabic script readability */
 }
 
@@ -740,13 +742,15 @@ html[dir="rtl"] [data-aos="fade-right"] {
     max-width: 60%;
     min-width: 280px;
   }
-
+.hero-content{
+  min-width: 20vh;
+}
   .hero-content h1 {
     font-size: 36px; /* Adjusted font size for mobile */
   }
 
-  .hero-content h2 {
-    font-size: 18px;
+  .hero-content-disc {
+    font-size: 16px;
     max-width: 100%; /* Allow subtitle to take full width on mobile */
     margin-left: auto;
     margin-right: auto;
@@ -1129,21 +1133,6 @@ html[dir="rtl"] .floating-logo-animation {
 
 }
 
-/*--------------------------------------------------------------
-# 7. About Us Section (Neural Nebula Version - CORRECTED)
---------------------------------------------------------------*/
-.about .about-us-container {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  min-height: 650px;
-  margin: 40px auto 0;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(138, 79, 255, 0.2);
-  background: var(--primary-dark);
-  transition: min-height 0.6s ease-in-out;
-}
 
 #particle-canvas {
   position: absolute;
@@ -1154,487 +1143,346 @@ html[dir="rtl"] .floating-logo-animation {
   z-index: 1;
 }
 
-.neural-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 120px;
-  height: 120px;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  animation: core-appear 1s forwards 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.neural-core .core-glow {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 70%);
-  animation: core-pulse 3s infinite ease-in-out;
-}
-
-@keyframes core-pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-.neural-core i {
-  font-size: 60px;
-  color: #fff;
-  z-index: 11;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .neural-core {
-  transform: translate(0%, 0%) scale(1);
-  opacity: 1;
-}
-
-.neural-node {
-  position: absolute;
-  z-index: 5;
-  width: 250px;
-  transform: scale(0);
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 0.5s ease, transform 0.5s ease, top 0.6s ease, left 0.6s ease, width 0.6s ease;
-}
-
-.neural-node.pos-1 {
-  top: 60px;
-  left: 80px;
-}
-
-.neural-node.pos-2 {
-  top: 60px;
-  right: 80px;
-}
-
-.neural-node.pos-3 {
-  bottom: 60px;
-  left: 80px;
-}
-
-.neural-node.pos-4 {
-  bottom: 60px;
-  right: 80px;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .neural-node {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-1 {
-  transition-delay: 1.0s;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-2 {
-  transition-delay: 1.2s;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-3 {
-  transition-delay: 1.4s;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-4 {
-  transition-delay: 1.6s;
-}
-
-.node-content {
-  padding: 20px;
-  background: rgba(var(--primary-dark-rgb), 0.5);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 1px solid rgba(138, 79, 255, 0.3);
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.neural-node:not(.active):hover .node-content {
-  transform: translateY(-5px);
-  border-color: var(--accent-purple);
-  box-shadow: 0 0 25px rgba(138, 79, 255, 0.3);
-}
-
-.node-content i {
-  font-size: 38px;
-  color: var(--accent-purple);
-  margin-bottom: 10px;
-}
-
-.node-content h4 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.node-content p {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.node-content .close-node-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, color 0.3s ease, visibility 0.3s;
-  z-index: 15;
-}
-
-html[dir="rtl"] .node-content .close-node-btn {
-  right: auto;
-  left: 10px;
-}
-
-.node-content .close-node-btn:hover {
-  color: var(--text-light);
-}
-
-.neural-node.active .close-node-btn {
-  opacity: 1;
-  visibility: visible;
-}
-
-.node-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.6s ease-in-out, margin-top 0.6s ease-in-out;
-  text-align: left;
-  color: var(--text-muted);
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-html[dir="rtl"] .node-details {
-  text-align: right;
-}
-
-.neural-node.active .node-details {
-  max-height: 300px;
-  margin-top: 15px;
-  overflow: auto;
-
-
-}
-
-.neural-node.active,
-.neural-node.active .node-content {
-  cursor: default;
-}
-
-
-.about-us-container.node-active-mode .neural-core,
-.about-us-container.node-active-mode .neural-node:not(.active) {
-  opacity: 0.1 !important;
-  pointer-events: none;
-  transform: scale(0.9);
-}
-
-.about-us-container.node-active-mode .synapse-path {
-  opacity: 0.1 !important;
-}
-
-.neural-node.active {
-  width: 90%;
-  max-width: 700px;
-  z-index: 20;
-}
-
-.neural-node.active .synapse-path {
-  display: none;
-}
-
-.synapse-path {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
-  background: linear-gradient(to right, var(--accent-purple), rgba(138, 79, 255, 0));
-  height: 2px;
-  transform-origin: left;
-  opacity: 0.3;
-}
-
-.neural-node:hover .synapse-path {
-  opacity: 0.8;
-}
-
-.pos-1 .synapse-path {
-  width: 230px;
-  transform: rotate(135deg) translate(-10px, -10px);
-}
-
-.pos-2 .synapse-path {
-  width: 230px;
-  transform: rotate(225deg) translate(-10px, 10px);
-}
-
-.pos-3 .synapse-path {
-  width: 230px;
-  transform: rotate(45deg) translate(10px, -10px);
-}
-
-.pos-4 .synapse-path {
-  width: 230px;
-  transform: rotate(-45deg) translate(10px, 10px);
-}
-
-.synapse-pulse {
-  position: absolute;
-  left: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 15px 5px #fff;
-  transform: translateY(-4px);
-  opacity: 0;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .synapse-pulse {
-  animation: travel-pulse 3s infinite ease-out;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-1 .synapse-pulse {
-  animation-delay: 1.0s;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-2 .synapse-pulse {
-  animation-delay: 1.2s;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-3 .synapse-pulse {
-  animation-delay: 1.4s;
-}
-
-.about .container[data-aos="fade-up"].aos-animate .pos-4 .synapse-pulse {
-  animation-delay: 1.6s;
-}
-
-.neural-node:hover .synapse-pulse {
-  animation-duration: 1.5s;
-}
-
-@keyframes travel-pulse {
-  0% {
-    transform: translateX(0) translateY(-4px) scale(0.8);
-    opacity: 1;
-  }
-
-  90% {
-    transform: translateX(220px) translateY(-4px) scale(0.5);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(230px) translateY(-4px) scale(0);
-    opacity: 0;
-  }
-}
-
-@media (max-width: 991px) {
-  .about .about-us-container {
-    height: auto;
-    min-height: 0;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .neural-core {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none !important;
-    opacity: 1 !important;
-    margin-bottom: 40px;
-    animation: none;
-  }
-
-  .neural-node {
-    position: relative;
-    width: 90%;
-    max-width: 400px;
-    margin-bottom: 25px;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: scale(1) !important;
-    opacity: 1 !important;
-    cursor: pointer;
-  }
-
-  .synapse-path {
-    display: none;
-  }
-
-  .about-us-container.node-active-mode .neural-core,
-  .about-us-container.node-active-mode .neural-node:not(.active) {
-    opacity: 1 !important;
-    pointer-events: auto;
-    transform: scale(1);
-  }
-
-  .neural-node.active {
-    left: auto !important;
-    transform: none !important;
-  }
-
-  html[dir="rtl"] .neural-node.active {
-    right: 45%;
-  }
-
-  .about-us-container.node-active-mode .neural-node:not(.active) .node-details {
-    max-height: 0;
-    margin-top: 0;
-
-  }
-}
 
 /*--------------------------------------------------------------
-# 7.1. About Us - Desktop Dynamic Layout Override v2
+# 7. About Us Section (Neural Nebula Version - CORRECTED)
 --------------------------------------------------------------*/
-@media (min-width: 992px) {
 
-  .about .about-us-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0;
-    max-width: 1200px;
-  }
 
-  .neural-core {
+/*--------------------------------------------------------------
+# 7.5. About Us Section (Company Infographic - Refined Edition)
+--------------------------------------------------------------*/
+
+
+.company-infographic-container {
+    padding: 80px 20px;
     position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease;
-  }
+    background: var(--primary-dark);
+    overflow: hidden;
+}
 
-  .synapse-origin {
+/* ... (كود الخلفية الشعاعية المتحركة يبقى كما هو) ... */
+.company-infographic-container::before {
+    content: ''; position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(var(--primary-dark-rgb), 0.3), rgba(var(--primary-dark-rgb), 0) 70%);
+    animation: rotateBackground 20s linear infinite;
+}
+@keyframes rotateBackground { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.infographic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
     position: relative;
-    top: -20px;
+    z-index: 10;
+    /* --- جديد: إضافة توهج خفيف ومتحرك --- */
+    animation: subtle-glow 5s ease-in-out infinite;
+      position: relative; /* ضروري لتحديد موضع التوهج */
     z-index: 2;
-    transition: transform 0.6s ease, opacity 0.6s ease;
-  }
+    position: relative;
+}
 
-  .synapse-path {
+@keyframes subtle-glow {
+    0%, 100% { box-shadow: 0 0 60px -20px rgba(138, 79, 255, 0.3); }
+    50% { box-shadow: 0 0 75px -15px rgba(138, 79, 255, 0.5); }
+}
+
+/* --- جديد: أنيميشن الدخول المتتابع --- */
+@keyframes node-enter-animation {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.infographic-grid::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    height: 2px;
-    transform-origin: left;
-    opacity: 0.5;
-  }
-
-  .synapse-path-1 {
-    width: 370px;
-    transform: rotate(155deg) translateX(2px);
-  }
-
-  .synapse-path-2 {
-    width: 155px;
-    transform: rotate(115deg) translateX(2px);
-  }
-
-  .synapse-path-3 {
-    width: 160px;
-    transform: rotate(54deg) translateX(2px);
-  }
-
-  .synapse-path-4 {
-    width: 320px;
-    transform: rotate(25deg) translateX(2px);
-  }
-
-  .neural-nodes-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 25px;
     width: 100%;
-    margin-top: 120px;
-  }
-
-  .neural-node {
-    position: relative;
-    width: 24%;
-    max-width: 300px;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    transition: opacity 0.6s ease, transform 0.6s ease, width 0.6s ease, max-width 0.6s ease;
-  }
-
-  .neural-node.pos-1,
-  .neural-node.pos-2,
-  .neural-node.pos-3,
-  .neural-node.pos-4 {
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-  }
-
-  .about-us-container.node-active-mode {
-    justify-content: flex-start;
-  }
-
-  .about-us-container.node-active-mode .neural-node.active {
-    width: 100%;
-    max-width: 700px;
-    transform: translateY(40px);
-    z-index: 20;
-    cursor: default;
-  }
-
-  .about-us-container.node-active-mode .neural-node:not(.active) {
-    opacity: 0;
-    transform: scale(0.9);
-    pointer-events: none;
-    transition-delay: 0s;
-  }
-
-  .about-us-container.node-active-mode .neural-core,
-  .about-us-container.node-active-mode .synapse-origin {
-    opacity: 0.3;
-    transform: translateY(-20px);
-  }
-
-  .neural-node.active .synapse-path {
-    display: none;
-  }
+    height: 100%;
+    /* 
+      السر هنا: تدرج لوني دائري يتبع متغيرات CSS (--mouse-x, --mouse-y) 
+      والتي سيتم تحديثها بواسطة JavaScript.
+    */
+    background: radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(138, 79, 255, 0.2), /* لون التوهج */
+        transparent 80%
+    );
+    z-index: 1; /* يوضع خلف العقد */
+    opacity: 0; /* يبدأ مخفياً */
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* يسمح بالنقر على العناصر التي تحته */
 }
+/* إظهار التوهج عند تمرير الفأرة فوق الشبكة */
+.infographic-grid:hover::before {
+    opacity: 1;
+}
+
+.infographic-node {
+    position: relative;
+    /* --- تعديل: استخدام cubic-bezier لتحسين نعومة الحركة --- */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    opacity: 0; /* يبدأ مخفياً ليظهر مع الأنيميشن */
+    transform: translateY(30px);
+      position: relative; /* ضروري ليعمل z-index بشكل صحيح */
+    z-index: 2;
+}
+
+/* تشغيل الأنيميشن عند إضافة كلاس 'visible' بواسطة JavaScript */
+.company-infographic-container.visible .infographic-node {
+    animation: node-enter-animation 0.6s ease forwards;
+    animation-delay: var(--animation-delay, 0s);
+}
+/* --- نهاية أنيميشن الدخول --- */
+
+/* ... (بقية الأنماط تبقى كما في النسخة المحسنة الأولى) ... */
+
+.node-main-plate {
+    position: relative;
+    padding: 25px;
+    background: var(--plate-bg);
+    border: 1px solid var(--arrow-color);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    color: var(--text-light);
+    height: 100%; 
+    transition: background 0.3s ease;
+}
+
+/* --- تعديل: تحسين تأثيرات التمرير --- */
+.infographic-node:hover {
+    transform: translateY(-8px) scale(1.01); /* تقليل الحركة لجعلها أرقى */
+    box-shadow: 0 12px 35px rgba(138, 79, 255, 0.5);
+}
+
+.infographic-node:hover .node-main-plate { background: #2a204a; }
+.infographic-node:hover .node-number-label { color: #fff; }
+.infographic-node:hover .node-arrow-background { transform: translateX(0); }
+
+/* ... (بقية أنماط النص وزر عرض المزيد تبقى كما هي) ... */
+.node-brief-description {
+    font-size: 15px; line-height: 1.7; color: var(--text-muted);
+    overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; max-height: calc(1.7 * 15px * 3);
+    transition: max-height 0.5s ease-in-out;
+}
+.node-brief-description.expanded {
+    -webkit-line-clamp: unset; max-height: 300px; overflow-y: auto;
+}
+.node-brief-description.expanded::-webkit-scrollbar { width: 8px; }
+.node-brief-description.expanded::-webkit-scrollbar-track { background: var(--primary-dark); }
+.node-brief-description.expanded::-webkit-scrollbar-thumb { background-color: var(--accent-purple); border-radius: 10px; border: 2px solid var(--primary-dark); }
+
+.read-more-btn {
+    background: none; border: none; color: var(--accent-purple);
+    font-weight: 600; cursor: pointer; padding: 10px 0 0;
+    font-size: 14px; transition: color 0.3s ease;
+}
+.read-more-btn:hover { color: var(--accent-purple-darker); }
+.show-less-btn { display: none; }
+/*--------------------------------------------------------------
+# 7.5. About Us Section (Company Infographic - Final Touches)
+--------------------------------------------------------------*/
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh); /* تتحرك لأعلى الشاشة بالكامل */
+        opacity: 0;
+    }
+}
+
+.background-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* خلف كل شيء */
+}
+
+.background-particles span {
+    position: absolute;
+    bottom: -20px; /* تبدأ من الأسفل */
+    background-color: var(--accent-purple);
+    border-radius: 50%;
+    opacity: 0.2; /* تبدأ شفافة قليلاً */
+    animation: float-up 10s linear infinite;
+}
+
+/* توزيع عشوائي للأحجام والمواقع والتأخيرات */
+.background-particles span:nth-child(1) { width: 5px; height: 5px; left: 10%; animation-duration: 15s; animation-delay: 1s; }
+.background-particles span:nth-child(2) { width: 8px; height: 8px; left: 20%; animation-duration: 12s; animation-delay: 3s; }
+.background-particles span:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-duration: 18s; animation-delay: 0s; }
+.background-particles span:nth-child(4) { width: 6px; height: 6px; left: 40%; animation-duration: 10s; animation-delay: 5s; }
+.background-particles span:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-duration: 14s; animation-delay: 2s; }
+.background-particles span:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-duration: 16s; animation-delay: 6s; }
+.background-particles span:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-duration: 11s; animation-delay: 8s; }
+.background-particles span:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-duration: 19s; animation-delay: 4s; }
+.background-particles span:nth-child(9) { width: 8px; height: 8px; left: 90%; animation-duration: 13s; animation-delay: 1s; }
+.background-particles span:nth-child(10) { width: 4px; height: 4px; left: 95%; animation-duration: 17s; animation-delay: 7s; }
+.background-particles span:nth-child(11) { width: 3px; height: 3px; left: 5%; animation-duration: 14s; animation-delay: 9s; }
+.background-particles span:nth-child(12) { width: 6px; height: 6px; left: 25%; animation-duration: 16s; animation-delay: 2s; }
+.background-particles span:nth-child(13) { width: 5px; height: 5px; left: 45%; animation-duration: 11s; animation-delay: 5s; }
+.background-particles span:nth-child(14) { width: 7px; height: 7px; left: 65%; animation-duration: 18s; animation-delay: 1s; }
+.background-particles span:nth-child(15) { width: 4px; height: 4px; left: 85%; animation-duration: 12s; animation-delay: 6s; }
+/* --- نهاية أنيميشن الجزيئات --- */
+
+
+/* --- جديد: التوهج التفاعلي بين العناصر --- */
+.node-glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 70%);
+    opacity: 0;
+    z-index: 2; /* يقع خلف اللوحة الرئيسية وأمام السهم */
+    filter: blur(25px); /* تمويه الحواف لجعلها ناعمة */
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.infographic-node:hover .node-glow-effect {
+    opacity: 0.3; /* إظهار التوهج عند التمرير */
+    transform: translate(-50%, -50%) scale(1.3); /* تكبير التوهج ليملأ الفراغات */
+}
+/* --- نهاية التوهج التفاعلي --- */
+
+/* تأكد من أن z-index للعناصر الأخرى صحيح */
+.node-arrow-background { z-index: 3; }
+.node-main-plate { z-index: 10; }
+
+/* --- جديد: التوافق مع شاشات الهاتف (Responsive Design) --- */
+@media (max-width: 768px) {
+    .infographic-grid {
+        /* تحويل الشبكة إلى عمود واحد */
+        grid-template-columns: 1fr;
+        gap: 20px; /* تقليل الفجوة */
+    }
+
+    /* إلغاء تحديد المواقع المخصصة للشبكة */
+    .infographic-node.pos-1,
+    .infographic-node.pos-2,
+    .infographic-node.pos-3,
+    .infographic-node.pos-4 {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .node-arrow-background {
+        /* إخفاء الأسهم الجانبية لأنها لا تناسب التصميم العمودي */
+        display: none;
+    }
+
+    /* توحيد محاذاة النص إلى اليسار لسهولة القراءة */
+    .infographic-node .node-number-label,
+    .infographic-node .node-title,
+    .infographic-node .node-brief-description {
+        text-align: left;
+    }
+
+    /* التأكد من أن المحاذاة المخصصة لليمين يتم إلغاؤها */
+    .infographic-node.pos-2 .node-number-label,
+    .infographic-node.pos-3 .node-number-label,
+    .infographic-node.pos-2 .node-title,
+    .infographic-node.pos-3 .node-title {
+        text-align: left;
+    }
+
+    /* إلغاء تأثير الضوء التفاعلي على أجهزة اللمس لأنه يعتمد على الفأرة */
+    .infographic-grid::before {
+        display: none;
+    }
+     .central-hub-animation {
+        display: none;
+    }
+}
+
+/* --- جديد: الأنيميشن المركزي الشبيه بالأسهم --- */
+@keyframes pulse-and-radiate {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.7;
+    }
+}
+
+@keyframes radiate-lines {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.central-hub-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px; /* حجم منطقة الأنيميشن */
+    height: 80px;
+    transform: translate(-50%, -50%);
+    z-index: 5; /* يقع فوق الخلفية وتحت العقد */
+    pointer-events: none; /* لا يعترض نقرات الفأرة */
+}
+
+.hub-sparkle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* إنشاء شكل النجمة/الأسهم باستخدام العناصر الزائفة */
+.hub-sparkle::before,
+.hub-sparkle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
+    animation: pulse-and-radiate 3s ease-in-out infinite;
+}
+
+/* الخط العمودي */
+.hub-sparkle::before {
+    width: 2px;
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+/* الخط الأفقي */
+.hub-sparkle::after {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent-purple), transparent);
+    transform: translate(-50%, -50%);
+}
+
+
 
 /*--------------------------------------------------------------
 # Services Section - Luminous Touch v3 (Constant Stardust)
@@ -1849,323 +1697,396 @@ html[dir="rtl"] .hologram-content {
 /*--------------------------------------------------------------
 # 10. Project Section (THE KINETIC WALL v20.0 - MODAL VIEW)
 --------------------------------------------------------------*/
-.kinetic-project {
-  padding: 80px 0;
-  background-color: var(--primary-dark);
+/*--------------------------------------------------------------
+    # 10. Projects Section (The Portal Showcase - Stabilized)
+    --------------------------------------------------------------*/
+
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.portal-card {
+  aspect-ratio: 3 / 4;
   position: relative;
-}
-
-.wall-item {
+  border-radius: 12px;
+  overflow: hidden;
   cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-
-@media (min-width: 992px) {
-  .mobile-load-more-container {
-    display: none;
-  }
-
-  .kinetic-wall-container {
-    width: 100%;
-    margin-top: 50px;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  }
-
-  .kinetic-track {
-    display: flex;
-    width: max-content;
-    animation: kinetic-scroll var(--scroll-duration, 10s) alternate infinite;
-  }
-
-  html[dir="rtl"] .kinetic-track {
-    animation-name: kinetic-scroll-rtl;
-  }
-
-  .kinetic-wall-container:hover .kinetic-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes kinetic-scroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes kinetic-scroll-rtl {
-    from {
-      transform: translateX(-50%);
-    }
-
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  .wall-item {
-    position: relative;
-    width: 30vw;
-    max-width: 400px;
-    min-width: 280px;
-    margin: 0 20px;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-
-  .item-image-container {
-    aspect-ratio: 16 / 10;
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .item-bg {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.6s ease;
-  }
-
-  .item-bg-prism {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    mix-blend-mode: screen;
-    filter: blur(5px);
-    transform: scale(1.1);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-
-  .wall-item:hover .item-bg-prism {
-    opacity: 1;
-    transform: scale(1) translate(var(--mouse-x, 0), var(--mouse-y, 0));
-  }
-
-  .kinetic-wall-container:hover .wall-item:not(:hover) {
-    opacity: 0.5;
-  }
-
-  .wall-item:hover {
-    transform: scale(1.05);
-  }
-
-  .wall-item:hover .item-bg {
-    transform: scale(1.1);
-  }
-
+.portal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 991px) {
-  .kinetic-project .container-fluid {
-    padding: 0;
-  }
-
-  .kinetic-wall-container {
-    margin-top: 30px;
-  }
-
-  .kinetic-track {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 0 15px;
-  }
-
-  .wall-item {
-    width: 100%;
-  }
-
-  .item-image-container {
-    aspect-ratio: 16 / 10;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .item-bg {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .item-bg-prism {
-    display: none;
-  }
-
-  .wall-item.is-hidden-mobile {
-    display: none;
-  }
-
-  .mobile-load-more-container {
-    text-align: center;
-    margin-top: 30px;
-    padding: 0 15px;
-  }
-
-  .btn-load-more {
-    background: transparent;
-    border: 2px solid var(--accent-purple);
-    color: var(--accent-purple);
-    padding: 12px 35px;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .btn-load-more:hover {
-    background: var(--accent-purple);
-    color: #fff;
-  }
+.card-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
 }
 
-.project-modal {
-  position: fixed;
-  top: 0;
+.portal-card:hover .card-background {
+  transform: scale(1.1);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(var(--primary-dark-rgb), 0.8) 0%, transparent 60%);
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1050;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  right: 0;
+  padding: 25px;
+  color: #fff;
+}
+
+.card-content h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* --- Slideshow Styles (Robust Version) --- */
+.portal-slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  /* Extremely high z-index */
+  background: var(--primary-dark);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transform: scale(1.1);
+  transition: opacity 0.4s ease, visibility 0s linear 0.4s, transform 0.4s ease;
 }
 
-.project-modal.is-open {
+html.slideshow-open .portal-slideshow {
   opacity: 1;
   visibility: visible;
+  transform: scale(1);
+  transition: opacity 0.4s ease, visibility 0s linear 0s, transform 0.4s ease;
 }
 
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 5, 20, 0.8);
-  backdrop-filter: blur(5px);
-}
-
-.modal-content {
+.slideshow-track {
   position: relative;
   width: 100%;
-  max-width: 900px;
-  max-height: 90vh;
-  background: var(--primary-dark);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  transform: scale(0.9);
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
   overflow: hidden;
 }
 
-.project-modal.is-open .modal-content {
-  transform: scale(1);
-}
-
-.modal-close-btn {
+.slideshow-slide {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.3);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
-html[dir="rtl"] .modal-close-btn {
-  right: auto;
-  left: 15px;
+.slideshow-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.modal-close-btn:hover {
-  background: var(--accent-purple);
-  transform: rotate(90deg);
+.slide-bg-container {
+  grid-area: 1 / 1;
+  overflow: hidden;
 }
 
-.modal-body {
-  display: flex;
-  flex-direction: column;
+.slide-bg {
   width: 100%;
   height: 100%;
-  max-height: 90vh;
-}
-
-.modal-image {
-  width: 100%;
-  height: 250px;
   background-size: cover;
   background-position: center;
-  flex-shrink: 0;
+  animation: slide-bg-zoom-in 0.8s ease-out forwards;
 }
 
-.modal-details {
-  padding: 30px;
-  text-align: left;
-  overflow-y: auto;
+@keyframes slide-bg-zoom-in {
+  from {
+    transform: scale(1.1);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
-html[dir="rtl"] .modal-details {
+.slide-details {
+  grid-area: 1 / 1;
+  position: relative;
+  background: linear-gradient(90deg, rgba(var(--primary-dark-rgb), 0.8) 0%, rgba(var(--primary-dark-rgb), 0.4) 50%, transparent 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5%;
+  /* NEW: Added space at the bottom for thumbnails */
+  padding-bottom: 120px;
+}
+
+html[dir="rtl"] .slide-details {
+  background: linear-gradient(-90deg, rgba(var(--primary-dark-rgb), 0.8) 0%, rgba(var(--primary-dark-rgb), 0.4) 50%, transparent 100%);
   text-align: right;
 }
 
-.modal-title {
-  font-size: 2rem;
+.slide-category,
+.slide-title,
+.slide-description,
+.slide-link {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slide-content-fade-in 0.6s ease-out forwards;
+}
+
+.slideshow-slide.is-active .slide-category {
+  animation-delay: 0.3s;
+}
+
+.slideshow-slide.is-active .slide-title {
+  animation-delay: 0.4s;
+}
+
+.slideshow-slide.is-active .slide-description {
+  animation-delay: 0.5s;
+}
+
+.slideshow-slide.is-active .slide-link {
+  animation-delay: 0.6s;
+}
+
+@keyframes slide-content-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-category {
   color: var(--accent-purple);
-  margin-bottom: 15px;
+  font-weight: 500;
 }
 
-.modal-categories {
-  margin-bottom: 20px;
+.slide-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 15px 0;
 }
 
-.modal-categories span {
-  font-size: 0.8rem;
-  padding: 4px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  margin-right: 8px;
-  margin-bottom: 8px;
-  display: inline-block;
-}
-
-html[dir="rtl"] .modal-categories span {
-  margin-right: 0;
-  margin-left: 8px;
-}
-
-.modal-description {
-  font-size: 1rem;
+.slide-description {
+  max-width: 600px;
+  font-size: 1.1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 30px;
+  color: var(--text-muted);
+}
+
+.slide-link {
+  margin-top: 30px;
+  border: 2px solid var(--accent-purple);
+  color: var(--accent-purple);
+  padding: 14px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+html[dir="rtl"] .slide-link {
+  align-self: flex-end;
+}
+
+.slide-link:hover {
+  background: var(--accent-purple);
+  color: #fff;
+}
+
+/* --- Slideshow Navigation & Close Button --- */
+.slideshow-close-btn,
+.slideshow-nav {
+  position: absolute;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.slideshow-close-btn:hover,
+.slideshow-nav:hover {
+  background: var(--accent-purple);
+  transform: scale(1.1) translateY(-50%);
+}
+
+.slideshow-close-btn {
+  top: 30px;
+  right: 30px;
+}
+
+html[dir="rtl"] .slideshow-close-btn {
+  right: auto;
+  left: 30px;
+}
+
+.slideshow-nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slideshow-nav.prev {
+  left: 30px;
+}
+
+.slideshow-nav.next {
+  right: 30px;
+}
+
+html[dir="rtl"] .slideshow-nav.prev {
+  left: auto;
+  right: 30px;
+}
+
+html[dir="rtl"] .slideshow-nav.next {
+  right: auto;
+  left: 30px;
+}
+
+/* --- Slide transition animations --- */
+.slideshow-slide.slide-in-next {
+  animation: slide-in-next 0.6s ease-out forwards;
+}
+
+.slideshow-slide.slide-out-next {
+  animation: slide-out-next 0.6s ease-out forwards;
+}
+
+.slideshow-slide.slide-in-prev {
+  animation: slide-in-prev 0.6s ease-out forwards;
+}
+
+.slideshow-slide.slide-out-prev {
+  animation: slide-out-prev 0.6s ease-out forwards;
+}
+
+@keyframes slide-in-next {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-next {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-prev {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-prev {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* --- NEW CSS: THUMBNAIL GALLERY STYLES --- */
+.slide-thumbnails-container {
+  position: absolute;
+  bottom: 30px;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  /* For scrollbar */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.slide-thumbnails-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+.thumbnail-item {
+  width: 100px;
+  height: 75px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.thumbnail-item:hover {
+  border-color: var(--accent-purple);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.thumbnail-item.is-active {
+  border-color: var(--accent-purple);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@media (max-width: 991px) {
+  .slide-details {
+    background: rgba(var(--primary-dark-rgb), 0.7);
+    text-align: center;
+    padding-bottom: 150px;
+  }
+
+  .slide-title {
+    font-size: 2.5rem;
+  }
+
+  .slide-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slide-link {
+    align-self: center;
+  }
 }
 
 .modal-link {
@@ -2195,6 +2116,63 @@ html[dir="rtl"] .modal-categories span {
   justify-content: center;
   margin-top: 80px;
   ;
+}
+
+.portal-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  
+  align-items: center;
+  justify-items: center;
+
+}
+
+.portal-card {
+  position: relative; /* ضروري لتحديد موضع العناصر الداخلية */
+  display: block;
+  width: 100%;
+  
+  /* --- هنا الحيلة: نحدد الارتفاع باستخدام padding --- */
+  height: 0;
+  /* (10 / 16) * 100% = 62.5%. هذه هي نسبة 16:10 */
+  padding-bottom: 62.5%; 
+
+  /* بقية الأنماط */
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden; /* لإخفاء أي شيء يتجاوز الحدود الدائرية */
+}
+
+/* العنصر الذي يحمل الصورة فعليًا */
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* يمكنك إضافة تأثيرات انتقال هنا */
+  transition: transform 0.4s ease;
+}
+
+.portal-card:hover .card-background {
+  transform: scale(1.05);
+}
+
+/* لتحديد موضع المحتوى فوق الصورة */
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ 
 }
 
 /*--------------------------------------------------------------
@@ -2774,397 +2752,7 @@ html.slideshow-open {
   overflow: hidden;
 }
 
-/*--------------------------------------------------------------
-    # 10. Projects Section (The Portal Showcase - Stabilized)
-    --------------------------------------------------------------*/
 
-
-.portal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.portal-card {
-  aspect-ratio: 3 / 4;
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.portal-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.card-background {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.5s ease;
-}
-
-.portal-card:hover .card-background {
-  transform: scale(1.1);
-}
-
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(var(--primary-dark-rgb), 0.8) 0%, transparent 60%);
-}
-
-.card-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 25px;
-  color: #fff;
-}
-
-.card-content h3 {
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-/* --- Slideshow Styles (Robust Version) --- */
-.portal-slideshow {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  /* Extremely high z-index */
-  background: var(--primary-dark);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.1);
-  transition: opacity 0.4s ease, visibility 0s linear 0.4s, transform 0.4s ease;
-}
-
-html.slideshow-open .portal-slideshow {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  transition: opacity 0.4s ease, visibility 0s linear 0s, transform 0.4s ease;
-}
-
-.slideshow-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.slideshow-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.slideshow-slide.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.slide-bg-container {
-  grid-area: 1 / 1;
-  overflow: hidden;
-}
-
-.slide-bg {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  animation: slide-bg-zoom-in 0.8s ease-out forwards;
-}
-
-@keyframes slide-bg-zoom-in {
-  from {
-    transform: scale(1.1);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
-.slide-details {
-  grid-area: 1 / 1;
-  position: relative;
-  background: linear-gradient(90deg, rgba(var(--primary-dark-rgb), 0.8) 0%, rgba(var(--primary-dark-rgb), 0.4) 50%, transparent 100%);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 5%;
-  /* NEW: Added space at the bottom for thumbnails */
-  padding-bottom: 120px;
-}
-
-html[dir="rtl"] .slide-details {
-  background: linear-gradient(-90deg, rgba(var(--primary-dark-rgb), 0.8) 0%, rgba(var(--primary-dark-rgb), 0.4) 50%, transparent 100%);
-  text-align: right;
-}
-
-.slide-category,
-.slide-title,
-.slide-description,
-.slide-link {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: slide-content-fade-in 0.6s ease-out forwards;
-}
-
-.slideshow-slide.is-active .slide-category {
-  animation-delay: 0.3s;
-}
-
-.slideshow-slide.is-active .slide-title {
-  animation-delay: 0.4s;
-}
-
-.slideshow-slide.is-active .slide-description {
-  animation-delay: 0.5s;
-}
-
-.slideshow-slide.is-active .slide-link {
-  animation-delay: 0.6s;
-}
-
-@keyframes slide-content-fade-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.slide-category {
-  color: var(--accent-purple);
-  font-weight: 500;
-}
-
-.slide-title {
-  font-size: 4rem;
-  font-weight: 700;
-  margin: 15px 0;
-}
-
-.slide-description {
-  max-width: 600px;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--text-muted);
-}
-
-.slide-link {
-  margin-top: 30px;
-  border: 2px solid var(--accent-purple);
-  color: var(--accent-purple);
-  padding: 14px 35px;
-  border-radius: 50px;
-  text-decoration: none;
-  align-self: flex-start;
-  transition: all 0.3s ease;
-}
-
-html[dir="rtl"] .slide-link {
-  align-self: flex-end;
-}
-
-.slide-link:hover {
-  background: var(--accent-purple);
-  color: #fff;
-}
-
-/* --- Slideshow Navigation & Close Button --- */
-.slideshow-close-btn,
-.slideshow-nav {
-  position: absolute;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 28px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.slideshow-close-btn:hover,
-.slideshow-nav:hover {
-  background: var(--accent-purple);
-  transform: scale(1.1) translateY(-50%);
-}
-
-.slideshow-close-btn {
-  top: 30px;
-  right: 30px;
-}
-
-html[dir="rtl"] .slideshow-close-btn {
-  right: auto;
-  left: 30px;
-}
-
-.slideshow-nav {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.slideshow-nav.prev {
-  left: 30px;
-}
-
-.slideshow-nav.next {
-  right: 30px;
-}
-
-html[dir="rtl"] .slideshow-nav.prev {
-  left: auto;
-  right: 30px;
-}
-
-html[dir="rtl"] .slideshow-nav.next {
-  right: auto;
-  left: 30px;
-}
-
-/* --- Slide transition animations --- */
-.slideshow-slide.slide-in-next {
-  animation: slide-in-next 0.6s ease-out forwards;
-}
-
-.slideshow-slide.slide-out-next {
-  animation: slide-out-next 0.6s ease-out forwards;
-}
-
-.slideshow-slide.slide-in-prev {
-  animation: slide-in-prev 0.6s ease-out forwards;
-}
-
-.slideshow-slide.slide-out-prev {
-  animation: slide-out-prev 0.6s ease-out forwards;
-}
-
-@keyframes slide-in-next {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-out-next {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes slide-in-prev {
-  from {
-    transform: translateX(-100%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-out-prev {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(100%);
-  }
-}
-
-/* --- NEW CSS: THUMBNAIL GALLERY STYLES --- */
-.slide-thumbnails-container {
-  position: absolute;
-  bottom: 30px;
-  left: 5%;
-  right: 5%;
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  /* For scrollbar */
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-.slide-thumbnails-container::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Safari, Opera */
-}
-
-.thumbnail-item {
-  width: 100px;
-  height: 75px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 5px;
-  cursor: pointer;
-  flex-shrink: 0;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.3s ease;
-  opacity: 0.7;
-}
-
-.thumbnail-item:hover {
-  border-color: var(--accent-purple);
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-.thumbnail-item.is-active {
-  border-color: var(--accent-purple);
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-@media (max-width: 991px) {
-  .slide-details {
-    background: rgba(var(--primary-dark-rgb), 0.7);
-    text-align: center;
-    padding-bottom: 150px;
-  }
-
-  .slide-title {
-    font-size: 2.5rem;
-  }
-
-  .slide-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .slide-link {
-    align-self: center;
-  }
-}
 
 /*--------------------------------------------------------------
 # Cosmic Data Stream Footer - Astonishing Level
@@ -3230,9 +2818,16 @@ html[dir="rtl"] .slideshow-nav.next {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
 }
+.footer-links-list{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
 .cosmic-footer .footer-links-list a {
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s;
+
 }
 .cosmic-footer .footer-links-list a:hover {
   color: #fff;
