@@ -605,7 +605,7 @@ html[dir="rtl"] .language-dropdown-mobile {
 
 /* --- Subtitle Styling --- */
 .hero-content h2 {
-  font-size: 12px;
+  font-size: 24px;
   color: var(--text-muted);
   line-height: 1.7; /* Improved line spacing */
   margin-bottom: 40px;
@@ -843,7 +843,7 @@ html[dir="rtl"] [data-aos="fade-right"] {
   }
 
   #hero h2 {
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .hero-tag {
@@ -921,7 +921,7 @@ section {
 
 .section-title p {
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 18px;
   max-width: 800px;
   margin: 0 auto;
 }

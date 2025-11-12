@@ -69,8 +69,8 @@ if ($about_query) {
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title><?= htmlspecialchars($current_lang == 'en' ? ($settings['company_name'] ?? '') : ($settings['company_name_ar'] ?? '')) ?> - Home</title>
-  <meta content="" name="description">
+  <title><?= htmlspecialchars($current_lang == 'en' ? ($settings['company_name'] ?? '') : ($settings['company_name_ar'] ?? '')) ?> <?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></title>
+  <meta content="<?php htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? ''))?>" name="description">
   <meta content="" name="keywords">
   <link href="assets/img/Artboard-8-8.png" rel="icon">
   <link href="assets/img/Artboard-8-8.png" rel="aArtboard 8-8">
@@ -81,6 +81,25 @@ if ($about_query) {
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=<?php echo filemtime('assets/css/style.css'); ?>">
+
+ 
+  <!-- اختياري: يمكنك إضافته إذا أردت، لكنه ليس مهماً لجوجل -->
+  <meta name="keywords" content="ومضة تك,ومضة, wamdhatach, wamdha, شركة برمجة, تصميم مواقع, تطوير تطبيقات, حلول برمجية">
+
+  <!-- Open Graph / Facebook (للمظهر عند المشاركة) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.wamdhatach.com/">
+  <meta property="og:title" content="WamdhaTech | شركة ومضة تك للحلول البرمجية وتصميم المواقع">
+  <meta property="og:description" content="نقدم في ومضة تك خدمات برمجية مبتكرة تشمل تصميم وتطوير المواقع الإلكترونية، تطبيقات الجوال، والأنظمة المخصصة.">
+ 
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.wamdhatach.com/">
+  <meta property="twitter:title" content="WamdhaTech | شركة ومضة تك للحلول البرمجية وتصميم المواقع">
+  <meta property="twitter:description" content="نقدم في ومضة تك خدمات برمجية مبتكرة تشمل تصميم وتطوير المواقع الإلكترونية، تطبيقات الجوال، والأنظمة المخصصة.">
+  
+
+
 </head>
 
 <body>
