@@ -359,11 +359,49 @@
     }
   });
 
-  on('click', '.navbar-mobile a', function (e) {
+ /**
+   * MODIFIED: Smooth scroll for links with .scrollto class
+   * This version prevents the hash from appearing in the URL.
+   */
+  on('click', '.scrollto', function(e) {
+    // Check if the link has a hash and if the target element exists
     if (this.hash && select(this.hash)) {
+      // 1. Prevent the default link behavior (stops URL from changing)
       e.preventDefault();
-      select('body').classList.remove('mobile-nav-active');
-      scrollto(this.hash);
+
+      let body = select('body');
+      let header = select('#header');
+      let navlinks = select('#navbar .nav-link', true);
+      let targetElement = select(this.hash);
+      
+      // If mobile nav is active, close it
+      if (body.classList.contains('mobile-nav-active')) {
+        body.classList.remove('mobile-nav-active');
+        // Add logic to flip the menu icon back if needed
+        let logoToggler = select('.logo-container');
+        if (logoToggler) {
+            logoToggler.classList.remove('is-flipped');
+        }
+      }
+      
+      // Calculate the correct position to scroll to, considering the header height
+      let offset = header.offsetHeight;
+      if (!header.classList.contains('header-scrolled')) {
+        offset -= 20;
+      }
+      let elementPos = targetElement.offsetTop;
+      
+      // 2. Perform the smooth scroll
+      window.scrollTo({
+        top: elementPos - offset,
+        behavior: 'smooth'
+      });
+
+      // Optional but recommended: Update active state on nav links
+      navlinks.forEach((link) => {
+        link.classList.remove('active');
+      });
+      this.classList.add('active');
     }
   }, true);
 
@@ -470,61 +508,49 @@
   /**
    * FINAL & PRECISE: Looping Projectile to the SVG Starting Point
    */
+/**
+   * FINAL & CORRECTED: Looping Projectile with Scroll Control
+   * The animation now pauses when the hero section is not visible.
+   */
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Get all necessary elements
+    // 1. Get all necessary elements, including the #hero section itself
     const headerLogo = document.querySelector('#logo-menu-toggler .header-logo-svg');
+    const heroSection = document.querySelector('#hero'); // The section to watch
     const heroLogoContainer = document.querySelector('.hero-logo-container');
     const heroAnimatedSvg = document.querySelector('.hero-animated-svg');
-    const heroLogoPath = document.querySelector('.hero-logo-path'); // The path itself
+    const heroLogoPath = document.querySelector('.hero-logo-path');
     
-    // Check if all elements exist to prevent errors
-    if (!headerLogo || !heroLogoContainer || !heroAnimatedSvg || !heroLogoPath) {
+    if (!headerLogo || !heroSection || !heroLogoContainer || !heroAnimatedSvg || !heroLogoPath) {
       console.error('Required elements for projectile animation not found.');
       if (heroLogoContainer) heroLogoContainer.classList.add('animate');
       return;
     }
 
-    // 2. Create the projectile element
+    // 2. Create the projectile and declare a variable for the interval timer
     const projectile = document.createElement('div');
     projectile.id = 'light-projectile';
     document.body.appendChild(projectile);
+    let projectileInterval = null; // This will hold our interval ID
 
-    // 3. The function to launch the projectile
+    // 3. The function to launch the projectile (remains unchanged)
     function launchProjectile() {
-      // --- Calculate Start Point (Header Logo) ---
       const startRect = headerLogo.getBoundingClientRect();
       const startX = startRect.left + (startRect.width / 2);
       const startY = startRect.top + (startRect.height / 2);
-
-      // --- Calculate End Point (SVG Path Start) ---
-      // This is the core of the new logic
-      const svgRect = heroAnimatedSvg.getBoundingClientRect(); // SVG position on screen
-      const viewBox = heroAnimatedSvg.viewBox.baseVal;         // SVG internal coordinate system
-      const pathStartPoint = heroLogoPath.getPointAtLength(0); // The very first point of the path {x, y}
-
-      // Convert the path's internal coordinates to a screen position
-      // a. Find the ratio of the start point within the viewBox
+      const svgRect = heroAnimatedSvg.getBoundingClientRect();
+      const viewBox = heroAnimatedSvg.viewBox.baseVal;
+      const pathStartPoint = heroLogoPath.getPointAtLength(0);
       const xRatio = (pathStartPoint.x - viewBox.x) / viewBox.width;
       const yRatio = (pathStartPoint.y - viewBox.y) / viewBox.height;
-      // b. Apply that ratio to the SVG's actual size and position on the screen
-      let targetX = svgRect.left + (xRatio * svgRect.width);
-      let targetY = svgRect.top + (yRatio * svgRect.height);
-
-      // c. Center the projectile on the target point
-      const projectileSize = 25; // from CSS
-      targetX -= (projectileSize / 2);
-      targetY -= (projectileSize / 2);
+      let targetX = svgRect.left + (xRatio * svgRect.width) - 12.5;
+      let targetY = svgRect.top + (yRatio * svgRect.height) - 12.5;
       
-      // --- The Animation Sequence ---
-      
-      // Instantly position the projectile at the start point (hidden)
       projectile.style.transition = 'none';
       projectile.style.opacity = '0';
       projectile.style.left = `${startX}px`;
       projectile.style.top = `${startY}px`;
       
       setTimeout(() => {
-        // Now, add back the transition and launch towards the precise target
         projectile.style.transition = 'top 1.2s cubic-bezier(0.6, -0.28, 0.73, 0.04), left 1.2s cubic-bezier(0.3, 0.5, 0.8, 1), opacity 0.5s';
         projectile.style.opacity = '1';
         projectile.style.left = `${targetX}px`;
@@ -539,18 +565,46 @@
       }, 1250);
     }
 
-    // 4. Create the main loop
-    function startAnimationLoop() {
-        launchProjectile();
-        setInterval(launchProjectile, 6000); // Re-launch every 6 seconds
+    // 4. Functions to START and STOP the animation loop
+    function startProjectileLoop() {
+      // If the interval is already running, do nothing
+      if (projectileInterval) return;
+      // Fire one immediately, then start the loop
+      launchProjectile();
+      projectileInterval = setInterval(launchProjectile, 6000);
     }
 
-    // 5. Start after preloader
+    function stopProjectileLoop() {
+      // If there's no interval running, do nothing
+      if (!projectileInterval) return;
+      // Clear the interval and reset the variable
+      clearInterval(projectileInterval);
+      projectileInterval = null;
+    }
+
+    // 5. The main logic: Check visibility on scroll
+    function checkVisibility() {
+      const heroRect = heroSection.getBoundingClientRect();
+      // If the bottom of the hero section is still on the screen
+      if (heroRect.bottom > 0) {
+        startProjectileLoop(); // Start or ensure it's running
+      } else {
+        stopProjectileLoop();  // Stop it
+      }
+    }
+
+    // 6. Start the logic after the preloader finishes
     const preloader = document.getElementById('preloader');
     if (preloader) {
-      setTimeout(startAnimationLoop, 2000);
+      setTimeout(() => {
+        checkVisibility(); // Check once on load
+        window.addEventListener('scroll', checkVisibility); // Check on every scroll
+      }, 2000);
     } else {
-      setTimeout(startAnimationLoop, 500);
+      setTimeout(() => {
+        checkVisibility(); // Check once on load
+        window.addEventListener('scroll', checkVisibility); // Check on every scroll
+      }, 500);
     }
   });
 
@@ -772,7 +826,132 @@
     });
 });
 
+/**
+ * FINAL & CORRECTED: Cosmic Data Stream Background (with Touch Support & Optimization)
+ * This script now controls the global background canvas for both desktop and mobile.
+ */
+(function() {
+    const canvas = document.getElementById('cosmic-canvas');
+    if (!canvas) return;
 
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    
+    // --- OPTIMIZATION: Use fewer particles on smaller screens for better performance ---
+    const particleCount = window.innerWidth <= 768 ? 80 : 200;
+    
+    let mouse = { x: null, y: null, radius: 150 };
+
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + Math.random() * 100; // Start below the canvas
+        this.radius = Math.random() * 1.5 + 1;
+        this.speed = Math.random() * -1.5 - 0.5; // Move upwards
+        this.density = (Math.random() * 30) + 1;
+        this.color = `rgba(138, 79, 255, ${Math.random() * 0.5 + 0.2})`;
+      }
+
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      update() {
+        // Repel from mouse or touch point
+        if (mouse.x !== null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < mouse.radius) {
+              let forceDirectionX = dx / distance;
+              let forceDirectionY = dy / distance;
+              let maxDistance = mouse.radius;
+              let force = (maxDistance - distance) / maxDistance;
+              let directionX = forceDirectionX * force * this.density;
+              let directionY = forceDirectionY * force * this.density;
+              
+              this.x -= directionX;
+              this.y -= directionY;
+            }
+        }
+
+        // Move upwards
+        this.y += this.speed;
+
+        // Reset particle if it goes above the screen
+        if (this.y < -10) {
+          this.y = canvas.height + 10;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // --- UNIFIED EVENT LISTENERS ---
+    // Function to update coordinates from either mouse or touch event
+    function updateCoordinates(event) {
+        if (event.touches) {
+            // Use the first touch point for mobile
+            mouse.x = event.touches[0].clientX;
+            mouse.y = event.touches[0].clientY;
+        } else {
+            // Use standard mouse coordinates for desktop
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        }
+    }
+
+    // Function to clear coordinates
+    function clearCoordinates() {
+        mouse.x = null;
+        mouse.y = null;
+    }
+
+    // Add all event listeners
+    window.addEventListener('resize', () => {
+      setCanvasSize();
+      init(); // Re-initialize on resize to adjust to new screen size
+    });
+
+    // Desktop Mouse Events
+    window.addEventListener('mousemove', updateCoordinates);
+    window.addEventListener('mouseleave', clearCoordinates);
+
+    // Mobile Touch Events
+    window.addEventListener('touchmove', updateCoordinates);
+    window.addEventListener('touchstart', updateCoordinates); // Also capture the first touch
+    window.addEventListener('touchend', clearCoordinates);
+
+    // Initial setup
+    setCanvasSize();
+    init();
+    animate();
+})();
 })();
 
 

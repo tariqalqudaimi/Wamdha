@@ -78,7 +78,8 @@
 body {
   font-family: 'English', sans-serif;
   color: var(--text-light);
-  background-color: var(--primary-dark);
+  /* MODIFIED: Changed background to the footer's base color for the new global background */
+  background-color: #0d0915;
 }
 
 a {
@@ -115,6 +116,9 @@ html[dir="rtl"] h5,
 html[dir="rtl"] h6 {
   font-family: 'Arabic', sans-serif;
 }
+
+
+
 
 /*--------------------------------------------------------------
 # 2. Preloader & Animations (SVG Line Drawing)
@@ -265,7 +269,7 @@ html[dir="rtl"] h6 {
 }
 
 #header .container-fluid {
-  height: 80px;
+  height: 60px;
   padding: 0 25px;
 }
 
@@ -596,7 +600,7 @@ html[dir="rtl"] .language-dropdown-mobile {
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 20px;
-  
+
   /* Cool Gradient Text Effect */
   background: linear-gradient(45deg, #ffffff 60%, var(--accent-purple));
   -webkit-background-clip: text;
@@ -604,7 +608,15 @@ html[dir="rtl"] .language-dropdown-mobile {
   background-clip: text;
  
 }
+@media (min-width: 991px) {
+  html[dir="rtl"] .hero-content h1  {
+      padding-right: 80px;/* Adjusted font size for mobile */
+  }
+  html[dir="rtl"] .hero-content-disc {
+      padding-right: 80px;/* Adjusted font size for mobile */
+  }
 
+}
 /* --- Subtitle Styling --- */
 .hero-content-disc {
   font-size: 18px;
@@ -641,6 +653,7 @@ html[dir="rtl"] .language-dropdown-mobile {
 
 .hero-animated-svg {
   width: 100%;
+  padding: 0;
 }
 
 /* --- The Logo Path Setup --- */
@@ -772,7 +785,7 @@ html[dir="rtl"] [data-aos="fade-right"] {
   padding: 12px 32px;
   border-radius: 50px;
   transition: 0.5s;
-  margin-top: 30px;
+  margin-top: 80px;
   color: #fff;
   background: var(--accent-purple);
   border: 2px solid var(--accent-purple);
@@ -784,6 +797,12 @@ html[dir="rtl"] [data-aos="fade-right"] {
   background: transparent;
 }
 
+@media (min-width: 991px) {
+  html[dir="rtl"] .btn-get-started {
+    margin-right: 80px;
+  }
+  
+}
 .hero-tag {
   background-color: var(--accent-purple);
   color: var(--text-light);
@@ -876,16 +895,104 @@ html[dir="rtl"] [data-aos="fade-right"] {
   /* التأكد من أن العنوان الفرعي في العربية يبدأ من اليمين أيضاً */
   html[dir="rtl"] .hero-content h2 {
       margin-left: auto;
-      /* يضمن وجود مسافة من الحافة اليمنى */
+    
   }
    
 }
 @media (max-width: 991px) {
-  /* على الشاشات الصغيرة، نجعل كل شيء في الوسط */
+  
 .hero-animated-svg {
  
   margin-left: 40px;
-}}
+}
+
+html[dir="rtl"] .hero-animated-svg {
+ 
+  margin-right: -40px;
+}
+}
+
+/* ===================================================================
+   THE ULTIMATE SCROLL INDICATOR (The Lightfall Beacon)
+   =================================================================== */
+.scroll-down-indicator {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.indicator-body {
+  position: relative;
+  width: 40px;
+  height: 60px; /* Taller area for the animation */
+}
+
+/* This ::before pseudo-element is the falling light trail */
+.indicator-body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
+  opacity: 0;
+  transform-origin: top; /* Crucial for the drawing effect */
+  animation: draw-line 3.5s ease-in-out infinite;
+}
+
+/* This ::after pseudo-element is the chevron that materializes at the end */
+.indicator-body::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgba(255, 255, 255, 0); /* Starts fully transparent */
+  border-top: 0;
+  border-left: 0;
+  transform: translateX(-50%) rotate(45deg);
+  animation: show-chevron 3.5s ease-in-out infinite;
+}
+
+/* Keyframes for the light trail drawing itself downwards */
+@keyframes draw-line {
+  0% { transform: scaleY(0); opacity: 0; }
+  50% { transform: scaleY(1); opacity: 1; }
+  85% { opacity: 0; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* Keyframes for the chevron appearing and glowing */
+@keyframes show-chevron {
+  0%, 40% {
+    opacity: 0;
+    border-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+  }
+  50% { opacity: 1; }
+  60% {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 15px var(--accent-purple), 0 0 25px var(--accent-purple);
+  }
+  85%, 100% {
+    opacity: 0;
+    border-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .indicator-body {
+    height: 50px;
+  }
+}
 /*--------------------------------------------------------------
 # 6. Sections General
 --------------------------------------------------------------*/
@@ -895,7 +1002,8 @@ section {
 }
 
 .section-bg {
-  background-color: var(--secondary-dark);
+  /* MODIFIED: Sections are now transparent to show the global background */
+  background-color: transparent;
 }
 
 .section-title {
@@ -929,6 +1037,17 @@ section {
   max-width: 800px;
   margin: 0 auto;
 }
+
+/* ADDED: Style for the new global background canvas */
+#cosmic-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it behind all content */
+}
+
 
 /*--------------------------------------------------------------
 # Hero Section - Animated Logo
@@ -1144,29 +1263,24 @@ html[dir="rtl"] .floating-logo-animation {
 }
 
 
-/*--------------------------------------------------------------
-# 7. About Us Section (Neural Nebula Version - CORRECTED)
---------------------------------------------------------------*/
 
 
 /*--------------------------------------------------------------
-# 7.5. About Us Section (Company Infographic - Refined Edition)
+# 7 About Us Section (Company Infographic - Refined Edition)
 --------------------------------------------------------------*/
 
 
 .company-infographic-container {
     padding: 80px 20px;
     position: relative;
-    background: var(--primary-dark);
+    /* MODIFIED: Removed solid background to show global animated background */
+    background: transparent;
     overflow: hidden;
 }
 
-/* ... (كود الخلفية الشعاعية المتحركة يبقى كما هو) ... */
+/* MODIFIED: Removed rotating background effect */
 .company-infographic-container::before {
-    content: ''; position: absolute; top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(var(--primary-dark-rgb), 0.3), rgba(var(--primary-dark-rgb), 0) 70%);
-    animation: rotateBackground 20s linear infinite;
+    display: none;
 }
 @keyframes rotateBackground { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
@@ -1409,6 +1523,7 @@ html[dir="rtl"] .floating-logo-animation {
     }
 }
 
+
 /* --- جديد: الأنيميشن المركزي الشبيه بالأسهم --- */
 @keyframes pulse-and-radiate {
     0% {
@@ -1482,7 +1597,14 @@ html[dir="rtl"] .floating-logo-animation {
     transform: translate(-50%, -50%);
 }
 
-
+html[dir="rtl"]   .infographic-node .node-title,
+    .node-brief-description .node-content-body
+     .node-number-label 
+    
+    {
+      
+        text-align: right;
+    }
 
 /*--------------------------------------------------------------
 # Services Section - Luminous Touch v3 (Constant Stardust)
@@ -1490,7 +1612,8 @@ html[dir="rtl"] .floating-logo-animation {
 .services-v-luminous {
   padding: 80px 0;
   position: relative;
-  background-color: var(--primary-dark);
+  /* background-color: var(--primary-dark); */
+  background-color: transparent;
   overflow: hidden;
 }
 
@@ -1610,7 +1733,8 @@ html[dir="rtl"] .floating-logo-animation {
 # Features Section - Interactive Holograms
 --------------------------------------------------------------*/
 .features-v-hologram {
-  background-color: var(--secondary-dark);
+  /* background-color: var(--secondary-dark); */
+  background-color: transparent;
   padding: 80px 0;
 }
 .hologram-card {
@@ -1924,6 +2048,7 @@ html[dir="rtl"] .slide-link {
   justify-content: center;
   transition: all 0.3s ease;
 }
+
 
 .slideshow-close-btn:hover,
 .slideshow-nav:hover {
@@ -2973,12 +3098,16 @@ html.slideshow-open {
 --------------------------------------------------------------*/
 .cosmic-footer {
   position: relative;
-  background-color: #0d0915; /* A deep space color */
+  /* MODIFIED: Footer is now transparent to show the global background */
+  background-color: transparent; 
   overflow: hidden;
-  padding: 100px 0 60px;
+  /* MODIFIED: Reduced top and bottom padding by ~50% */
+  padding: 50px 0 30px;
+  max-height: max-content;
 }
 
-/* --- The Layers --- */
+/* The canvas is now global, so the local style is no longer needed here. */
+/*
 #cosmic-canvas {
   position: absolute;
   top: 0;
@@ -2987,6 +3116,7 @@ html.slideshow-open {
   height: 100%;
   z-index: 1;
 }
+*/
 
 .footer-content-layer {
   position: relative;
@@ -3028,6 +3158,7 @@ html.slideshow-open {
   margin-bottom: 25px;
   text-shadow: 0 0 10px rgba(138, 79, 255, 0.5); /* Glowing text */
 }
+
 .cosmic-footer p, .cosmic-footer span {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
@@ -3038,6 +3169,7 @@ html.slideshow-open {
   gap: 15px;
   
 }
+
 .cosmic-footer .footer-links-list a {
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s;
@@ -3051,6 +3183,12 @@ html.slideshow-open {
 html[dir="rtl"] .cosmic-footer .footer-links-list a:hover {
   transform: translateX(-5px);
 }
+
+ html[dir="rtl"] .footer-links-list{
+  
+    margin-right: -40px;
+  }
+
 .cosmic-footer .footer-contact-info i {
   color: var(--accent-purple);
   margin-right: 10px;
@@ -3063,7 +3201,8 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
 /* --- Bottom Bar --- */
 .cosmic-footer .footer-bottom {
   text-align: center;
-  margin-top: 60px;
+  /* MODIFIED: Reduced margin-top by 50% */
+  margin-top: 30px;
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -3084,19 +3223,12 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
 # Cosmic Footer - Mobile Optimization
 --------------------------------------------------------------*/
 @media (max-width: 768px) {
+ 
+  
   .cosmic-footer {
-    padding: 60px 0 30px;
-    /* 
-      New background for mobile: a static starry sky.
-      This is a lightweight and beautiful alternative.
-      The image is a tiny, seamless base64 SVG pattern.
-    */
-    background-color: #0d0915;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDEwMCAxMDAiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwZDA5MTUiLz48Y2lyY2xlIGN4PSIyMCIgY3k9IjMwIiByPSIxLjUiIGZpbGw9IiM4YTRmZmYiIG9wYWNpdHk9IjAuNSIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iNzUiIHI9IjEiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNiIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMTAiIHI9IjAuNSIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjkzIiBjeT0iMjUiIHI9IjEiIGZpbGw9IiM4YTRmZmYiIG9wYWNpdHk9IjAuMyIvPjwvc3ZnPg==');
+    /* MODIFIED: Reduced padding for mobile */
+    padding: 30px 0 20px;
   }
-
-  /* Hide the canvas on mobile to save resources */
-
 
   /* Make the Energy Core smaller and less intense on mobile */
   .energy-core {
@@ -3124,7 +3256,8 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   }
 
   .cosmic-footer .footer-bottom {
-    margin-top: 30px;
+    /* MODIFIED: Reduced margin for mobile */
+    margin-top: 20px;
   }
 }
 
@@ -3278,3 +3411,4 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   color: #fff;
   box-shadow: 0 0 20px rgba(138, 79, 255, 0.5);
 }
+

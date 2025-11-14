@@ -21,7 +21,8 @@ $lang = [
     'about_title' => 'About Us',
     'about_description' => 'We are a leading company in providing innovative technological solutions aimed at enhancing businesses and achieving success for our clients. Our team of experts is committed to delivering the best services in software development, design, digital marketing, and content creation.',
     'about_learn_more_btn' => 'Learn More',
-
+    'read_more' => 'Read More',
+    'show_less' => 'Show Less',
 
     // Services Section
     'services_title' => 'Our Services',
@@ -39,8 +40,8 @@ $lang = [
     'see_project' => 'See All Projects',
 
     // Team Section
-    'team_title' => 'Team',
-    'team_description' => 'Our team consists of experts in software development, design, marketing, and content creation, working together to achieve the best results for our clients.',
+    'team_title' => 'Success Partners',
+    'team_description' => 'From promising startups to industry leaders, we pride ourselves on being the trusted tech partner for these distinguished organizations.',
 
     // FAQ Section
     'faq_title' => 'Frequently Asked Questions',

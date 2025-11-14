@@ -23,18 +23,18 @@
         <!-- DESKTOP NAVIGATION -->
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="index.php#hero"><?= $lang['home_link'] ?? 'Home' ?></a></li>
-                <li class="dropdown"><a href="index.php#about"><span><?= $lang['about_link'] ?? 'About' ?></span> <i class="bi bi-chevron-down"></i></a>
+                <li><a class="nav-link scrollto active" href="#hero"><?= $lang['home_link'] ?? 'Home' ?></a></li>
+                <li class="dropdown"><a href="#about"><span><?= $lang['about_link'] ?? 'About' ?></span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="index.php#features"><?= $lang['features_link'] ?? 'Features' ?></a></li>
-                        <li><a href="index.php#team"><?= $lang['team_link'] ?? 'Team' ?></a></li>
+                        <li><a href="#features"><?= $lang['features_link'] ?? 'Features' ?></a></li>
+                        <li><a href="#team"><?= $lang['team_link'] ?? 'Team' ?></a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="index.php#services"><?= $lang['services_link'] ?? 'Services' ?></a></li>
-                <li><a class="nav-link scrollto" href="index.php#project"><?= $lang['project_link'] ?? 'Projects' ?></a></li>
-                <li><a class="nav-link scrollto" href="index.php#contact"><?= $lang['contact_link'] ?? 'Contact' ?></a></li>
+                <li><a class="nav-link scrollto" href="#services"><?= $lang['services_link'] ?? 'Services' ?></a></li>
+                <li><a class="nav-link scrollto" href="#portal-showcase"><?= $lang['project_link'] ?? 'Projects' ?></a></li>
+                <li><a class="nav-link scrollto" href="#contact"><?= $lang['contact_link'] ?? 'Contact' ?></a></li>
                 <li class="dropdown language-dropdown-desktop">
-                    <a href="#"><span><i class="bi bi-globe"></i> <?= $lang['lang'] ?? 'lang' ?></span> <i class="bi bi-chevron-down"></i></a>
+                    <a ><span><i class="bi bi-globe"></i> <?= $lang['lang'] ?? 'lang' ?></span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="?lang=en">English</a></li>
                         <li><a href="?lang=ar">العربية</a></li>

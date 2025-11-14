@@ -1,9 +1,12 @@
 <!-- ======= Cosmic Data Stream Footer ======= -->
 <footer class="cosmic-footer">
   <!-- The Canvas for the particle animation -->
-  <canvas id="cosmic-canvas"></canvas>
 
-  <!-- The content that will float on top of the canvas -->
+
+ 
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+         <!-- The content that will float on top of the canvas -->
   <div class="footer-content-layer">
     <div class="container">
       <div class="row">
@@ -20,11 +23,17 @@
               }
             ?>
           </p>
+                    <div class="neon-social-links">
+              <?php if (!empty($contact['fb_link'])): ?><a href="<?= htmlspecialchars($contact['fb_link']) ?>" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a><?php endif; ?>
+              <?php if (!empty($contact['instagram_link'])): ?><a href="<?= htmlspecialchars($contact['instagram_link']) ?>" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a><?php endif; ?>
+              <?php if (!empty($contact['linkedin_link'])): ?><a href="<?= htmlspecialchars($contact['linkedin_link']) ?>" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a><?php endif; ?>
+              <?php if (!empty($contact['whatsapp_number'])): ?><a href="https://wa.me/<?= htmlspecialchars(preg_replace('/[^0-9]/', '', $contact['whatsapp_number'])) ?>" class="whatsapp" target="_blank"><i class="bx bxl-whatsapp"></i></a><?php endif; ?>
+          </div>
         </div>
 
         <!-- Column 2: Quick Links -->
         <div class="col-lg-4 col-md-6 footer-col">
-          <h5 class="footer-title"><?= $lang['footer_links'] ?? 'Quick Links' ?></h5>
+          <h5 class="footer-title "><?= $lang['footer_links'] ?? 'Quick Links' ?></h5>
           <ul class="list-unstyled footer-links-list">
             <li><a href="#hero"><?= $lang['home_link'] ?></a></li>
             <li><a href="#about"><?= $lang['about_link'] ?></a></li>
@@ -44,14 +53,7 @@
         </div>
       </div>
 
-      <!-- Bottom Bar -->
-      <div class="footer-bottom">
-          <div class="neon-social-links">
-              <?php if (!empty($contact['fb_link'])): ?><a href="<?= htmlspecialchars($contact['fb_link']) ?>" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a><?php endif; ?>
-              <?php if (!empty($contact['instagram_link'])): ?><a href="<?= htmlspecialchars($contact['instagram_link']) ?>" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a><?php endif; ?>
-              <?php if (!empty($contact['linkedin_link'])): ?><a href="<?= htmlspecialchars($contact['linkedin_link']) ?>" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a><?php endif; ?>
-              <?php if (!empty($contact['whatsapp_number'])): ?><a href="https://wa.me/<?= htmlspecialchars(preg_replace('/[^0-9]/', '', $contact['whatsapp_number'])) ?>" class="whatsapp" target="_blank"><i class="bx bxl-whatsapp"></i></a><?php endif; ?>
-          </div>
+
           <div class="copyright">
             &copy; <?= date('Y') ?> <strong><span><?= htmlspecialchars($current_lang == 'en' ? ($settings['company_name'] ?? '') : ($settings['company_name_ar'] ?? '')) ?></span></strong>. <?= $lang['footer_rights'] ?? 'All Rights Reserved.' ?>
           </div>

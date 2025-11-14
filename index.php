@@ -113,7 +113,7 @@ if ($result_news->num_rows > 0) {
 
 <body>
 
-
+<canvas id="cosmic-canvas"></canvas>
   <div id="preloader">
     <div class="preloader-logo-container">
       <svg width="40" height="40" viewBox="0 0 1000 97" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,9 +140,7 @@ if ($result_news->num_rows > 0) {
       <div class="col-lg-5 col-md-12 hero-content text-center text-lg-start order-2 order-lg-1" data-aos="fade-right">
         <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
         <div class="hero-content-disc"><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></div>
-        <div>
-          <a href="#about" class="btn-get-started scrollto"><?= $lang['get_started_btn'] ?? 'Get Started' ?></a>
-        </div>
+       
       </div>
 
     <!-- Image Column with SVG Animation -->
@@ -156,10 +154,15 @@ if ($result_news->num_rows > 0) {
             <path class="hero-logo-path" d="M516.74,326.75l-88.5,166.51c-9.3,17.47-34.54,16.89-43-1l-78-164.81a24.06,24.06,0,0,0-21.75-13.77H272.23a24.07,24.07,0,0,0-21.87,34.12L384.48,639.57c8.48,18.44,34.58,18.75,43.49.51l124.31-254.3a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.61,18.44-34.79,18.54-43.54.17l-4.85-10.2c-9-18.8-35.94-18.13-43.95,1.09h0a24.06,24.06,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.38-35.2L538,314A24.07,24.07,0,0,0,516.74,326.75ZM691.82,344v0h0Zm0-13.43h0Z"/>
         </svg>
     </div>
+    
 </div>
 
     </div>
   </div>
+ <!-- THE LIGHTFALL BEACON SCROLL INDICATOR -->
+  <a href="#about" class="scroll-down-indicator scrollto" aria-label="Scroll down">
+    <div class="indicator-body"></div>
+  </a>
 </section><!-- End Hero -->
 
   <main id="main">
@@ -339,11 +342,11 @@ if ($result_news->num_rows > 0) {
                       <h4><?= htmlspecialchars($member['name']) ?></h4>
                       <span><?= htmlspecialchars($member['position']) ?></span>
                     </div>
-                    <div class="social-links">
-                      <?php if (!empty($member['website_url'])): ?><a href="<?= htmlspecialchars($member['website_url']) ?>"><i class='bi bi-globe'></i></a><?php endif; ?>
-                      <?php if (!empty($member['facebook_url'])): ?><a href="<?= htmlspecialchars($member['facebook_url']) ?>"><i class="bi bi-facebook"></i></a><?php endif; ?>
-                      <?php if (!empty($member['instagram_url'])): ?><a href="<?= htmlspecialchars($member['instagram_url']) ?>"><i class="bi bi-instagram"></i></a><?php endif; ?>
-                      <?php if (!empty($member['linkedin_url'])): ?><a href="<?= htmlspecialchars($member['linkedin_url']) ?>"><i class="bi bi-linkedin"></i></a><?php endif; ?>
+                    <div class="neon-social-links social-links ">
+                      <?php if (!empty($member['website_url'])): ?><a href="<?= htmlspecialchars($member['website_url']) ?>"><i class='bi bi-globe ' target="_blank"></i></a><?php endif; ?>
+                      <?php if (!empty($member['facebook_url'])): ?><a href="<?= htmlspecialchars($member['facebook_url']) ?>" class="facebook" target="_blank"><i class="bi bi-facebook " ></i></a><?php endif; ?>
+                      <?php if (!empty($member['instagram_url'])): ?><a href="<?= htmlspecialchars($member['instagram_url']) ?>" class="instgram" target="_blank"><i class="bi bi-instagram instagram" target="_blank"></i></a><?php endif; ?>
+                      <?php if (!empty($member['linkedin_url'])): ?><a href="<?= htmlspecialchars($member['linkedin_url']) ?>" class="linkedin" target="_blank"><i class="bi bi-linkedin linkedin" target="_blank"></i></a><?php endif; ?>
                     </div>
                   </div>
                 </div>
