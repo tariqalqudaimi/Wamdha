@@ -25,17 +25,14 @@ $linkPrefix = ($currentPage === 'index.php') ? '' : 'index.php';
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto <?= ($currentPage === 'index.php' || $currentPage === '') ? 'active' : '' ?>" href="<?= $linkPrefix ?>#hero"><?= $lang['home_link'] ?? 'Home' ?></a></li>
-                <li class="dropdown"><a href="<?= $linkPrefix ?>#about"><span><?= $lang['about_link'] ?? 'About' ?></span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="<?= $linkPrefix ?>#features"><?= $lang['features_link'] ?? 'Features' ?></a></li>
-                        <li><a href="<?= $linkPrefix ?>#team"><?= $lang['team_link'] ?? 'Team' ?></a></li>
-                    </ul>
-                </li>
+                <li ><a class="nav-link scrollto" href="<?= $linkPrefix ?>#about"><?= $lang['about_link'] ?? 'About' ?></a></li>
+                
                 <li><a class="nav-link scrollto" href="<?= $linkPrefix ?>#services"><?= $lang['services_link'] ?? 'Services' ?></a></li>
+                <li><a class="nav-link scrollto" href="<?= $linkPrefix ?>#features"><?= $lang['features_link'] ?? 'Features' ?></a></li>
                 <li><a class="nav-link <?= ($currentPage === 'project.php') ? 'active' : '' ?>" href="project.php"><?= $lang['project_link'] ?? 'Projects' ?></a></li>
                 <li><a class="nav-link scrollto" href="<?= $linkPrefix ?>#contact"><?= $lang['contact_link'] ?? 'Contact' ?></a></li>
                 <li class="dropdown language-dropdown-desktop">
-                    <a ><span><i class="bi bi-globe"></i> <?= $lang['lang'] ?? 'lang' ?></span> <i class="bi bi-chevron-down"></i></a>
+                    <a ><span><i class="bi bi-globe icon-lun"></i><!--<?= $lang['lang'] ?? 'lang' ?>--></span> <i class="bi bi-chevron-down icon-lun"></i></a>
                     <ul>
                         <li><a href="?lang=en">English</a></li>
                         <li><a href="?lang=ar">العربية</a></li>

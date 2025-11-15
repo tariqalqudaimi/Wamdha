@@ -1,3 +1,7 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+$linkPrefix = ($currentPage === 'index.php') ? '' : 'index.php';
+?>
 <!-- ======= Cosmic Data Stream Footer ======= -->
 <footer class="cosmic-footer">
   <!-- The Canvas for the particle animation -->
@@ -35,10 +39,10 @@
         <div class="col-lg-4 col-md-6 footer-col">
           <h5 class="footer-title "><?= $lang['footer_links'] ?? 'Quick Links' ?></h5>
           <ul class="list-unstyled footer-links-list">
-            <li><a href="#hero"><?= $lang['home_link'] ?></a></li>
-            <li><a href="#about"><?= $lang['about_link'] ?></a></li>
-            <li><a href="#services"><?= $lang['services_link'] ?></a></li>
-            <li><a href="#team"><?= $lang['team_link'] ?></a></li>
+            <li><a href="<?= $linkPrefix ?>#hero"><?= $lang['home_link'] ?></a></li>
+            <li><a href="<?= $linkPrefix ?>#about"><?= $lang['about_link'] ?></a></li>
+            <li><a href="<?= $linkPrefix ?>#services"><?= $lang['services_link'] ?></a></li>
+            <li><a href="<?= $linkPrefix ?>#team"><?= $lang['team_link'] ?></a></li>
           </ul>
         </div>
 
