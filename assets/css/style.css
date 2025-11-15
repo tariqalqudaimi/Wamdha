@@ -27,27 +27,30 @@
 @font-face {
   font-family: 'English';
   font-style: normal;
-  font-weight: 400; /* Regular */
+  font-weight: 400;
   src: url('../fonts/English/Inter-Regular.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'English';
   font-style: normal;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   src: url('../fonts/English/Inter-Bold.ttf') format('truetype');
 }
+
 @font-face {
   font-family: 'English';
   font-style: normal;
-  font-weight: 900; /* Black */
+  font-weight: 900;
   src: url('../fonts/English/Inter-Black.ttf') format('truetype');
 }
+
 @font-face {
-    font-family: 'Arabic';
-    src: url('../fonts/Arabic/TheYearofHandicrafts-Regular.woff2') format('woff2'),
-         url('../fonts/Arabic/TheYearofHandicrafts-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Arabic';
+  src: url('../fonts/Arabic/TheYearofHandicrafts-Regular.woff2') format('woff2'),
+    url('../fonts/Arabic/TheYearofHandicrafts-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
@@ -57,7 +60,6 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-  /* Improves perceived performance */
 }
 
 
@@ -78,7 +80,6 @@
 body {
   font-family: 'English', sans-serif;
   color: var(--text-light);
-  /* MODIFIED: Changed background to the footer's base color for the new global background */
   background-color: #0d0915;
 }
 
@@ -282,7 +283,7 @@ html[dir="rtl"] h6 {
   font-size: 28px;
   margin: 0;
   font-weight: 700;
-  width: 60px; 
+  width: 60px;
 }
 
 #header .logo a {
@@ -366,12 +367,12 @@ html[dir="rtl"] h6 {
 
 
 .mobile-nav-active {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .navbar-mobile {
   position: absolute;
-  top: 80px; 
+  top: 80px;
   left: 0;
   right: 0;
   z-index: 998;
@@ -381,19 +382,19 @@ html[dir="rtl"] h6 {
   transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px); 
+  transform: translateY(-20px);
 }
 
 body.mobile-nav-active .navbar-mobile {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); 
+  transform: translateY(0);
 }
 
 .navbar-mobile-content ul {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -405,7 +406,7 @@ body.mobile-nav-active .navbar-mobile {
 }
 
 .navbar-mobile-content a {
-  display: block; 
+  display: block;
   color: var(--text-muted);
   padding: 12px 20px;
   font-size: 16px;
@@ -422,11 +423,25 @@ body.mobile-nav-active .navbar-mobile-content a {
   transform: translateY(0);
 }
 
-body.mobile-nav-active .navbar-mobile-content li:nth-child(1) a { transition-delay: 0.1s; }
-body.mobile-nav-active .navbar-mobile-content li:nth-child(2) a { transition-delay: 0.2s; }
-body.mobile-nav-active .navbar-mobile-content li:nth-child(3) a { transition-delay: 0.3s; }
-body.mobile-nav-active .navbar-mobile-content li:nth-child(4) a { transition-delay: 0.4s; }
-body.mobile-nav-active .navbar-mobile-content li:nth-child(5) a { transition-delay: 0.5s; }
+body.mobile-nav-active .navbar-mobile-content li:nth-child(1) a {
+  transition-delay: 0.1s;
+}
+
+body.mobile-nav-active .navbar-mobile-content li:nth-child(2) a {
+  transition-delay: 0.2s;
+}
+
+body.mobile-nav-active .navbar-mobile-content li:nth-child(3) a {
+  transition-delay: 0.3s;
+}
+
+body.mobile-nav-active .navbar-mobile-content li:nth-child(4) a {
+  transition-delay: 0.4s;
+}
+
+body.mobile-nav-active .navbar-mobile-content li:nth-child(5) a {
+  transition-delay: 0.5s;
+}
 
 
 
@@ -440,20 +455,20 @@ body.mobile-nav-active .navbar-mobile-content li:nth-child(5) a { transition-del
 }
 
 .language-toggle-mobile {
-  display: none; 
+  display: none;
   position: relative;
   font-size: 24px;
   color: var(--text-light);
   cursor: pointer;
-  z-index: 999; 
+  z-index: 999;
 }
 
 .language-dropdown-mobile {
   display: none;
   position: absolute;
   top: 100%;
-  right: 0;      
-  left: auto;    
+  right: 0;
+  left: auto;
   background: var(--secondary-dark);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
@@ -464,8 +479,8 @@ body.mobile-nav-active .navbar-mobile-content li:nth-child(5) a { transition-del
 }
 
 html[dir="rtl"] .language-dropdown-mobile {
-  right: auto;   
-  left: 0;       
+  right: auto;
+  left: 0;
 }
 
 .language-toggle-mobile.active .language-dropdown-mobile {
@@ -491,20 +506,21 @@ html[dir="rtl"] .language-dropdown-mobile {
     top: 0 !important;
     border-radius: 0;
     width: 100%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   }
 
-  .navbar > ul {
+  .navbar>ul {
     display: none;
   }
+
   .language-toggle-mobile {
     display: block;
   }
-  
+
   #mobile-menu-toggle-logo img {
     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }
-  
+
   body.mobile-nav-active #mobile-menu-toggle-logo img {
     transform: rotate(180deg);
   }
@@ -514,7 +530,6 @@ html[dir="rtl"] .language-dropdown-mobile {
 # Final & Corrected Logo Animation - V10
 --------------------------------------------------------------*/
 
-/* --- Basic Setup --- */
 .logo-container {
   padding: 10px;
   perspective: 300px;
@@ -543,18 +558,16 @@ html[dir="rtl"] .language-dropdown-mobile {
 
 .header-logo-svg .menu-line {
   stroke: var(--accent-purple);
-  stroke-width: 35; /* زيادة سماكة الخط قليلاً لشكل أفضل */
+  stroke-width: 35;
   stroke-linecap: round;
-  transform-origin: center center; /* الأهم: ضمان الدوران حول المنتصف */
+  transform-origin: center center;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
 }
 
-/* --- Class to Trigger Flip Animation --- */
 .logo-container.is-flipped .flipper {
   transform: rotateY(180deg);
 }
 
-/* --- Desktop Hover Effect --- */
 @media (min-width: 992px) {
   .logo-container:hover {
     transform: scale(1.1);
@@ -562,29 +575,26 @@ html[dir="rtl"] .language-dropdown-mobile {
   }
 }
 
-/* --- Mobile 'X' Transformation (THE CORRECTED VERSION) --- */
 @media (max-width: 991px) {
 
-  /* عندما تكون القائمة مفتوحة */
   body.mobile-nav-active .header-logo-svg .flipper {
-     transform: rotateY(180deg); /* تأكد من أنه يظهر جانب القائمة */
+    transform: rotateY(180deg);
   }
 
-  /* 1. إخفاء الخط الأوسط */
   body.mobile-nav-active .header-logo-svg .line-2 {
     opacity: 0;
   }
 
- 
+
 }
+
 /*--------------------------------------------------------------
 # Hero Section - V2 Polished Styling
 --------------------------------------------------------------*/
 #hero {
   padding-top: 80px;
-  /* Ensures the content is vertically centered within the screen height */
-  min-height: 100vh; 
-  
+  min-height: 100vh;
+
   display: flex;
   align-items: center;
 }
@@ -594,39 +604,38 @@ html[dir="rtl"] .language-dropdown-mobile {
   padding: 0 15px;
 }
 
-/* --- Main Title Styling --- */
 .hero-content h1 {
   font-size: 64px;
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 20px;
 
-  /* Cool Gradient Text Effect */
   background: linear-gradient(45deg, #ffffff 60%, var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
- 
+
 }
+
 @media (min-width: 991px) {
-  html[dir="rtl"] .hero-content h1  {
-      padding-right: 80px;/* Adjusted font size for mobile */
+  html[dir="rtl"] .hero-content h1 {
+    padding-right: 80px;
   }
+
   html[dir="rtl"] .hero-content-disc {
-      padding-right: 80px;/* Adjusted font size for mobile */
+    padding-right: 80px;
   }
 
 }
-/* --- Subtitle Styling --- */
+
 .hero-content-disc {
   font-size: 18px;
   color: var(--text-light);
-  line-height: 1.7; /* Improved line spacing */
+  line-height: 1.7;
   margin-bottom: 40px;
-  max-width: 700px; /* Prevents lines from being too long */
+  max-width: 700px;
 }
 
-/* --- Button Styling --- */
 .hero-content .btn-get-started {
   padding: 14px 40px;
   font-size: 16px;
@@ -638,7 +647,7 @@ html[dir="rtl"] .language-dropdown-mobile {
 
 .hero-content .btn-get-started:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(138, 79, 255, 0.4); /* Purple glow on hover */
+  box-shadow: 0 8px 25px rgba(138, 79, 255, 0.4);
 }
 
 /*--------------------------------------------------------------
@@ -656,70 +665,63 @@ html[dir="rtl"] .language-dropdown-mobile {
   padding: 0;
 }
 
-/* --- The Logo Path Setup --- */
 .hero-logo-path {
   fill: transparent;
   stroke: var(--accent-purple);
   stroke-width: 5;
   stroke-dasharray: 2500;
   stroke-dashoffset: 2500;
-  
-  /* The animation will now be controlled by a class from JS */
-  animation: none; 
+  animation: none;
 }
 
-/* Class to trigger the repeating animation */
 .hero-logo-container.animate .hero-logo-path {
-  /* Animation will run for 6s and repeat forever */
   animation: draw-and-fade 6s ease-in-out infinite;
 }
 
 
-/* --- The Light Projectile --- */
 #light-projectile {
-  position: fixed; /* Fixed, so it can travel across the screen */
+  position: fixed;
   width: 25px;
   height: 25px;
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(138, 79, 255, 0.5) 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(138, 79, 255, 0.5) 70%);
   border-radius: 50%;
   filter: blur(8px);
-  z-index: 9998; /* Above everything except the preloader */
-  opacity: 0; /* Hidden by default */
-  pointer-events: none; /* Can't be clicked */
-  transition: top 1.2s cubic-bezier(0.6, -0.28, 0.73, 0.04), 
-              left 1.2s cubic-bezier(0.3, 0.5, 0.8, 1), 
-              opacity 0.5s;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: top 1.2s cubic-bezier(0.6, -0.28, 0.73, 0.04),
+    left 1.2s cubic-bezier(0.3, 0.5, 0.8, 1),
+    opacity 0.5s;
 }
 
-
-/* --- Keyframes for the repeating drawing animation --- */
 @keyframes draw-and-fade {
-  /* Phase 1: Drawing (0% to 50%) */
+
   0% {
-    stroke-dashoffset: 2500; /* Start hidden */
+    stroke-dashoffset: 2500;
     fill: transparent;
   }
+
   40% {
-    stroke-dashoffset: 0; /* Finish drawing */
+    stroke-dashoffset: 0;
     fill: transparent;
   }
-  
-  /* Phase 2: Filling (50% to 80%) */
+
   50% {
     stroke-dashoffset: 0;
-    fill: var(--accent-purple); /* Fill with color */
-  }
-  80% {
-    stroke-dashoffset: 0;
-    fill: var(--accent-purple); /* Hold the filled state */
+    fill: var(--accent-purple);
   }
 
-  /* Phase 3: Fading (80% to 100%) */
-  90% {
-    fill: transparent; /* Start fading fill */
+  80% {
+    stroke-dashoffset: 0;
+    fill: var(--accent-purple);
   }
+
+  90% {
+    fill: transparent;
+  }
+
   100% {
-    stroke-dashoffset: 2500; /* Hide the stroke again for the next loop */
+    stroke-dashoffset: 2500;
     fill: transparent;
   }
 }
@@ -729,13 +731,13 @@ html[dir="rtl"] .language-dropdown-mobile {
 # RTL (Arabic) Specific Adjustments
 --------------------------------------------------------------*/
 html[dir="rtl"] .hero-content-disc {
-  line-height: 1.8; /* Slightly more line height for better Arabic script readability */
+  line-height: 1.8;
 }
 
-/* Fix for AOS animation direction in RTL */
 html[dir="rtl"] [data-aos="fade-left"] {
   transform: translate3d(100px, 0, 0);
 }
+
 html[dir="rtl"] [data-aos="fade-right"] {
   transform: translate3d(-100px, 0, 0);
 }
@@ -748,31 +750,33 @@ html[dir="rtl"] [data-aos="fade-right"] {
   #hero {
     text-align: center;
   }
-  
- 
+
+
 
   .animated-hero-logo {
     max-width: 60%;
     min-width: 280px;
   }
-.hero-content{
-  min-width: 20vh;
-}
+
+  .hero-content {
+    min-width: 20vh;
+  }
+
   .hero-content h1 {
-    font-size: 36px; /* Adjusted font size for mobile */
+    font-size: 36px;
   }
 
   .hero-content-disc {
     font-size: 16px;
-    max-width: 100%; /* Allow subtitle to take full width on mobile */
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
- 
-  /* Reset desktop text alignment on mobile */
+
   .text-lg-start {
     text-align: center !important;
   }
+
   html[dir="rtl"] .text-lg-start {
     text-align: center !important;
   }
@@ -801,8 +805,9 @@ html[dir="rtl"] [data-aos="fade-right"] {
   html[dir="rtl"] .btn-get-started {
     margin-right: 80px;
   }
-  
+
 }
+
 .hero-tag {
   background-color: var(--accent-purple);
   color: var(--text-light);
@@ -856,7 +861,7 @@ html[dir="rtl"] [data-aos="fade-right"] {
 }
 
 @media (max-width: 991px) {
-  
+
   #hero {
     padding-top: 68px;
   }
@@ -873,43 +878,41 @@ html[dir="rtl"] [data-aos="fade-right"] {
     display: none;
   }
 }
+
 /*--------------------------------------------------------------
 # Hero Section - V3 Final Text Alignment
 --------------------------------------------------------------*/
 @media (min-width: 992px) {
-  /* للغة الإنجليزية (LTR) - إضافة مساحة على اليسار */
+
   html[dir="ltr"] .hero-content {
-    padding-left: 40px; /* يضيف مساحة واضحة من الحافة اليسرى */
-    
+    padding-left: 40px;
+
   }
 
-
-  
-  /* للغة العربية (RTL) - إضافة مساحة على اليمين وضمان المحاذاة */
   html[dir="rtl"] .hero-content {
-    padding-right: 40px; /* يضيف مساحة واضحة من الحافة اليمنى */
-    text-align: right !important; /* يجبر كل السطور على البدء من نفس النقطة يميناً */
+    padding-right: 40px;
+    text-align: right !important;
     margin-right: 2px;
   }
 
-  /* التأكد من أن العنوان الفرعي في العربية يبدأ من اليمين أيضاً */
   html[dir="rtl"] .hero-content h2 {
-      margin-left: auto;
-    
+    margin-left: auto;
+
   }
-   
-}
-@media (max-width: 991px) {
-  
-.hero-animated-svg {
- 
-  margin-left: 40px;
+
 }
 
-html[dir="rtl"] .hero-animated-svg {
- 
-  margin-right: -40px;
-}
+@media (max-width: 991px) {
+
+  .hero-animated-svg {
+
+    margin-left: 40px;
+  }
+
+  html[dir="rtl"] .hero-animated-svg {
+
+    margin-right: -40px;
+  }
 }
 
 /* ===================================================================
@@ -927,10 +930,9 @@ html[dir="rtl"] .hero-animated-svg {
 .indicator-body {
   position: relative;
   width: 40px;
-  height: 60px; /* Taller area for the animation */
+  height: 60px;
 }
 
-/* This ::before pseudo-element is the falling light trail */
 .indicator-body::before {
   content: '';
   position: absolute;
@@ -941,11 +943,10 @@ html[dir="rtl"] .hero-animated-svg {
   height: 100%;
   background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
   opacity: 0;
-  transform-origin: top; /* Crucial for the drawing effect */
+  transform-origin: top;
   animation: draw-line 3.5s ease-in-out infinite;
 }
 
-/* This ::after pseudo-element is the chevron that materializes at the end */
 .indicator-body::after {
   content: '';
   position: absolute;
@@ -953,56 +954,75 @@ html[dir="rtl"] .hero-animated-svg {
   left: 50%;
   width: 25px;
   height: 25px;
-  border: 2px solid rgba(255, 255, 255, 0); /* Starts fully transparent */
+  border: 2px solid rgba(255, 255, 255, 0);
   border-top: 0;
   border-left: 0;
   transform: translateX(-50%) rotate(45deg);
   animation: show-chevron 3.5s ease-in-out infinite;
 }
 
-/* Keyframes for the light trail drawing itself downwards */
 @keyframes draw-line {
-  0% { transform: scaleY(0); opacity: 0; }
-  50% { transform: scaleY(1); opacity: 1; }
-  85% { opacity: 0; }
-  100% { transform: scaleY(1); opacity: 0; }
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
 }
 
-/* Keyframes for the chevron appearing and glowing */
 @keyframes show-chevron {
-  0%, 40% {
+
+  0%,
+  40% {
     opacity: 0;
     border-color: rgba(255, 255, 255, 0);
     box-shadow: none;
   }
-  50% { opacity: 1; }
+
+  50% {
+    opacity: 1;
+  }
+
   60% {
     border-color: rgba(255, 255, 255, 1);
     box-shadow: 0 0 15px var(--accent-purple), 0 0 25px var(--accent-purple);
   }
-  85%, 100% {
+
+  85%,
+  100% {
     opacity: 0;
     border-color: rgba(255, 255, 255, 0);
     box-shadow: none;
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .indicator-body {
     height: 50px;
   }
 }
+
 /*--------------------------------------------------------------
 # 6. Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 80px 0;
+  padding: 95px 0;
   overflow: hidden;
 }
 
 .section-bg {
-  /* MODIFIED: Sections are now transparent to show the global background */
   background-color: transparent;
 }
 
@@ -1038,14 +1058,13 @@ section {
   margin: 0 auto;
 }
 
-/* ADDED: Style for the new global background canvas */
 #cosmic-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place it behind all content */
+  z-index: -1;
 }
 
 
@@ -1263,348 +1282,498 @@ html[dir="rtl"] .floating-logo-animation {
 }
 
 
-
-
 /*--------------------------------------------------------------
 # 7 About Us Section (Company Infographic - Refined Edition)
 --------------------------------------------------------------*/
 
 
 .company-infographic-container {
-    padding: 80px 20px;
-    position: relative;
-    /* MODIFIED: Removed solid background to show global animated background */
-    background: transparent;
-    overflow: hidden;
+  padding: 80px 20px;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
 }
 
-/* MODIFIED: Removed rotating background effect */
 .company-infographic-container::before {
-    display: none;
+  display: none;
 }
-@keyframes rotateBackground { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+@keyframes rotateBackground {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .infographic-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-    /* --- جديد: إضافة توهج خفيف ومتحرك --- */
-    animation: subtle-glow 5s ease-in-out infinite;
-      position: relative; /* ضروري لتحديد موضع التوهج */
-    z-index: 2;
-    position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  animation: subtle-glow 5s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+  position: relative;
 }
 
 @keyframes subtle-glow {
-    0%, 100% { box-shadow: 0 0 60px -20px rgba(138, 79, 255, 0.3); }
-    50% { box-shadow: 0 0 75px -15px rgba(138, 79, 255, 0.5); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 60px -20px rgba(138, 79, 255, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 75px -15px rgba(138, 79, 255, 0.5);
+  }
 }
 
-/* --- جديد: أنيميشن الدخول المتتابع --- */
 @keyframes node-enter-animation {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .infographic-grid::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* 
-      السر هنا: تدرج لوني دائري يتبع متغيرات CSS (--mouse-x, --mouse-y) 
-      والتي سيتم تحديثها بواسطة JavaScript.
-    */
-    background: radial-gradient(
-        400px circle at var(--mouse-x) var(--mouse-y), 
-        rgba(138, 79, 255, 0.2), /* لون التوهج */
-        transparent 80%
-    );
-    z-index: 1; /* يوضع خلف العقد */
-    opacity: 0; /* يبدأ مخفياً */
-    transition: opacity 0.3s ease;
-    pointer-events: none; /* يسمح بالنقر على العناصر التي تحته */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y),
+      rgba(138, 79, 255, 0.2),
+      transparent 80%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
-/* إظهار التوهج عند تمرير الفأرة فوق الشبكة */
+
 .infographic-grid:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .infographic-node {
-    position: relative;
-    /* --- تعديل: استخدام cubic-bezier لتحسين نعومة الحركة --- */
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-    opacity: 0; /* يبدأ مخفياً ليظهر مع الأنيميشن */
-    transform: translateY(30px);
-      position: relative; /* ضروري ليعمل z-index بشكل صحيح */
-    z-index: 2;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  z-index: 2;
 }
 
-/* تشغيل الأنيميشن عند إضافة كلاس 'visible' بواسطة JavaScript */
 .company-infographic-container.visible .infographic-node {
-    animation: node-enter-animation 0.6s ease forwards;
-    animation-delay: var(--animation-delay, 0s);
+  animation: node-enter-animation 0.6s ease forwards;
+  animation-delay: var(--animation-delay, 0s);
 }
-/* --- نهاية أنيميشن الدخول --- */
-
-/* ... (بقية الأنماط تبقى كما في النسخة المحسنة الأولى) ... */
 
 .node-main-plate {
-    position: relative;
-    padding: 25px;
-    background: var(--plate-bg);
-    border: 1px solid var(--arrow-color);
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-    z-index: 10;
-    color: var(--text-light);
-    height: 100%; 
-    transition: background 0.3s ease;
+  position: relative;
+  padding: 25px;
+  background: var(--plate-bg);
+  border: 1px solid var(--arrow-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  color: var(--text-light);
+  height: 100%;
+  transition: background 0.3s ease;
 }
 
-/* --- تعديل: تحسين تأثيرات التمرير --- */
 .infographic-node:hover {
-    transform: translateY(-8px) scale(1.01); /* تقليل الحركة لجعلها أرقى */
-    box-shadow: 0 12px 35px rgba(138, 79, 255, 0.5);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 12px 35px rgba(138, 79, 255, 0.5);
 }
 
-.infographic-node:hover .node-main-plate { background: #2a204a; }
-.infographic-node:hover .node-number-label { color: #fff; }
-.infographic-node:hover .node-arrow-background { transform: translateX(0); }
+.infographic-node:hover .node-main-plate {
+  background: #2a204a;
+}
 
-/* ... (بقية أنماط النص وزر عرض المزيد تبقى كما هي) ... */
+.infographic-node:hover .node-number-label {
+  color: #fff;
+}
+
+.infographic-node:hover .node-arrow-background {
+  transform: translateX(0);
+}
+
 .node-brief-description {
-    font-size: 15px; line-height: 1.7; color: var(--text-muted);
-    overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; max-height: calc(1.7 * 15px * 3);
-    transition: max-height 0.5s ease-in-out;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  max-height: calc(1.7 * 15px * 3);
+  transition: max-height 0.5s ease-in-out;
 }
+
 .node-brief-description.expanded {
-    -webkit-line-clamp: unset; max-height: 300px; overflow-y: auto;
+  -webkit-line-clamp: unset;
+  max-height: 300px;
+  overflow-y: auto;
 }
-.node-brief-description.expanded::-webkit-scrollbar { width: 8px; }
-.node-brief-description.expanded::-webkit-scrollbar-track { background: var(--primary-dark); }
-.node-brief-description.expanded::-webkit-scrollbar-thumb { background-color: var(--accent-purple); border-radius: 10px; border: 2px solid var(--primary-dark); }
+
+.node-brief-description.expanded::-webkit-scrollbar {
+  width: 8px;
+}
+
+.node-brief-description.expanded::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+.node-brief-description.expanded::-webkit-scrollbar-thumb {
+  background-color: var(--accent-purple);
+  border-radius: 10px;
+  border: 2px solid var(--primary-dark);
+}
 
 .read-more-btn {
-    background: none; border: none; color: var(--accent-purple);
-    font-weight: 600; cursor: pointer; padding: 10px 0 0;
-    font-size: 14px; transition: color 0.3s ease;
+  background: none;
+  border: none;
+  color: var(--accent-purple);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 0 0;
+  font-size: 14px;
+  transition: color 0.3s ease;
 }
-.read-more-btn:hover { color: var(--accent-purple-darker); }
-.show-less-btn { display: none; }
+
+.read-more-btn:hover {
+  color: var(--accent-purple-darker);
+}
+
+.show-less-btn {
+  display: none;
+}
+
 /*--------------------------------------------------------------
 # 7.5. About Us Section (Company Infographic - Final Touches)
 --------------------------------------------------------------*/
 
 @keyframes float-up {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh); /* تتحرك لأعلى الشاشة بالكامل */
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
 
 .background-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1; /* خلف كل شيء */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .background-particles span {
-    position: absolute;
-    bottom: -20px; /* تبدأ من الأسفل */
-    background-color: var(--accent-purple);
-    border-radius: 50%;
-    opacity: 0.2; /* تبدأ شفافة قليلاً */
-    animation: float-up 10s linear infinite;
+  position: absolute;
+  bottom: -20px;
+  background-color: var(--accent-purple);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float-up 10s linear infinite;
 }
 
-/* توزيع عشوائي للأحجام والمواقع والتأخيرات */
-.background-particles span:nth-child(1) { width: 5px; height: 5px; left: 10%; animation-duration: 15s; animation-delay: 1s; }
-.background-particles span:nth-child(2) { width: 8px; height: 8px; left: 20%; animation-duration: 12s; animation-delay: 3s; }
-.background-particles span:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-duration: 18s; animation-delay: 0s; }
-.background-particles span:nth-child(4) { width: 6px; height: 6px; left: 40%; animation-duration: 10s; animation-delay: 5s; }
-.background-particles span:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-duration: 14s; animation-delay: 2s; }
-.background-particles span:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-duration: 16s; animation-delay: 6s; }
-.background-particles span:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-duration: 11s; animation-delay: 8s; }
-.background-particles span:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-duration: 19s; animation-delay: 4s; }
-.background-particles span:nth-child(9) { width: 8px; height: 8px; left: 90%; animation-duration: 13s; animation-delay: 1s; }
-.background-particles span:nth-child(10) { width: 4px; height: 4px; left: 95%; animation-duration: 17s; animation-delay: 7s; }
-.background-particles span:nth-child(11) { width: 3px; height: 3px; left: 5%; animation-duration: 14s; animation-delay: 9s; }
-.background-particles span:nth-child(12) { width: 6px; height: 6px; left: 25%; animation-duration: 16s; animation-delay: 2s; }
-.background-particles span:nth-child(13) { width: 5px; height: 5px; left: 45%; animation-duration: 11s; animation-delay: 5s; }
-.background-particles span:nth-child(14) { width: 7px; height: 7px; left: 65%; animation-duration: 18s; animation-delay: 1s; }
-.background-particles span:nth-child(15) { width: 4px; height: 4px; left: 85%; animation-duration: 12s; animation-delay: 6s; }
-/* --- نهاية أنيميشن الجزيئات --- */
+.background-particles span:nth-child(1) {
+  width: 5px;
+  height: 5px;
+  left: 10%;
+  animation-duration: 15s;
+  animation-delay: 1s;
+}
 
+.background-particles span:nth-child(2) {
+  width: 8px;
+  height: 8px;
+  left: 20%;
+  animation-duration: 12s;
+  animation-delay: 3s;
+}
 
-/* --- جديد: التوهج التفاعلي بين العناصر --- */
+.background-particles span:nth-child(3) {
+  width: 3px;
+  height: 3px;
+  left: 30%;
+  animation-duration: 18s;
+  animation-delay: 0s;
+}
+
+.background-particles span:nth-child(4) {
+  width: 6px;
+  height: 6px;
+  left: 40%;
+  animation-duration: 10s;
+  animation-delay: 5s;
+}
+
+.background-particles span:nth-child(5) {
+  width: 4px;
+  height: 4px;
+  left: 50%;
+  animation-duration: 14s;
+  animation-delay: 2s;
+}
+
+.background-particles span:nth-child(6) {
+  width: 7px;
+  height: 7px;
+  left: 60%;
+  animation-duration: 16s;
+  animation-delay: 6s;
+}
+
+.background-particles span:nth-child(7) {
+  width: 3px;
+  height: 3px;
+  left: 70%;
+  animation-duration: 11s;
+  animation-delay: 8s;
+}
+
+.background-particles span:nth-child(8) {
+  width: 5px;
+  height: 5px;
+  left: 80%;
+  animation-duration: 19s;
+  animation-delay: 4s;
+}
+
+.background-particles span:nth-child(9) {
+  width: 8px;
+  height: 8px;
+  left: 90%;
+  animation-duration: 13s;
+  animation-delay: 1s;
+}
+
+.background-particles span:nth-child(10) {
+  width: 4px;
+  height: 4px;
+  left: 95%;
+  animation-duration: 17s;
+  animation-delay: 7s;
+}
+
+.background-particles span:nth-child(11) {
+  width: 3px;
+  height: 3px;
+  left: 5%;
+  animation-duration: 14s;
+  animation-delay: 9s;
+}
+
+.background-particles span:nth-child(12) {
+  width: 6px;
+  height: 6px;
+  left: 25%;
+  animation-duration: 16s;
+  animation-delay: 2s;
+}
+
+.background-particles span:nth-child(13) {
+  width: 5px;
+  height: 5px;
+  left: 45%;
+  animation-duration: 11s;
+  animation-delay: 5s;
+}
+
+.background-particles span:nth-child(14) {
+  width: 7px;
+  height: 7px;
+  left: 65%;
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+
+.background-particles span:nth-child(15) {
+  width: 4px;
+  height: 4px;
+  left: 85%;
+  animation-duration: 12s;
+  animation-delay: 6s;
+}
+
 .node-glow-effect {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%) scale(0.8);
-    background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 70%);
-    opacity: 0;
-    z-index: 2; /* يقع خلف اللوحة الرئيسية وأمام السهم */
-    filter: blur(25px); /* تمويه الحواف لجعلها ناعمة */
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 70%);
+  opacity: 0;
+  z-index: 2;
+  filter: blur(25px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .infographic-node:hover .node-glow-effect {
-    opacity: 0.3; /* إظهار التوهج عند التمرير */
-    transform: translate(-50%, -50%) scale(1.3); /* تكبير التوهج ليملأ الفراغات */
+  opacity: 0.3;
+  transform: translate(-50%, -50%) scale(1.3);
 }
-/* --- نهاية التوهج التفاعلي --- */
 
-/* تأكد من أن z-index للعناصر الأخرى صحيح */
-.node-arrow-background { z-index: 3; }
-.node-main-plate { z-index: 10; }
+.node-arrow-background {
+  z-index: 3;
+}
 
-/* --- جديد: التوافق مع شاشات الهاتف (Responsive Design) --- */
+.node-main-plate {
+  z-index: 10;
+}
+
 @media (max-width: 768px) {
-    .infographic-grid {
-        /* تحويل الشبكة إلى عمود واحد */
-        grid-template-columns: 1fr;
-        gap: 20px; /* تقليل الفجوة */
-    }
+  .infographic-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    /* إلغاء تحديد المواقع المخصصة للشبكة */
-    .infographic-node.pos-1,
-    .infographic-node.pos-2,
-    .infographic-node.pos-3,
-    .infographic-node.pos-4 {
-        grid-column: auto;
-        grid-row: auto;
-    }
+  .infographic-node.pos-1,
+  .infographic-node.pos-2,
+  .infographic-node.pos-3,
+  .infographic-node.pos-4 {
+    grid-column: auto;
+    grid-row: auto;
+  }
 
-    .node-arrow-background {
-        /* إخفاء الأسهم الجانبية لأنها لا تناسب التصميم العمودي */
-        display: none;
-    }
+  .node-arrow-background {
+    display: none;
+  }
 
-    /* توحيد محاذاة النص إلى اليسار لسهولة القراءة */
-    .infographic-node .node-number-label,
-    .infographic-node .node-title,
-    .infographic-node .node-brief-description {
-        text-align: left;
-    }
+  .infographic-node .node-number-label,
+  .infographic-node .node-title,
+  .infographic-node .node-brief-description {
+    text-align: left;
+  }
 
-    /* التأكد من أن المحاذاة المخصصة لليمين يتم إلغاؤها */
-    .infographic-node.pos-2 .node-number-label,
-    .infographic-node.pos-3 .node-number-label,
-    .infographic-node.pos-2 .node-title,
-    .infographic-node.pos-3 .node-title {
-        text-align: left;
-    }
+  .infographic-node.pos-2 .node-number-label,
+  .infographic-node.pos-3 .node-number-label,
+  .infographic-node.pos-2 .node-title,
+  .infographic-node.pos-3 .node-title {
+    text-align: left;
+  }
 
-    /* إلغاء تأثير الضوء التفاعلي على أجهزة اللمس لأنه يعتمد على الفأرة */
-    .infographic-grid::before {
-        display: none;
-    }
-     .central-hub-animation {
-        display: none;
-    }
+  .infographic-grid::before {
+    display: none;
+  }
+
+  .central-hub-animation {
+    display: none;
+  }
 }
 
-
-/* --- جديد: الأنيميشن المركزي الشبيه بالأسهم --- */
 @keyframes pulse-and-radiate {
-    0% {
-        transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0.7;
-    }
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.7;
+  }
 }
 
 @keyframes radiate-lines {
-    0% {
-        transform: scale(0);
-        opacity: 1;
-    }
-    80% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 .central-hub-animation {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px; /* حجم منطقة الأنيميشن */
-    height: 80px;
-    transform: translate(-50%, -50%);
-    z-index: 5; /* يقع فوق الخلفية وتحت العقد */
-    pointer-events: none; /* لا يعترض نقرات الفأرة */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  pointer-events: none;
 }
 
 .hub-sparkle {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-/* إنشاء شكل النجمة/الأسهم باستخدام العناصر الزائفة */
 .hub-sparkle::before,
 .hub-sparkle::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
-    animation: pulse-and-radiate 3s ease-in-out infinite;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(to bottom, transparent, var(--accent-purple), transparent);
+  animation: pulse-and-radiate 3s ease-in-out infinite;
 }
 
-/* الخط العمودي */
 .hub-sparkle::before {
-    width: 2px;
-    height: 100%;
-    transform: translate(-50%, -50%);
+  width: 2px;
+  height: 100%;
+  transform: translate(-50%, -50%);
 }
 
-/* الخط الأفقي */
 .hub-sparkle::after {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--accent-purple), transparent);
-    transform: translate(-50%, -50%);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent-purple), transparent);
+  transform: translate(-50%, -50%);
 }
 
-html[dir="rtl"]   .infographic-node .node-title,
-    .node-brief-description .node-content-body
-     .node-number-label 
-    
-    {
-      
-        text-align: right;
-    }
+html[dir="rtl"] .infographic-node .node-title,
+.node-brief-description .node-content-body .node-number-label {
+
+  text-align: right;
+}
+
+/*==============================================================
+# 7.6 About Us Section - RTL Text Alignment Fix
+==============================================================*/
+
+html[dir="rtl"] #about .section-title div {
+  text-align: right;
+}
+
+
+html[dir="rtl"] #about .node-main-plate .node-brief-description{
+  text-align: right;
+}
 
 /*--------------------------------------------------------------
 # Services Section - Luminous Touch v3 (Constant Stardust)
@@ -1612,131 +1781,177 @@ html[dir="rtl"]   .infographic-node .node-title,
 .services-v-luminous {
   padding: 80px 0;
   position: relative;
-  /* background-color: var(--primary-dark); */
   background-color: transparent;
   overflow: hidden;
 }
 
-/* --- Animated Grid Background --- */
 .animated-grid {
-  position: absolute; inset: 0;
-  background-image: 
+  position: absolute;
+  inset: 0;
+  background-image:
     linear-gradient(rgba(138, 79, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to right, rgba(138, 79, 255, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: pan-grid-slow 120s linear infinite;
   z-index: 1;
 }
+
 @keyframes pan-grid-slow {
-  0% { background-position: 0 0; }
-  100% { background-position: 1000px 1000px; }
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 1000px 1000px;
+  }
 }
 
-.services-v-luminous .container { position: relative; z-index: 2; }
+.services-v-luminous .container {
+  position: relative;
+  z-index: 2;
+}
 
-/* --- The Luminous Card --- */
 .luminous-card {
   position: relative;
   padding: 40px 30px;
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: var(--secondary-dark);
-  height: 320px; /* Increased height to fit description */
+  height: 320px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
 .luminous-card:hover {
   transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Spotlight Effect --- */
 .luminous-card .spotlight {
-  position: absolute; width: 300px; height: 300px;
+  position: absolute;
+  width: 300px;
+  height: 300px;
   background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 79, 255, 0) 65%);
-  border-radius: 50%; filter: blur(60px);
-  z-index: 2; top: var(--y); left: var(--x);
-  opacity: 0; transform: translate(-50%, -50%) scale(0.5);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 2;
+  top: var(--y);
+  left: var(--x);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
   transition: opacity 0.4s, transform 0.4s;
 }
+
 .luminous-card:hover .spotlight {
-  opacity: 0.3; transform: translate(-50%, -50%) scale(1);
+  opacity: 0.3;
+  transform: translate(-50%, -50%) scale(1);
 }
 
-/* --- CONSTANT Stardust Particles --- */
 .stardust-burst {
-  position: absolute; inset: 0;
-  overflow: hidden; border-radius: 15px;
-  z-index: 1; /* Below content */
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  z-index: 1;
 }
+
 .stardust-burst::after {
-  content: ''; position: absolute;
-  width: 200%; height: 200%;
-  top: -50%; left: -50%;
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
   background-image: radial-gradient(circle, #fff 1px, transparent 1px);
-  background-size: 25px 25px; /* Denser particles */
-  opacity: 0.15; /* Always visible but subtle */
-  /* Constant animation */
+  background-size: 25px 25px;
+  opacity: 0.15;
   animation: drift-particles 90s linear infinite;
 }
+
 @keyframes drift-particles {
-  0% { transform: rotate(0deg) translate(0, 0); }
-  100% { transform: rotate(360deg) translate(-100px, 100px); }
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  100% {
+    transform: rotate(360deg) translate(-100px, 100px);
+  }
 }
 
-
-/* --- Content Layers & Parallax Effect --- */
 .luminous-content {
-  position: absolute; inset: 0;
-  padding: 40px 30px; display: flex;
-  flex-direction: column; align-items: center;
+  position: absolute;
+  inset: 0;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.luminous-content .icon { margin-bottom: 20px; width: 60px; height: 60px; transition: transform 0.4s ease; }
-.luminous-content .icon img { max-width: 40px; }
-.luminous-content h4 { font-size: 22px; margin-bottom: 15px; }
+
+.luminous-content .icon {
+  margin-bottom: 20px;
+  width: 60px;
+  height: 60px;
+  transition: transform 0.4s ease;
+}
+
+.luminous-content .icon img {
+  max-width: 40px;
+}
+
+.luminous-content h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
 .luminous-content p {
-  font-size: 14px; /* Slightly smaller for better fit */
-  line-height: 1.6; 
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--text-muted);
   transition: color 0.3s;
 }
 
-/* --- Default Layer Styling --- */
 .luminous-content.default {
   z-index: 5;
 }
-.luminous-content.default h4 { color: #fff; }
 
-/* --- Glowing Layer Styling --- */
+.luminous-content.default h4 {
+  color: #fff;
+}
+
 .luminous-content.glowing {
   z-index: 6;
   clip-path: circle(0px at var(--x-rel) var(--y-rel));
   transition: clip-path 0.3s ease;
 }
+
 .luminous-card:hover .luminous-content.glowing {
   clip-path: circle(125px at var(--x-rel) var(--y-rel));
 }
 
 .luminous-content.glowing h4 {
-  color: #fff; text-shadow: 0 0 10px #fff;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
 }
+
 .luminous-content.glowing .icon {
   filter: drop-shadow(0 0 10px var(--accent-purple));
 }
+
 .luminous-content.glowing p {
-  color: #fff; /* Bright text in the spotlight */
+  color: #fff;
 }
+
 /*--------------------------------------------------------------
 # Features Section - Interactive Holograms
 --------------------------------------------------------------*/
 .features-v-hologram {
-  /* background-color: var(--secondary-dark); */
   background-color: transparent;
   padding: 80px 0;
 }
+
 .hologram-card {
   display: flex;
   align-items: center;
@@ -1748,10 +1963,12 @@ html[dir="rtl"]   .infographic-node .node-title,
   transition: all 0.4s ease;
   height: 100%;
 }
+
 .hologram-card:hover {
   border-color: var(--accent-purple);
   background: rgba(var(--primary-dark-rgb), 0.7);
 }
+
 .hologram-emitter {
   flex-shrink: 0;
   width: 100px;
@@ -1762,7 +1979,8 @@ html[dir="rtl"]   .infographic-node .node-title,
   justify-content: center;
   perspective: 1000px;
 }
-.hologram-emitter::before { /* The base of the emitter */
+
+.hologram-emitter::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -1772,6 +1990,7 @@ html[dir="rtl"]   .infographic-node .node-title,
   border-radius: 5px;
   box-shadow: 0 0 15px #000;
 }
+
 .hologram-light {
   position: absolute;
   bottom: 10px;
@@ -1782,7 +2001,11 @@ html[dir="rtl"]   .infographic-node .node-title,
   opacity: 0.5;
   transition: opacity 0.4s;
 }
-.hologram-card:hover .hologram-light { opacity: 1; }
+
+.hologram-card:hover .hologram-light {
+  opacity: 1;
+}
+
 .hologram-icon {
   position: relative;
   font-size: 48px;
@@ -1792,39 +2015,50 @@ html[dir="rtl"]   .infographic-node .node-title,
   transition: transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
   animation: hologram-float 4s infinite ease-in-out;
 }
+
 .hologram-card:hover .hologram-icon {
   transform: rotateY(180deg) translateZ(20px) scale(1.1);
   color: #fff;
 }
+
 @keyframes hologram-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
+
 .hologram-content h3 {
   font-size: 24px;
   color: #fff;
   margin-bottom: 10px;
 }
+
 .hologram-content p {
   color: var(--text-muted);
   line-height: 1.7;
 }
+
 html[dir="rtl"] .hologram-card {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
+
 html[dir="rtl"] .hologram-emitter {
-    gap: 0;
+  gap: 0;
 }
+
 html[dir="rtl"] .hologram-content {
-    text-align: right;
+  text-align: right;
 }
+
 /*--------------------------------------------------------------
 # 10. Project Section (THE KINETIC WALL v20.0 - MODAL VIEW)
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-    # 10. Projects Section (The Portal Showcase - Stabilized)
-    --------------------------------------------------------------*/
-
 
 .portal-grid {
   display: grid;
@@ -1878,12 +2112,10 @@ html[dir="rtl"] .hologram-content {
   font-weight: 600;
 }
 
-/* --- Slideshow Styles (Robust Version) --- */
 .portal-slideshow {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  /* Extremely high z-index */
   background: var(--primary-dark);
   opacity: 0;
   visibility: hidden;
@@ -1951,7 +2183,6 @@ html.slideshow-open .portal-slideshow {
   flex-direction: column;
   justify-content: center;
   padding: 5%;
-  /* NEW: Added space at the bottom for thumbnails */
   padding-bottom: 120px;
 }
 
@@ -2030,7 +2261,6 @@ html[dir="rtl"] .slide-link {
   color: #fff;
 }
 
-/* --- Slideshow Navigation & Close Button --- */
 .slideshow-close-btn,
 .slideshow-nav {
   position: absolute;
@@ -2089,7 +2319,6 @@ html[dir="rtl"] .slideshow-nav.next {
   left: 30px;
 }
 
-/* --- Slide transition animations --- */
 .slideshow-slide.slide-in-next {
   animation: slide-in-next 0.6s ease-out forwards;
 }
@@ -2146,7 +2375,6 @@ html[dir="rtl"] .slideshow-nav.next {
   }
 }
 
-/* --- NEW CSS: THUMBNAIL GALLERY STYLES --- */
 .slide-thumbnails-container {
   position: absolute;
   bottom: 30px;
@@ -2156,16 +2384,12 @@ html[dir="rtl"] .slideshow-nav.next {
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 10px;
-  /* For scrollbar */
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 .slide-thumbnails-container::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, Opera */
 }
 
 .thumbnail-item {
@@ -2243,7 +2467,7 @@ html[dir="rtl"] .slideshow-nav.next {
   ;
 }
 
-.portal-grid{
+.portal-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
@@ -2253,35 +2477,26 @@ html[dir="rtl"] .slideshow-nav.next {
 }
 
 .portal-card {
-  position: relative; /* ضروري لتحديد موضع العناصر الداخلية */
+  position: relative;
   display: block;
   width: 100%;
-  
-  /* --- هنا الحيلة: نحدد الارتفاع باستخدام padding --- */
   height: 0;
-  /* (10 / 16) * 100% = 62.5%. هذه هي نسبة 16:10 */
-  padding-bottom: 62.5%; 
-
-  /* بقية الأنماط */
+  padding-bottom: 62.5%;
   border-radius: 15px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  overflow: hidden; /* لإخفاء أي شيء يتجاوز الحدود الدائرية */
+  overflow: hidden;
 }
 
-/* العنصر الذي يحمل الصورة فعليًا */
 .card-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-  /* يمكنك إضافة تأثيرات انتقال هنا */
   transition: transform 0.4s ease;
 }
 
@@ -2289,16 +2504,55 @@ html[dir="rtl"] .slideshow-nav.next {
   transform: scale(1.05);
 }
 
-/* لتحديد موضع المحتوى فوق الصورة */
 .card-content {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
- 
+
+}
+/*==============================================================
+# 10.1 Project Section - "See All Projects" Button Style
+==============================================================*/
+.project_see_more {
+  display: inline-block;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  text-decoration: none;
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-purple-darker));
+  border: none; /* This will override the previous border */
+  border-radius: 50px; /* Creates the pill shape */
+  box-shadow: 0 5px 25px rgba(138, 79, 255, 0.4); /* The purple glow */
+  transition: all 0.4s ease; /* Smooth transition for all effects */
+  position: relative;
+  overflow: hidden; /* Important for the shine effect */
 }
 
+.project_see_more:hover,
+.project_see_more:focus {
+  transform: translateY(-5px) scale(1.05); 
+  box-shadow: 0 10px 35px rgba(138, 79, 255, 0.6); 
+  color: #fff; 
+}
+
+.project_see_more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.project_see_more:hover::before {
+  left: 100%;
+}
 /*--------------------------------------------------------------
 # 11. Team Section (Celestial Profiles)
 --------------------------------------------------------------*/
@@ -2841,6 +3095,7 @@ html[dir="rtl"] .slideshow-nav.next {
 .animated-contact-form .error-message {
   background-color: #dc2626;
 }
+
 /*--------------------------------------------------------------
 # 12. Contact Section (Advanced News Panel v2.0)
 --------------------------------------------------------------*/
@@ -2853,36 +3108,64 @@ html[dir="rtl"] .slideshow-nav.next {
   justify-content: center;
   padding: 20px 0;
   overflow: hidden;
-  grid-column: 1 / 2; grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
   transition: opacity 0.2s 0.7s ease-in-out;
-  z-index: 1; opacity: 0;
+  z-index: 1;
+  opacity: 0;
 }
+
 .contact-page-container.show-info-mode .contact-info-panel {
-  z-index: 2; opacity: 1;
+  z-index: 2;
+  opacity: 1;
 }
+
 .contact-info-panel .title {
   color: #ffffff;
-  width: 100%; max-width: 450px;
-  text-align: left; padding: 0 15px; margin-bottom: 15px;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  padding: 0 15px;
+  margin-bottom: 15px;
 }
-html[dir="rtl"] .contact-info-panel .title { text-align: right; }
+
+html[dir="rtl"] .contact-info-panel .title {
+  text-align: right;
+}
 
 /* --- حاوية الأخبار القابلة للتمرير (تحسين) --- */
 .news-panel-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 100%; max-width: 380px;
-  max-height: 320px; /* زيادة الارتفاع قليلاً للتصميم الجديد */
+  width: 100%;
+  max-width: 380px;
+  max-height: 320px;
+  /* زيادة الارتفاع قليلاً للتصميم الجديد */
   overflow-y: auto;
-  padding: 5px 15px; /* تعديل الـ padding */
+  padding: 5px 15px;
+  /* تعديل الـ padding */
   position: relative;
 }
+
 /* ... (أنماط شريط التمرير تبقى كما هي) ... */
-.news-panel-container::-webkit-scrollbar { width: 8px; }
-.news-panel-container::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); border-radius: 10px; }
-.news-panel-container::-webkit-scrollbar-thumb { background-color: var(--accent-purple); border-radius: 10px; }
-.news-panel-container::-webkit-scrollbar-thumb:hover { background-color: var(--accent-purple-darker, #6A3DD2); }
+.news-panel-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.news-panel-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.news-panel-container::-webkit-scrollbar-thumb {
+  background-color: var(--accent-purple);
+  border-radius: 10px;
+}
+
+.news-panel-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-purple-darker, #6A3DD2);
+}
 
 /* --- النمط العام لكل خبر --- */
 .news-item {
@@ -2890,31 +3173,40 @@ html[dir="rtl"] .contact-info-panel .title { text-align: right; }
   text-decoration: none;
   position: relative;
   border-radius: 12px;
-  overflow: hidden; /* مهم جداً لتأثيرات الصور */
+  overflow: hidden;
+  /* مهم جداً لتأثيرات الصور */
   background: rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
-  
+
 }
 
 /* --- تصميم الخبر المميز (البطل) --- */
 .news-item-featured {
   width: 100%;
-  aspect-ratio: 16 / 9; /* يضمن تجاوب الصورة مع الحفاظ على النسبة */
-  display: flex; /* لمحاذاة المحتوى الداخلي */
+  aspect-ratio: 16 / 9;
+  /* يضمن تجاوب الصورة مع الحفاظ على النسبة */
+  display: flex;
+  /* لمحاذاة المحتوى الداخلي */
   flex-direction: column;
-  justify-content: flex-end; /* وضع المحتوى في الأسفل */
+  justify-content: flex-end;
+  /* وضع المحتوى في الأسفل */
 }
 
 .news-image-bg {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
 .news-image-bg img {
-  width: 100%; height: 100%;
-  object-fit: cover; /* هذا هو مفتاح تجاوب الصورة: تملأ المساحة وتقص الزائد */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* هذا هو مفتاح تجاوب الصورة: تملأ المساحة وتقص الزائد */
   transition: transform 0.4s ease;
 }
 
@@ -2937,12 +3229,16 @@ html[dir="rtl"] .contact-info-panel .title { text-align: right; }
 .contact-info-panel .title {
   color: #ffffff;
   width: 100%;
-  max-width: 450px; /* تعديل: زيادة العرض من 380px إلى 450px */
+  max-width: 450px;
+  /* تعديل: زيادة العرض من 380px إلى 450px */
   text-align: left;
   padding: 0 15px;
-  margin-bottom: 20px; /* زيادة الهامش السفلي */
-  font-size: 1.8rem; /* جديد: تكبير حجم العنوان الرئيسي */
+  margin-bottom: 20px;
+  /* زيادة الهامش السفلي */
+  font-size: 1.8rem;
+  /* جديد: تكبير حجم العنوان الرئيسي */
 }
+
 html[dir="rtl"] .contact-info-panel .title {
   text-align: right;
 }
@@ -2951,10 +3247,13 @@ html[dir="rtl"] .contact-info-panel .title {
 .news-panel-container {
   display: flex;
   flex-direction: column;
-  gap: 18px; /* تعديل: زيادة المسافة بين العناصر */
+  gap: 18px;
+  /* تعديل: زيادة المسافة بين العناصر */
   width: 100%;
-  max-width: 450px; /* تعديل: زيادة العرض من 380px إلى 450px */
-  max-height: 400px; /* تعديل: زيادة ارتفاع منطقة التمرير من 320px إلى 400px */
+  max-width: 450px;
+  /* تعديل: زيادة العرض من 380px إلى 450px */
+  max-height: 400px;
+  /* تعديل: زيادة ارتفاع منطقة التمرير من 320px إلى 400px */
   overflow-y: auto;
   padding: 5px 15px;
   position: relative;
@@ -2962,32 +3261,40 @@ html[dir="rtl"] .contact-info-panel .title {
 
 /* --- تصميم الخبر المميز (البطل) --- */
 .news-content-overlay h4 {
-  font-size: 1.2rem; /* تعديل: تكبير خط العنوان المميز */
+  font-size: 1.2rem;
+  /* تعديل: تكبير خط العنوان المميز */
   font-weight: 600;
   color: #fff;
   line-height: 1.4;
-  margin: 0 0 S8px; /* زيادة الهامش */
+  margin: 0 0 S8px;
+  /* زيادة الهامش */
 }
 
 .news-content-overlay {
-    padding: 20px; /* زيادة الحشوة الداخلية */
+  padding: 20px;
+  /* زيادة الحشوة الداخلية */
 }
 
 /* --- تصميم الأخبار الثانوية (القائمة) --- */
 .news-item-secondary {
-  padding: 15px; /* زيادة الحشوة الداخلية */
+  padding: 15px;
+  /* زيادة الحشوة الداخلية */
 }
 
 .news-thumb-secondary {
-  width: 65px;  /* تعديل: تكبير الصورة المصغرة من 55px */
-  height: 65px; /* تعديل: تكبير الصورة المصغرة من 55px */
-  border-radius: 10px; /* زيادة استدارة الحواف */
+  width: 65px;
+  /* تعديل: تكبير الصورة المصغرة من 55px */
+  height: 65px;
+  /* تعديل: تكبير الصورة المصغرة من 55px */
+  border-radius: 10px;
+  /* زيادة استدارة الحواف */
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .news-content h4 {
-  font-size: 0.95rem; /* تعديل: تكبير خط العنوان الثانوي */
+  font-size: 0.95rem;
+  /* تعديل: تكبير خط العنوان الثانوي */
   font-weight: 500;
   color: #fff;
   line-height: 1.4;
@@ -2997,10 +3304,12 @@ html[dir="rtl"] .contact-info-panel .title {
 /* --- فاصل و روابط التواصل --- */
 hr.news-separator {
   width: 100%;
-  max-width: 450px; /* تعديل: زيادة العرض ليتناسب مع الحاوية */
+  max-width: 450px;
+  /* تعديل: زيادة العرض ليتناسب مع الحاوية */
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  margin: 20px 0; /* زيادة الهامش */
+  margin: 20px 0;
+  /* زيادة الهامش */
 }
 
 .news-content-overlay span {
@@ -3017,7 +3326,8 @@ hr.news-separator {
 }
 
 .news-item-featured:hover .news-image-bg img {
-  transform: scale(1.05); /* تأثير تقريب الصورة عند التمرير */
+  transform: scale(1.05);
+  /* تأثير تقريب الصورة عند التمرير */
 }
 
 /* --- تصميم الأخبار الثانوية (القائمة) --- */
@@ -3030,9 +3340,11 @@ hr.news-separator {
 }
 
 .news-thumb-secondary {
-  width: 55px; height: 55px;
+  width: 55px;
+  height: 55px;
   border-radius: 8px;
-  object-fit: cover; /* يضمن تجاوب الصورة المصغرة أيضاً */
+  object-fit: cover;
+  /* يضمن تجاوب الصورة المصغرة أيضاً */
   flex-shrink: 0;
 }
 
@@ -3099,7 +3411,7 @@ html.slideshow-open {
 .cosmic-footer {
   position: relative;
   /* MODIFIED: Footer is now transparent to show the global background */
-  background-color: transparent; 
+  background-color: transparent;
   overflow: hidden;
   /* MODIFIED: Reduced top and bottom padding by ~50% */
   padding: 50px 0 30px;
@@ -3125,8 +3437,11 @@ html.slideshow-open {
   animation: fade-in-content 2s ease-out 1s forwards;
   opacity: 0;
 }
+
 @keyframes fade-in-content {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 /* --- The Energy Core --- */
@@ -3143,31 +3458,45 @@ html.slideshow-open {
   z-index: 2;
   animation: pulse-core 5s infinite ease-in-out;
 }
+
 @keyframes pulse-core {
-  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-  50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.2);
+    opacity: 1;
+  }
 }
 
 /* --- Floating Content Styling --- */
 .cosmic-footer .footer-col {
   margin-bottom: 40px;
 }
+
 .cosmic-footer .footer-title {
   font-size: 20px;
   color: #fff;
   margin-bottom: 25px;
-  text-shadow: 0 0 10px rgba(138, 79, 255, 0.5); /* Glowing text */
+  text-shadow: 0 0 10px rgba(138, 79, 255, 0.5);
+  /* Glowing text */
 }
 
-.cosmic-footer p, .cosmic-footer span {
+.cosmic-footer p,
+.cosmic-footer span {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
 }
-.footer-links-list{
+
+.footer-links-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
+
 }
 
 .cosmic-footer .footer-links-list a {
@@ -3175,27 +3504,31 @@ html.slideshow-open {
   transition: all 0.3s;
 
 }
+
 .cosmic-footer .footer-links-list a:hover {
   color: #fff;
   text-shadow: 0 0 10px #fff;
   transform: translateX(5px);
 }
+
 html[dir="rtl"] .cosmic-footer .footer-links-list a:hover {
   transform: translateX(-5px);
 }
 
- html[dir="rtl"] .footer-links-list{
-  
-    margin-right: -40px;
-  }
+html[dir="rtl"] .footer-links-list {
+
+  margin-right: -40px;
+}
 
 .cosmic-footer .footer-contact-info i {
   color: var(--accent-purple);
   margin-right: 10px;
   font-size: 20px;
 }
+
 html[dir="rtl"] .cosmic-footer .footer-contact-info i {
-  margin-right: 0; margin-left: 10px;
+  margin-right: 0;
+  margin-left: 10px;
 }
 
 /* --- Bottom Bar --- */
@@ -3206,25 +3539,52 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .cosmic-footer .neon-social-links {
   margin-bottom: 20px;
 }
-.neon-social-links a {
-  font-size: 24px; margin: 0 10px; color: #fff; transition: all 0.3s ease;
-}
-.neon-social-links a.facebook:hover { color: #1877F2; text-shadow: 0 0 15px #1877F2; }
-.neon-social-links a.instagram:hover { color: #E4405F; text-shadow: 0 0 15px #E4405F; }
-.neon-social-links a.linkedin:hover { color: #0A66C2; text-shadow: 0 0 15px #0A66C2; }
-.neon-social-links a.whatsapp:hover { color: #25D366; text-shadow: 0 0 15px #25D366; }
 
-.cosmic-footer .copyright { color: rgba(255, 255, 255, 0.6); }
-.cosmic-footer .copyright strong { color: #fff; }
+.neon-social-links a {
+  font-size: 24px;
+  margin: 0 10px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.neon-social-links a.facebook:hover {
+  color: #1877F2;
+  text-shadow: 0 0 15px #1877F2;
+}
+
+.neon-social-links a.instagram:hover {
+  color: #E4405F;
+  text-shadow: 0 0 15px #E4405F;
+}
+
+.neon-social-links a.linkedin:hover {
+  color: #0A66C2;
+  text-shadow: 0 0 15px #0A66C2;
+}
+
+.neon-social-links a.whatsapp:hover {
+  color: #25D366;
+  text-shadow: 0 0 15px #25D366;
+}
+
+.cosmic-footer .copyright {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cosmic-footer .copyright strong {
+  color: #fff;
+}
+
 /*--------------------------------------------------------------
 # Cosmic Footer - Mobile Optimization
 --------------------------------------------------------------*/
 @media (max-width: 768px) {
- 
-  
+
+
   .cosmic-footer {
     /* MODIFIED: Reduced padding for mobile */
     padding: 30px 0 20px;
@@ -3234,7 +3594,8 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   .energy-core {
     width: 150px;
     height: 150px;
-    bottom: -75px; /* Adjust position */
+    bottom: -75px;
+    /* Adjust position */
     filter: blur(20px);
   }
 
@@ -3245,12 +3606,15 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   }
 
   .cosmic-footer .footer-contact-info p {
-    justify-content: center; /* Center contact items */
+    justify-content: center;
+    /* Center contact items */
   }
-  
+
   html[dir="ltr"] .cosmic-footer .footer-links-list a:hover {
-    transform: translateX(0); /* Disable hover move effect */
+    transform: translateX(0);
+    /* Disable hover move effect */
   }
+
   html[dir="rtl"] .cosmic-footer .footer-links-list a:hover {
     transform: translateX(0);
   }
@@ -3279,12 +3643,13 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(rgba(138, 79, 255, 0.1) 1px, transparent 1px),
     linear-gradient(to right, rgba(138, 79, 255, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   opacity: 0.5;
 }
+
 .quantum-section::after {
   content: '';
   position: absolute;
@@ -3308,15 +3673,18 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   border: 1px solid rgba(138, 79, 255, 0.2);
   transform-style: preserve-3d;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  overflow: hidden; /* Important for revealing content */
-  height: 280px; /* Default height */
+  overflow: hidden;
+  /* Important for revealing content */
+  height: 280px;
+  /* Default height */
 }
 
 /* --- Hover Effects: Glow, 3D Tilt, and Expand --- */
 .quantum-card:hover .quantum-card-inner {
   border-color: rgba(138, 79, 255, 0.8);
   box-shadow: 0 10px 40px rgba(138, 79, 255, 0.3);
-  height: 450px; /* Expanded height on hover */
+  height: 450px;
+  /* Expanded height on hover */
 }
 
 /* --- Animated Icon --- */
@@ -3332,29 +3700,41 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   box-shadow: 0 0 20px rgba(138, 79, 255, 0.5);
   animation: pulse-icon 4s infinite ease-in-out;
 }
+
 .service-icon {
   max-width: 40px;
   max-height: 40px;
 }
+
 @keyframes pulse-icon {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 /* --- Card Content --- */
 .card-front {
   text-align: center;
 }
+
 .card-front h4 {
   font-size: 22px;
   color: #fff;
   margin-bottom: 15px;
   transition: color 0.3s;
 }
+
 .card-front p {
   color: var(--text-muted);
   line-height: 1.7;
 }
+
 .quantum-card:hover .card-front h4 {
   color: var(--accent-purple);
 }
@@ -3367,32 +3747,39 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   right: 30px;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.4s ease 0.2s; /* Delayed transition */
+  transition: all 0.4s ease 0.2s;
+  /* Delayed transition */
 }
+
 .quantum-card:hover .card-hidden-features {
   opacity: 1;
   transform: translateY(0);
 }
+
 .card-hidden-features h5 {
   font-size: 16px;
   color: var(--accent-purple);
   margin-bottom: 15px;
   text-align: center;
 }
+
 .features-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .features-list li {
   color: var(--text-muted);
   margin-bottom: 10px;
   font-size: 15px;
 }
+
 .features-list i {
   margin-right: 10px;
   color: #fff;
-  width: 20px; /* Align icons */
+  width: 20px;
+  /* Align icons */
   text-align: center;
 }
 
@@ -3406,9 +3793,9 @@ html[dir="rtl"] .cosmic-footer .footer-contact-info i {
   font-weight: 700;
   transition: all 0.3s;
 }
+
 .btn-see-all:hover {
   background: var(--accent-purple);
   color: #fff;
   box-shadow: 0 0 20px rgba(138, 79, 255, 0.5);
 }
-

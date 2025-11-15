@@ -60,18 +60,16 @@ if ($about_query) {
   }
 }
 
-$query_news = "SELECT * FROM news ORDER BY publication_date DESC LIMIT 5"; // جلب آخر 5 أخبار
+$query_news = "SELECT * FROM news ORDER BY publication_date DESC LIMIT 5";
 $result_news = $dbcon->query($query_news);
 $latest_news = [];
 if ($result_news->num_rows > 0) {
-    while($row = $result_news->fetch_assoc()) {
-        $latest_news[] = $row;
-    }
+  while ($row = $result_news->fetch_assoc()) {
+    $latest_news[] = $row;
+  }
 }
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="<?= $current_lang ?>" dir="<?= ($current_lang == 'ar' ? 'rtl' : 'ltr') ?>">
 
@@ -79,7 +77,7 @@ if ($result_news->num_rows > 0) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title><?= htmlspecialchars($current_lang == 'en' ? ($settings['company_name'] ?? '') : ($settings['company_name_ar'] ?? '')) ?> <?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></title>
-  <meta content="<?php htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? ''))?>" name="description">
+  <meta content="<?php htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?>" name="description">
   <meta content="" name="keywords">
   <link href="assets/img/Artboard-8-8.png" rel="icon">
   <link href="assets/img/Artboard-8-8.png" rel="aArtboard 8-8">
@@ -91,29 +89,26 @@ if ($result_news->num_rows > 0) {
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=<?php echo filemtime('assets/css/style.css'); ?>">
 
- 
-  <!-- اختياري: يمكنك إضافته إذا أردت، لكنه ليس مهماً لجوجل -->
   <meta name="keywords" content="ومضة تك,ومضة, wamdhatach, wamdha, شركة برمجة, تصميم مواقع, تطوير تطبيقات, حلول برمجية">
 
-  <!-- Open Graph / Facebook (للمظهر عند المشاركة) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.wamdhatach.com/">
   <meta property="og:title" content="WamdhaTech | شركة ومضة تك للحلول البرمجية وتصميم المواقع">
   <meta property="og:description" content="نقدم في ومضة تك خدمات برمجية مبتكرة تشمل تصميم وتطوير المواقع الإلكترونية، تطبيقات الجوال، والأنظمة المخصصة.">
- 
+
   <!-- Twitter Card -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://www.wamdhatach.com/">
   <meta property="twitter:title" content="WamdhaTech | شركة ومضة تك للحلول البرمجية وتصميم المواقع">
   <meta property="twitter:description" content="نقدم في ومضة تك خدمات برمجية مبتكرة تشمل تصميم وتطوير المواقع الإلكترونية، تطبيقات الجوال، والأنظمة المخصصة.">
-  
+
 
 
 </head>
 
 <body>
 
-<canvas id="cosmic-canvas"></canvas>
+  <canvas id="cosmic-canvas"></canvas>
   <div id="preloader">
     <div class="preloader-logo-container">
       <svg width="40" height="40" viewBox="0 0 1000 97" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,161 +123,158 @@ if ($result_news->num_rows > 0) {
       </svg>
     </div>
   </div>
+  
   <canvas id="particle-canvas"></canvas>
   <?php include 'partials/header.php'; ?>
 
- <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
-  <div class="container-fluid" data-aos="fade-up">
-    <div class="row align-items-center justify-content-center">
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container-fluid" data-aos="fade-up">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-5 col-md-12 hero-content text-center text-lg-start order-2 order-lg-1" data-aos="fade-right">
+          <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
+          <div class="hero-content-disc"><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></div>
 
-      <!-- Text Content Column -->
-      <div class="col-lg-5 col-md-12 hero-content text-center text-lg-start order-2 order-lg-1" data-aos="fade-right">
-        <h1><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_title'] ?? '') : ($settings['hero_title_ar'] ?? '')) ?></h1>
-        <div class="hero-content-disc"><?= htmlspecialchars($current_lang == 'en' ? ($settings['hero_subtitle'] ?? '') : ($settings['hero_subtitle_ar'] ?? '')) ?></div>
-       
+        </div>
+
+        <div class="col-lg-6 col-md-8 hero-img text-center order-1 order-lg-2" data-aos="fade-left">
+          <div class="hero-logo-container">
+            <div class="light-beam"></div>
+            <svg class="hero-animated-svg" viewBox="150 300 850 370" xmlns="http://www.w3.org/2000/svg">
+              <path class="hero-logo-path" d="M516.74,326.75l-88.5,166.51c-9.3,17.47-34.54,16.89-43-1l-78-164.81a24.06,24.06,0,0,0-21.75-13.77H272.23a24.07,24.07,0,0,0-21.87,34.12L384.48,639.57c8.48,18.44,34.58,18.75,43.49.51l124.31-254.3a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.61,18.44-34.79,18.54-43.54.17l-4.85-10.2c-9-18.8-35.94-18.13-43.95,1.09h0a24.06,24.06,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.38-35.2L538,314A24.07,24.07,0,0,0,516.74,326.75ZM691.82,344v0h0Zm0-13.43h0Z" />
+            </svg>
+          </div>
+
+        </div>
+
       </div>
-
-    <!-- Image Column with SVG Animation -->
-<div class="col-lg-6 col-md-8 hero-img text-center order-1 order-lg-2" data-aos="fade-left">
-    <div class="hero-logo-container">
-        <!-- The light beam that will travel and trigger the drawing -->
-        <div class="light-beam"></div>
-        
-        <!-- The SVG Logo that will be drawn -->
-        <svg class="hero-animated-svg" viewBox="150 300 850 370" xmlns="http://www.w3.org/2000/svg">
-            <path class="hero-logo-path" d="M516.74,326.75l-88.5,166.51c-9.3,17.47-34.54,16.89-43-1l-78-164.81a24.06,24.06,0,0,0-21.75-13.77H272.23a24.07,24.07,0,0,0-21.87,34.12L384.48,639.57c8.48,18.44,34.58,18.75,43.49.51l124.31-254.3a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.61,18.44-34.79,18.54-43.54.17l-4.85-10.2c-9-18.8-35.94-18.13-43.95,1.09h0a24.06,24.06,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.38-35.2L538,314A24.07,24.07,0,0,0,516.74,326.75ZM691.82,344v0h0Zm0-13.43h0Z"/>
-        </svg>
     </div>
-    
-</div>
-
-    </div>
-  </div>
- <!-- THE LIGHTFALL BEACON SCROLL INDICATOR -->
-  <a href="#about" class="scroll-down-indicator scrollto" aria-label="Scroll down">
-    <div class="indicator-body"></div>
-  </a>
-</section><!-- End Hero -->
+    <a href="#about" class="scroll-down-indicator scrollto" aria-label="Scroll down">
+      <div class="indicator-body"></div>
+    </a>
+  </section>
 
   <main id="main">
-   <!-- ======= About Us Section (Company Infographic - Responsive & Interactive) ======= -->
-<section id="about" class="about section-bg">
-  <div class="container" data-aos="fade-up">
 
-    <div class="section-title">
-      <h2><?= $lang['about_title'] ?? 'About Us' ?></h2>
-      <?php if ($about_main_description): ?>
-        <div><?= ($current_lang == 'ar' && !empty($about_main_description['details_ar'])) ? $about_main_description['details_ar'] : $about_main_description['details']; ?></div>
-      <?php endif; ?>
-    </div>
+    <!-- ======= About Us Section  ======= -->
+    <section id="about" class="about section-bg">
+      <div class="container" data-aos="fade-up">
 
-    <?php if (!empty($about_nodes)): ?>
-      <div class="about-us-container company-infographic-container">
-        
-        <div class="background-particles">
-          <?php for ($i = 0; $i < 15; $i++) { echo "<span></span>"; } ?>
+        <div class="section-title">
+          <h2><?= $lang['about_title'] ?? 'About Us' ?></h2>
+          <?php if ($about_main_description): ?>
+            <div><?= ($current_lang == 'ar' && !empty($about_main_description['details_ar'])) ? $about_main_description['details_ar'] : $about_main_description['details']; ?></div>
+          <?php endif; ?>
         </div>
-        
-        <div class="infographic-grid">
-           <div class="central-hub-animation">
-            <div class="hub-sparkle"></div>
-          </div>
-          <?php foreach ($about_nodes as $index => $node): ?>
-            <div class="infographic-node pos-<?= $index + 1 ?>" style="--animation-delay: <?= $index * 0.15 ?>s;">
-              
-              <div class="node-arrow-background"></div>
-              
-              <div class="node-main-plate">
-                <span class="node-number-label"><?= ($index < 9 ? '0' : '') . ($index + 1) ?></span>
-                <h4 class="node-title"><?= htmlspecialchars(($current_lang == 'ar' && !empty($node['title_ar'])) ? $node['title_ar'] : $node['title']) ?></h4>
-                
-                <div class="node-content-body">
-                    <div class="node-brief-description"> 
-                      <?= ($current_lang == 'ar' && !empty($node['details_ar'])) ? $node['details_ar'] : $node['details'] ?>
+
+        <?php if (!empty($about_nodes)): ?>
+          <div class="about-us-container company-infographic-container">
+
+            <div class="background-particles">
+              <?php for ($i = 0; $i < 15; $i++) {
+                echo "<span></span>";
+              } ?>
+            </div>
+
+            <div class="infographic-grid">
+              <div class="central-hub-animation">
+                <div class="hub-sparkle"></div>
+              </div>
+              <?php foreach ($about_nodes as $index => $node): ?>
+                <div class="infographic-node pos-<?= $index + 1 ?>" style="--animation-delay: <?= $index * 0.15 ?>s;">
+
+                  <div class="node-arrow-background"></div>
+
+                  <div class="node-main-plate">
+                    <span class="node-number-label"><?= ($index < 9 ? '0' : '') . ($index + 1) ?></span>
+                    <h4 class="node-title"><?= htmlspecialchars(($current_lang == 'ar' && !empty($node['title_ar'])) ? $node['title_ar'] : $node['title']) ?></h4>
+
+                    <div class="node-content-body">
+                      <div class="node-brief-description">
+                        <?= ($current_lang == 'ar' && !empty($node['details_ar'])) ? $node['details_ar'] : $node['details'] ?>
+                      </div>
+                      <button class="read-more-btn"><?= $lang['read_more'] ?? 'Read More' ?></button>
+                      <button class="read-more-btn show-less-btn" style="display: none;"><?= $lang['show_less'] ?? 'Show Less' ?></button>
                     </div>
-                    <button class="read-more-btn"><?= $lang['read_more'] ?? 'Read More' ?></button>
-                    <button class="read-more-btn show-less-btn" style="display: none;"><?= $lang['show_less'] ?? 'Show Less' ?></button>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+
+          </div>
+        <?php endif; ?>
+
+      </div>
+    </section>
+    <!-- ======= Services Section  ======= -->
+    <section id="services" class="services-v-luminous">
+      <div class="animated-grid"></div>
+
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2><?= $lang['services_title'] ?? 'Services' ?></h2>
+          <p><?= $lang['services_description'] ?? 'Our Services' ?></p>
+        </div>
+        <div class="row gy-4">
+          <?php if ($services_homepage): foreach ($services_homepage as $index => $service): ?>
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($index + 1) * 100 ?>">
+                <div class="luminous-card">
+                  <div class="spotlight"></div>
+
+                  <div class="stardust-burst"></div>
+
+                  <div class="luminous-content glowing">
+                    <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt=""></div>
+                    <h4><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></h4>
+                    <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
+                  </div>
+
+                  <div class="luminous-content default">
+                    <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt=""></div>
+                    <h4><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></h4>
+                    <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
+                  </div>
                 </div>
               </div>
-            </div>
-          <?php endforeach; ?>
+          <?php endforeach;
+          endif; ?>
         </div>
-        
-      </div>
-    <?php endif; ?>
-
-  </div>
-</section>
-<!-- ======= Services Section (The Luminous Touch v2) ======= -->
-<section id="services" class="services-v-luminous">
-  <div class="animated-grid"></div>
-
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2><?= $lang['services_title'] ?? 'Services' ?></h2>
-      <p><?= $lang['services_description'] ?? 'Our Services' ?></p>
-    </div>
-    <div class="row gy-4">
-      <?php if ($services_homepage): foreach ($services_homepage as $index => $service): ?>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<?= ($index + 1) * 100 ?>">
-            <div class="luminous-card">
-              <div class="spotlight"></div>
-              
-              <!-- Stardust particles container -->
-              <div class="stardust-burst"></div>
-
-              <div class="luminous-content glowing">
-                <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt=""></div>
-                <h4><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></h4>
-                <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
-              </div>
-
-              <div class="luminous-content default">
-                <div class="icon"><img src="assets/img/services/<?= htmlspecialchars($service['image_file']) ?>" alt=""></div>
-                <h4><?= htmlspecialchars($current_lang == 'en' ? $service['title'] : $service['title_ar'])  ?></h4>
-                <p><?= htmlspecialchars($current_lang == 'en' ? $service['description'] : $service['description_ar']) ?></p>
-              </div>
-            </div>
+        <?php if ($total_services_count > 6): ?>
+          <div class="text-center mt-5">
+            <a href="services.php?lang=<?= $current_lang ?>" class="btn-see-all"><?= $lang['see_all_services_btn'] ?? 'See All Services' ?></a>
           </div>
-      <?php endforeach; endif; ?>
-    </div>
-    <?php if ($total_services_count > 6): ?>
-      <div class="text-center mt-5">
-        <a href="services.php?lang=<?= $current_lang ?>" class="btn-see-all"><?= $lang['see_all_services_btn'] ?? 'See All Services' ?></a>
+        <?php endif; ?>
       </div>
-    <?php endif; ?>
-  </div>
-</section>
-<!-- End Services Section -->
-   <!-- ======= Features Section (Interactive Holograms) ======= -->
-<section id="features" class="features-v-hologram section-bg">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2><?= $lang['features_title'] ?? 'Our Core Features' ?></h2>
-    </div>
-    <div class="row gy-5">
-      <?php if ($features_query && $features_query->num_rows > 0): 
-        foreach ($features_query as $feature): ?>
-        <div class="col-lg-6">
-          <div class="hologram-card">
-            <div class="hologram-emitter">
-              <div class="hologram-light"></div>
-              <div class="hologram-icon">
-                <i class="<?= htmlspecialchars($feature['icon_class']) ?>"></i>
-              </div>
-            </div>
-            <div class="hologram-content">
-              <h3><?= htmlspecialchars($current_lang == 'en' ? $feature['title_en'] : $feature['title_ar']) ?></h3>
-              <p><?= htmlspecialchars($current_lang == 'en' ? $feature['description_en'] : $feature['description_ar']) ?></p>
-            </div>
-          </div>
+    </section>
+
+    <!-- ======= Features Section  ======= -->
+    <section id="features" class="features-v-hologram section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2><?= $lang['features_title'] ?? 'Our Core Features' ?></h2>
         </div>
-      <?php endforeach; endif; ?>
-    </div>
-  </div>
-</section>
-<!-- End Features Section -->
+        <div class="row gy-5">
+          <?php if ($features_query && $features_query->num_rows > 0):
+            foreach ($features_query as $feature): ?>
+              <div class="col-lg-6">
+                <div class="hologram-card">
+                  <div class="hologram-emitter">
+                    <div class="hologram-light"></div>
+                    <div class="hologram-icon">
+                      <i class="<?= htmlspecialchars($feature['icon_class']) ?>"></i>
+                    </div>
+                  </div>
+                  <div class="hologram-content">
+                    <h3><?= htmlspecialchars($current_lang == 'en' ? $feature['title_en'] : $feature['title_ar']) ?></h3>
+                    <p><?= htmlspecialchars($current_lang == 'en' ? $feature['description_en'] : $feature['description_ar']) ?></p>
+                  </div>
+                </div>
+              </div>
+          <?php endforeach;
+          endif; ?>
+        </div>
+      </div>
+    </section>
 
 
     <section id="portal-showcase" class="section-bg"
@@ -344,7 +336,7 @@ if ($result_news->num_rows > 0) {
                     </div>
                     <div class="neon-social-links social-links ">
                       <?php if (!empty($member['website_url'])): ?><a href="<?= htmlspecialchars($member['website_url']) ?>"><i class='bi bi-globe ' target="_blank"></i></a><?php endif; ?>
-                      <?php if (!empty($member['facebook_url'])): ?><a href="<?= htmlspecialchars($member['facebook_url']) ?>" class="facebook" target="_blank"><i class="bi bi-facebook " ></i></a><?php endif; ?>
+                      <?php if (!empty($member['facebook_url'])): ?><a href="<?= htmlspecialchars($member['facebook_url']) ?>" class="facebook" target="_blank"><i class="bi bi-facebook "></i></a><?php endif; ?>
                       <?php if (!empty($member['instagram_url'])): ?><a href="<?= htmlspecialchars($member['instagram_url']) ?>" class="instgram" target="_blank"><i class="bi bi-instagram instagram" target="_blank"></i></a><?php endif; ?>
                       <?php if (!empty($member['linkedin_url'])): ?><a href="<?= htmlspecialchars($member['linkedin_url']) ?>" class="linkedin" target="_blank"><i class="bi bi-linkedin linkedin" target="_blank"></i></a><?php endif; ?>
                     </div>
@@ -358,7 +350,7 @@ if ($result_news->num_rows > 0) {
       </div>
     </section>
 
-    
+
 
 
     <!-- ======= Contact Section ======= -->
@@ -402,44 +394,46 @@ if ($result_news->num_rows > 0) {
               </form>
 
 
- <div class="contact-info-panel">
-                        <h2 class="title"><?= $lang['latest_news_title'] ?? 'Latest News' ?></h2>
-                        <div class="news-panel-container">
-                            <?php if (!empty($latest_news)) : ?>
-                                <?php foreach ($latest_news as $index => $news_item) : ?>
-                                    <?php if ($index == 0) : // الخبر الأول (المميز) ?>
-                                        <!-- <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-featured"> -->
-                                          <div class="news-item news-item-featured">
-                                            <div class=" news-image-bg">
-                                                <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="<?= htmlspecialchars($news_item['title_ar']) ?>">
-                                            </div>
-                                            <div class="news-content-overlay">
-                                                <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar']) ?></h4>
-                                                <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
-                                            </div>
-                                            </div>
-                                        <!-- </a> -->
-                                    <?php else : // الأخبار الثانوية ?>
-                                        <!-- <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-secondary"> -->
-                                          <div class="news-item news-item-secondary">
-                                            <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="News Thumbnail" class="news-thumb-secondary">
-                                            <div class="news-content">
-                                                <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar'] ) ?></h4>
-                                                
-                                                <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
-                                            </div>
-                                            </div>
-                                        <!-- </a> -->
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            <?php else : ?>
-                                <p class="no-news-message">No news available.</p>
-                            <?php endif; ?>
+              <div class="contact-info-panel">
+                <h2 class="title"><?= $lang['latest_news_title'] ?? 'Latest News' ?></h2>
+                <div class="news-panel-container">
+                  <?php if (!empty($latest_news)) : ?>
+                    <?php foreach ($latest_news as $index => $news_item) : ?>
+                      <?php if ($index == 0) :
+                      ?>
+                        <!-- <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-featured"> -->
+                        <div class="news-item news-item-featured">
+                          <div class=" news-image-bg">
+                            <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="<?= htmlspecialchars($news_item['title_ar']) ?>">
+                          </div>
+                          <div class="news-content-overlay">
+                            <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar']) ?></h4>
+                            <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
+                          </div>
                         </div>
-  <hr class="news-separator">
+                        <!-- </a> -->
+                      <?php else : 
+                      ?>
+                        <!-- <a href="<?= htmlspecialchars($news_item['link']) ?>" class="news-item news-item-secondary"> -->
+                        <div class="news-item news-item-secondary">
+                          <img src="assets/img/news/<?= htmlspecialchars($news_item['image']) ?>" alt="News Thumbnail" class="news-thumb-secondary">
+                          <div class="news-content">
+                            <h4><?= htmlspecialchars($current_lang == 'en' ? $news_item['title_en'] : $news_item['title_ar']) ?></h4>
 
-  
-</div>
+                            <span><i class='bx bx-time-five'></i> <?= date("M d, Y", strtotime($news_item['publication_date'])) ?></span>
+                          </div>
+                        </div>
+                        <!-- </a> -->
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  <?php else : ?>
+                    <p class="no-news-message">No news available.</p>
+                  <?php endif; ?>
+                </div>
+                <hr class="news-separator">
+
+
+              </div>
 
 
             </div>
@@ -481,7 +475,7 @@ if ($result_news->num_rows > 0) {
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    
+
   </script>
 </body>
 

@@ -19,6 +19,8 @@ if (file_exists('lang/' . $current_lang . '.php')) {
 }
 
 $settings = $dbcon->query("SELECT * FROM company_settings WHERE id=1")->fetch_assoc();
+$contact = $dbcon->query("SELECT * FROM contact_information WHERE id=1")->fetch_assoc();
+
 $products_query = $dbcon->query("
     SELECT 
         p.id, p.name, p.name_ar, p.image, p.details_url, p.description, p.description_ar,
@@ -63,7 +65,23 @@ if ($products_query) {
 </head>
 
 <body>
+  <canvas id="cosmic-canvas"></canvas>
+  <div id="preloader">
+    <div class="preloader-logo-container">
+      <svg width="40" height="40" viewBox="0 0 1000 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="light-flare" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(138, 79, 255, 0)" />
+            <stop offset="50%" stop-color="rgba(255, 255, 255, 0.8)" />
+            <stop offset="100%" stop-color="rgba(138, 79, 255, 0)" />
+          </linearGradient>
+        </defs>
+        <path class="logo-path light-flare-path " d="M516.74,326.75l-88.5,166.51c-9.3,17.47-34.54,16.89-43-1l-78-164.81a24.06,24.06,0,0,0-21.75-13.77H272.23a24.07,24.07,0,0,0-21.87,34.12L384.48,639.57c8.48,18.44,34.58,18.75,43.49.51l124.31-254.3a24.07,24.07,0,0,1,21-13.49l96.43-2.61-.36.77-76.05,163c-8.61,18.44-34.79,18.54-43.54.17l-4.85-10.2c-9-18.8-35.94-18.13-43.95,1.09h0a24.06,24.06,0,0,0,.72,20.07l50.91,101.17a24.07,24.07,0,0,0,42.84.31l154.91-297.1a24.07,24.07,0,0,0-21.38-35.2L538,314A24.07,24.07,0,0,0,516.74,326.75ZM691.82,344v0h0Zm0-13.43h0Z" />
+      </svg>
+    </div>
+  </div>
 
+  <canvas id="particle-canvas"></canvas>
   <?php include 'partials/header.php'; ?>
 
   <main id="main">
