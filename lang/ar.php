@@ -35,26 +35,26 @@ $lang = [
     'team_title' => 'شركاء النجاح',
     'team_description' => 'من الشركات الناشئة الواعدة إلى قادة الصناعة، نعتز بكوننا الشريك التقني الموثوق لهذه المؤسسات المتميزة.',
 
-
-    // Contact Section
-    'contact_title' => 'اتصل بنا',
-    'contact_description' => 'هل لديك أسئلة؟ نود أن نسمع منك. تواصل مع فريقنا اليوم.',
-    'contact_our_address' => 'عنواننا',
-    'contact_email_us' => 'راسلنا عبر البريد',
-    'contact_call_us' => 'اتصل بنا',
-    'contact_form_name_placeholder' => 'اسمك',
+    // === CONTACT SECTION (UPDATED) ===
+    'contact_title' => 'لنتحدث عن المستقبل',
+    'contact_description' => 'سواء كانت لديك فكرة رائدة أو استفسار حول خدماتنا، فريقنا مستعد للإصغاء. لِنبدأ الحوار.',
+    'contact_form_name_placeholder' => 'اسمك الكامل',
     'contact_form_email_placeholder' => 'بريدك الإلكتروني',
     'contact_form_subject_placeholder' => 'الموضوع',
     'contact_form_message_placeholder' => 'رسالتك',
     'contact_form_send_btn' => 'إرسال الرسالة',
-    'contact_form_title' => 'أرسل رسالة',
-    'contact_info_title' => 'معلوماتنا',
-    'contact_panel_details_title' => 'تفاصيل الاتصال',
-    'contact_panel_details_desc' => 'هل تحتاج إلى عنواننا أو رقم هاتفنا؟ تجد جميع معلومات الاتصال الخاصة بنا هنا.',
+    'contact_form_title' => 'تواصل معنا',
+
+    'latest_news_title' => 'آخر الأخبار والمستجدات', 
+
+    'contact_panel_details_title' => 'ابق على إطلاع',
+    'contact_panel_details_desc' => 'احصل على آخر تحديثاتنا وأخبارنا من هنا مباشرةً، أو اعثر على معلومات الاتصال للتواصل معنا.',
     'contact_panel_show_info_btn' => 'عرض المعلومات',
-    'contact_panel_question_title' => 'هل لديك سؤال؟',
-    'contact_panel_question_desc' => 'املأ نموذج الاتصال الخاص بنا وسيقوم فريقنا بالرد عليك في أقرب وقت ممكن.',
+
+    'contact_panel_question_title' => 'هل أنت مستعد للإنطلاق؟',
+    'contact_panel_question_desc' => 'صندوق الوارد لدينا مفتوح دائمًا للأفكار الجديدة والمشاريع الواعدة. أرسل لنا رسالة، ودعنا نبني شيئًا مذهلاً معًا.',
     'contact_panel_message_us_btn' => 'راسلنا',
+
     'form_loading' => 'جاري التحميل',
     'form_sent_message' => 'تم إرسال رسالتك. شكراً لك!',
 
@@ -62,11 +62,8 @@ $lang = [
     'footer_useful_links' => 'روابط مفيدة',
     'footer_our_services' => 'خدماتنا',
     'footer_designed_by' => 'تصميم',
-
-    // Footer
     'company_name' => 'ومضة',
     'footer_description' => 'ومضة هي شركة رائدة في مجال التقنية وتقدم أفضل الحلول.',
     'footer_links' => 'روابط سريعة',
     'footer_rights' => 'جميع الحقوق محفوظة.',
-
 ];

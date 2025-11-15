@@ -47,25 +47,26 @@ $lang = [
     'faq_title' => 'Frequently Asked Questions',
     'faq_description' => 'Our team consists of experts in software development, design, marketing, and content creation, working together to achieve the best results for our clients.',
 
-    // Contact Section
-    'contact_title' => 'Contact',
-    'contact_description' => 'Have questions? We\'d love to hear from you. Get in touch with our team today.',
-    'contact_our_address' => 'Our Address',
-    'contact_email_us' => 'Email Us',
-    'contact_call_us' => 'Call Us',
+    // === CONTACT SECTION (UPDATED) ===
+    'contact_title' => 'Let\'s Connect',
+    'contact_description' => 'Whether you have a groundbreaking idea or a question about our services, our team is ready to listen. Let\'s start the conversation.',
     'contact_form_name_placeholder' => 'Your Name',
     'contact_form_email_placeholder' => 'Your Email',
     'contact_form_subject_placeholder' => 'Subject',
     'contact_form_message_placeholder' => 'Message',
     'contact_form_send_btn' => 'Send Message',
-    'contact_form_title' => 'Send a Message',
-    'contact_info_title' => 'Our Information',
-    'contact_panel_details_title' => 'Contact Details',
-    'contact_panel_details_desc' => 'Need our address or phone number? Find all of our contact information here.',
+    'contact_form_title' => 'Get in Touch',
+    
+    'latest_news_title' => 'Latest News & Insights', 
+
+    'contact_panel_details_title' => 'Stay Connected',
+    'contact_panel_details_desc' => 'Get our latest updates and insights right here, or find our contact details to connect with us directly.',
     'contact_panel_show_info_btn' => 'Show Info',
-    'contact_panel_question_title' => 'Have a Question?',
-    'contact_panel_question_desc' => 'Fill out our contact form and our team will get back to you as soon as possible.',
+    
+    'contact_panel_question_title' => 'Ready to Build?',
+    'contact_panel_question_desc' => 'Our inbox is always open for new ideas and collaborations. Send us a message, and let\'s create something amazing together.',
     'contact_panel_message_us_btn' => 'Message Us',
+    
     'form_loading' => 'Loading',
     'form_sent_message' => 'Your message has been sent. Thank you!',
 
@@ -73,8 +74,6 @@ $lang = [
     'footer_useful_links' => 'Useful Links',
     'footer_our_services' => 'Our Services',
     'footer_designed_by' => 'Designed by',
-
-
     'company_name' => 'Wamdha',
     'footer_description' => 'Wamdha is a leading tech company providing the best solutions.',
     'footer_links' => 'Quick Links',

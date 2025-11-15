@@ -65,6 +65,8 @@ if ($products_query) {
 </head>
 
 <body>
+
+  <?php include 'partials/header.php'; ?>
   <canvas id="cosmic-canvas"></canvas>
   <div id="preloader">
     <div class="preloader-logo-container">
@@ -81,10 +83,8 @@ if ($products_query) {
     </div>
   </div>
 
-  <canvas id="particle-canvas"></canvas>
-  <?php include 'partials/header.php'; ?>
-
   <main id="main">
+
     <section id="portal-showcase" class="section-bg"
       data-projects='<?= htmlspecialchars(json_encode($products_array, JSON_UNESCAPED_UNICODE)); ?>'
       data-lang="<?= $current_lang; ?>">
